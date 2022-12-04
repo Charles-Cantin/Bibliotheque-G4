@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Maquette Bibliothèque</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+        <!-- Bootstrap -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+        
+        <!-- Custom CSS -->
+        <link href="assets/css/bootstrap-override.css" rel="stylesheet">
+        <link href="assets/css/components.css" rel="stylesheet"> <!-- Pour les liste de livres -->
+        <link href="assets/css/params.css" rel="stylesheet">
+    </head>
+
+    <body>
+        <!-- Header -->
+        <header class="p-3 text-bg-dark ">
+            <div class="container">
+                <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+                    <!-- Logo -->
+                    <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+                        <!-- <img id="logo" class="bi me-2" src="assets/img/logo.svg" alt="logo"> -->
+                        <object id="logo" style="fill:blue" class="bi me-2" data="assets/img/logo.svg" alt="logo"></object>
+                    </a>
+
+                    <!-- Menu navigation -->
+                    <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+                        <li><a href="#" class="nav-link px-2 text-secondary">Home</a></li>
+                        <li><a href="#" class="nav-link px-2 text-white">Features</a></li>
+                        <li><a href="#" class="nav-link px-2 text-white">Pricing</a></li>
+                        <li><a href="#" class="nav-link px-2 text-white">FAQs</a></li>
+                        <li><a href="#" class="nav-link px-2 text-white">About</a></li>
+                    </ul>
+
+                    <!-- Barre recherche -->
+                    <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
+                        <input type="search" class="form-control form-control-dark text-bg-dark" placeholder="Search..." aria-label="Search">
+                    </form>
+
+                    <!-- Boutons Login -->
+                    <div class="text-end">
+                        <button type="button" class="btn btn-outline-light me-2">Login</button>
+                        <button type="button" class="btn btn-warning">Sign-up</button>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <section>
+            <!-- Carrousel : News du site -->
+            <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="false">
+            
+                <!-- Boutons indicateurs (en bas, n°1/2/3/...) du carousel -->
+                <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-label="Slide 1" aria-current="true"></button>
+                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2" class=""></button>
+                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                </div>
+                
+                <!-- Contenu du carroussel : changer les <svg> des carousel-item avec les images. -->
+                <!-- TODO : automatiser la génération de news (et d'items de carroussel) -->
+                <div class="carousel-inner">
+                    <div class="carousel-item active"> 
+                        <!-- <svg class="bd-placeholder-img bd-placeholder-img-lg d-block w-100" width="800" height="400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: First slide" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"></rect><text x="50%" y="50%" fill="#555" dy=".3em">First slide</text></svg> -->
+                        <img src="assets/img/news/hush_house.png" class="d-block w-100" alt="hush_house">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h5>Ouverture de la bibliothèque !</h5>
+                            <p>Des livres à pas savoir quoi en faire (promis ils ont pas été pompés sur LibGen).<p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <!-- <svg class="bd-placeholder-img bd-placeholder-img-lg d-block w-100" width="800" height="400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Second slide" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#666"></rect><text x="50%" y="50%" fill="#444" dy=".3em">Second slide</text></svg> -->
+                        <a href="https://torrentfreak.com/annas-archive-opens-the-door-to-z-library-and-other-pirate-libraries-221118/">
+                            <img src="assets/img/news/books2.jpg" class="d-block w-100" alt="books2"> 
+                        </a>
+                        <div class="carousel-caption d-none d-md-block">
+                            <h5>“Anna’s Archive” Opens the Door to Z-Library and Other Pirate Libraries</h5>
+                            <p>Link to the Torrentfreak article<p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <svg class="bd-placeholder-img bd-placeholder-img-lg d-block w-100" width="100vw" height="56.25vw" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Third slide" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#555"></rect><text x="50%" y="50%" fill="#333" dy=".3em">Third slide</text></svg>
+
+                        <div class="carousel-caption d-none d-md-block">
+                            <h5>Third slide label</h5>
+                            <p>Some representative placeholder content for the third slide.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Contrôles du carousel (gauche/droite) -->
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </section>
+
+        <main>
+        <div id="" class="container container px-4 py-5">
+
+            <h1>Présentation de la page</h1>
+            <blockquote class="blockquote bg-white p-5 font-italic" cite="Ray Bradbury, Afterword to the 1979 edition of Fahrenheit 451">
+                <p>There is more than one way to burn a book. And the world is full of people running about with lit matches. Every minority, be it Baptist/Unitarian, Irish/Italian/Octogenarian/Zen Buddhist, Zionist/Seventh-day Adventist, Women's Lib/Republican, Mattachine/FourSquareGospel feels it has the will, the right, the duty to douse the kerosene, light the fuse. Every dimwit editor who sees himself as the source of all dreary blanc-mange plain porridge unleavened literature, licks his guillotine and eyes the neck of any author who dares to speak above a whisper or write above a nursery rhyme.</p>
+                <footer class="blockquote-footer pt-4 mt-4 border-top">Ray Bradbury, <cite>Afterword to the 1979 edition of Fahrenheit 451</cite></footer>
+            </blockquote>
+            
+            
+            <h3>What's new this week !</h3>
+            <ul class="book-list">
+                <li class="book-item"><a href="book.html"><img src="assets/img/book-covers/1.jpg" alt=""></a></li>
+                <li class="book-item"><img src="assets/img/book-covers/2.jpg" alt=""></li>
+                <li class="book-item"><img src="assets/img/book-covers/3.jpg" alt=""></li>
+                <li class="book-item"><img src="assets/img/book-covers/4.jpg" alt=""></li>
+                <li class="book-item"><img src="assets/img/book-covers/5.jpg" alt=""></li>
+                <li class="book-item"><img src="assets/img/book-covers/6.jpg" alt=""></li>
+                <li class="book-item"><img src="assets/img/book-covers/7.jpg" alt=""></li>
+                <li class="book-item"><img src="assets/img/book-covers/8.jpg" alt=""></li>
+                <li class="book-item"><img src="assets/img/book-covers/9.jpg" alt=""></li>
+                <li class="book-item"><img src="assets/img/book-covers/10.jpg" alt=""></li>
+                <li class="book-item"><img src="assets/img/book-covers/11.jpg" alt=""></li>
+                <li class="book-item"><img src="assets/img/book-covers/12.jpg" alt=""></li>
+                <li class="book-item"><img src="assets/img/book-covers/13.jpg" alt=""></li>
+            </ul>
+            
+            <hr>
+            
+            <h3>Article 2</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+            quis nostrud exercitation ullamco rcitation ullamco</p>
+
+            <h3>Article 3</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+            quis nostrud exercitation ullamco</p>
+
+            <h3>Article 4</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+            quis nostrud exercitation ullamco</p>
+
+            <h3>Article 5</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+            quis nostrud exercitation ullamco</p>
+
+            <h3>Article 6</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+            quis nostrud exercitation ullamco</p>
+        </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="py-3 text-bg-dark">
+            <div class="container">
+            <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+                <li class="nav-item"><a href="#" class="nav-link px-2 text-white">Accueil</a></li>
+                <li class="nav-item"><a href="#" class="nav-link px-2 text-white">Plan</a></li>
+                <li class="nav-item"><a href="#" class="nav-link px-2 text-white">Contact</a></li>
+                <li class="nav-item"><a href="#" class="nav-link px-2 text-white">FAQs</a></li>
+                <li class="nav-item"><a href="#" class="nav-link px-2 text-white">About</a></li>
+            </ul>
+            <p class="text-center text-white">
+                © 2022 TPT Inc
+                <!-- Easter Egg B) -->
+                <span id="tpt"
+                      onmouseover="document.getElementById('kwak').play();"
+                      onmouseout="var thissound=document.getElementById('kwak'); thissound.pause(); thissound.currentTime = 0;"
+                      >
+                      🦆
+                </span>
+                    <audio id="kwak" preload="auto" src="assets/tpt.m4a"></audio>
+
+            </p>
+            </div>
+        </footer>
+
+    </body>
+</html>
