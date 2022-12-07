@@ -1,0 +1,50 @@
+/* Pour les composants définits nous-mêmes.
+TODO : utiliser uniquement des composants de bootstrap ?
+Peut-être plus facile à maintenir (même paradigme pour tous),
+mais moins flexible... ) discuter */
+
+/* Book list */
+.book-list {
+    overflow: scroll;
+    display: flex;
+    scroll-snap-type: x mandatory;
+}
+
+.book-list .book-item {
+    display:inline-block;
+    /* background: red; */
+    height:200px;
+    width:auto;
+    margin-right: 5px;
+    flex-shrink: 0;
+    scroll-snap-align: start;
+}
+
+.book-list .book-item img{
+    height: 100%;
+    width: auto;
+    padding:1rem;
+}
+
+/* Carousel Bootstrap */
+.carousel-item {
+    height:30vw; /* format 16/9, quelle que soit l'appareil utilisé */
+}
+
+/* Carousel background (texte lisible) */
+.carousel-caption{
+    /* background:linear-gradient(0deg,#00000088 30%, #ffffff00 100%); */
+    background:RGBA(33, 37, 41, 0.9);
+}
+
+/* TPT */
+
+#tpt{
+    display: inline-block;
+    transition-duration: 0.8s;
+    transition-property: transform;
+}
+
+#tpt:hover{
+    transform: rotate(360deg);
+}
