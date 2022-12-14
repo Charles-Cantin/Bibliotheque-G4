@@ -1,4 +1,4 @@
-package model;
+package bibliotheque.model;
 
 import java.util.List;
 
@@ -17,7 +17,7 @@ import javax.persistence.Table;
 @Table(name="oeuvre")
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 @SequenceGenerator(name = "oeuvre_auto_inc", sequenceName = "oeuvre_auto_increment")
-public class Oeuvre {
+public class Livre {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "oeuvre_auto_inc")
@@ -32,7 +32,7 @@ public class Oeuvre {
 	@ManyToMany
 	protected List<Genre> genres;
 	
-	public Oeuvre() {
+	public Livre() {
 	}
 	
 	public Integer getId() {

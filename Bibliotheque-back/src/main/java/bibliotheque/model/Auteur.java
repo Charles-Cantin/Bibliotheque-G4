@@ -1,4 +1,4 @@
-package model;
+package bibliotheque.model;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -27,19 +27,19 @@ public class Auteur {
 	
 	@ManyToMany
 	@JoinTable(
-			name="auteur_oeuvre",
+			name="auteur_livre",
 			joinColumns = @JoinColumn(referencedColumnName="id_auteur"),
-			inverseJoinColumns = @JoinColumn(referencedColumnName = "id_oeuvre"))
-	private List<Oeuvre> oeuvres;
+			inverseJoinColumns = @JoinColumn(referencedColumnName = "id_livre"))
+	private List<Livre> livres;
 	
 	public Auteur() {
 	}
 	
-	public Auteur(String nom, String prenom, LocalDate naissance, List<Oeuvre> oeuvres) {
+	public Auteur(String nom, String prenom, LocalDate naissance, List<Livre> livres) {
 		this.nom = nom;
 		this.prenom = prenom;
 		this.naissance = naissance;
-		this.oeuvres = oeuvres;
+		this.livres = livres;
 	}
 
 
@@ -61,11 +61,11 @@ public class Auteur {
 	public void setNaissance(LocalDate naissance) {
 		this.naissance = naissance;
 	}
-	public List<Oeuvre> getOeuvres() {
-		return oeuvres;
+	public List<Livre> getOeuvres() {
+		return livres;
 	}
-	public void setOeuvres(List<Oeuvre> oeuvres) {
-		this.oeuvres = oeuvres;
+	public void setOeuvres(List<Livre> livres) {
+		this.livres = livres;
 	}
 	
 }

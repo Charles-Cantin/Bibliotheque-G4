@@ -1,13 +1,13 @@
-package model;
+package bibliotheque.model;
 
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 
 @Entity
 @DiscriminatorValue("admin")
-public class admin extends Compte{
+public class Admin extends Compte{
 	
-	public admin() {
+	public Admin() {
 	}
 
 	

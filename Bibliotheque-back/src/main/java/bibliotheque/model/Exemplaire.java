@@ -1,11 +1,11 @@
-package model;
+package bibliotheque.model;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="exemplaire")
-public class Exemplaire extends Livre{
+public class Exemplaire extends Edition{
 
 	private boolean disponible;
 	

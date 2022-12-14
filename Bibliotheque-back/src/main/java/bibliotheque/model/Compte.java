@@ -1,4 +1,4 @@
-package model;
+package bibliotheque.model;
 
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.Entity;
@@ -12,7 +12,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name="compte")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name = "type_compte")
+@DiscriminatorColumn(name = "type_compte", columnDefinition = "ENUM('admin','inscrit','bibliothecaire')" )
 public abstract class Compte {
 	
 	@Id

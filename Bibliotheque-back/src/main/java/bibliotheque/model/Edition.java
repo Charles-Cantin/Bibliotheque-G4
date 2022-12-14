@@ -1,16 +1,13 @@
-package model;
-
-import java.util.List;
+package bibliotheque.model;
 
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="livre")
-public class Livre extends Oeuvre {
+public class Edition extends Livre {
 
 	protected String edition;
 	protected String isbn;
@@ -20,7 +17,7 @@ public class Livre extends Oeuvre {
 	protected Editeur editeur;
 	
 	
-	public Livre() {
+	public Edition() {
 	}
 	
 
