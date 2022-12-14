@@ -13,22 +13,22 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="oeuvre")
+@Table(name="livre")
 public class Livre {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="id_oeuvre")
-	protected Integer id;
-	protected String titre;
-	protected int parutionAnnee;
-	protected LocalDate parution;
+	@Column(name="id_livre")
+	private Integer id;
+	private String titre;
+	private int parutionAnnee;
+	private LocalDate parution;
 	
 	@ManyToMany
-	protected List<Auteur> auteurs;
+	private List<Auteur> auteurs;
 	
 	@ManyToMany
-	protected List<Genre> genres;
+	private List<Genre> genres;
 	
 	@OneToMany(mappedBy = "livre")
 	private List<Edition> editions;

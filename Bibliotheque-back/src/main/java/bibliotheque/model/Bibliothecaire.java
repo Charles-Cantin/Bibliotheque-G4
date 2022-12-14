@@ -12,6 +12,8 @@ public class Bibliothecaire extends Compte{
 	
 	public Bibliothecaire() {
 	}
+	
+	
 
 	public String getNom() {
 		return nom;
