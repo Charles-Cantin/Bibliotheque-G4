@@ -1,5 +1,6 @@
 package bibliotheque.model;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -25,6 +26,7 @@ public class Livre {
 	protected Integer id;
 	protected String titre;
 	protected int parutionAnnee;
+	protected LocalDate parution;
 	
 	@ManyToMany
 	protected List<Auteur> auteurs;
@@ -74,6 +76,14 @@ public class Livre {
 
 	public void setGenres(List<Genre> genres) {
 		this.genres = genres;
+	}
+
+	public LocalDate getParution() {
+		return parution;
+	}
+
+	public void setParution(LocalDate parution) {
+		this.parution = parution;
 	}
 
 
