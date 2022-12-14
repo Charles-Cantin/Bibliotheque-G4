@@ -19,8 +19,7 @@ public class Exemplaire{
 	@ManyToOne
 	private Edition edition;
 	
-	public Exemplaire() {
-	}
+	public Exemplaire() {}
 
 	public Integer getId() {
 		return id;
@@ -46,5 +45,8 @@ public class Exemplaire{
 		this.edition = edition;
 	}
 
-	
+	@Override
+	public String toString() {
+		return "Exemplaire [id=" + id + ", disponible=" + disponible + ", edition=" + edition + "]";
+	}
 }
