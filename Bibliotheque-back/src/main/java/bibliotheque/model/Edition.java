@@ -12,7 +12,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="livre")
+@Table(name="edition")
 public class Edition{
 	
 	@Id
@@ -27,12 +27,11 @@ public class Edition{
 	@ManyToOne
 	private Livre livre;
 	
-	@OneToMany
+	@OneToMany(mappedBy = "edition")
 	private List<Exemplaire> exemplaires;
 	
 	
-	public Edition() {
-	}
+	public Edition() {}
 
 
 	public Integer getId() {
@@ -83,5 +82,10 @@ public class Edition{
 	public void setExemplaires(List<Exemplaire> exemplaires) {
 		this.exemplaires = exemplaires;
 	}
-	
+
+
+	@Override
+	public String toString() {
+		return "Edition [id=" + id + ", isbn=" + isbn + ", editeur=" + editeur + ", livre=" + livre + "]";
+	}
 }

@@ -17,12 +17,10 @@ public class Genre {
 	private Integer id;
 	private String libelle;
 	
-	@ManyToMany
+	@ManyToMany(mappedBy = "genres")
 	private List<Livre> livres;
-	
-	public Genre() {
-		// TODO Auto-generated constructor stub
-	}
+
+	public Genre() {}
 
 	public Integer getId() {
 		return id;
@@ -46,5 +44,10 @@ public class Genre {
 
 	public void setLivres(List<Livre> livres) {
 		this.livres = livres;
+	}
+
+	@Override
+	public String toString() {
+		return "Genre [id=" + id + ", libelle=" + libelle + "]";
 	}
 }
