@@ -1,39 +1,27 @@
 package model;
 
+
 import java.time.LocalDate;
 import java.util.List;
 
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
+import javax.persistence.OneToMany;
+
+@Entity
+@DiscriminatorValue("inscrit")
 public class Inscrit extends Compte{
+	
 	private String nom;
 	private String prenom;
 	private LocalDate naissance;
 	private LocalDate finAbonnement;
-	private boolean estAbonne;
-	private LocalDate inscription;
-	private List<Emprunt> historique;
-	private boolean estBloque;
+	private boolean blocked;
+	
+	@OneToMany(mappedBy="emprunteur")
+	private List<Emprunt> emprunts;
 	
 	public Inscrit() {
-	}
-	
-	
-	public Inscrit(String login, String password, String nom, String prenom, LocalDate naissance) {
-		super(login, password);
-		this.nom = nom;
-		this.prenom = prenom;
-		this.naissance = naissance;
-		this.finAbonnement = null;
-		this.estAbonne = false;
-	}
-	
-	public Inscrit(String login, String password, String nom, String prenom, LocalDate naissance,
-			LocalDate finAbonnement) {
-		super(login, password);
-		this.nom = nom;
-		this.prenom = prenom;
-		this.naissance = naissance;
-		this.finAbonnement = finAbonnement;
-		this.estAbonne = finAbonnement.isAfter(LocalDate.now());
 	}
 
 	public String getNom() {
@@ -60,34 +48,20 @@ public class Inscrit extends Compte{
 	public void setFinAbonnement(LocalDate finAbonnement) {
 		this.finAbonnement = finAbonnement;
 	}
-	public boolean isEstAbonne() {
-		return estAbonne;
-	}
-	public void setEstAbonne(boolean estAbonne) {
-		this.estAbonne = estAbonne;
-	}
-
-	public LocalDate getinscription() {
-		return inscription;
-	}
-
-	public void setinscription(LocalDate inscription) {
-		this.inscription = inscription;
-	}
 
 	public List<Emprunt> getHistorique() {
-		return historique;
+		return emprunts;
 	}
 
-	public void setHistorique(List<Emprunt> historique) {
-		this.historique = historique;
+	public void setHistorique(List<Emprunt> emprunts) {
+		this.emprunts = emprunts;
 	}
 
-	public boolean isEstBloque() {
-		return estBloque;
+	public boolean isBlocked() {
+		return blocked;
 	}
 
-	public void setEstBloque(boolean estBloque) {
-		this.estBloque = estBloque;
+	public void setBlocked(boolean blocked) {
+		this.blocked = blocked;
 	}
 }

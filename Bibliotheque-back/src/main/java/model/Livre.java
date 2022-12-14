@@ -1,52 +1,29 @@
 package model;
 
-import java.time.LocalDate;
 import java.util.List;
 
-public class Livre {
+import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="livre")
+public class Livre extends Oeuvre {
+
+	protected String edition;
+	protected String isbn;
 	
-	private String titre;
-	private List<Auteur> auteurs;
-	private LocalDate parution;
-	private List<Genre> genres;
-	private String edition;
-	private Editeur editeur;
-	private String isbn;
+	@ManyToOne
+	@JoinColumn(name="id_editeur")
+	protected Editeur editeur;
+	
 	
 	public Livre() {
 	}
+	
 
-	public String getTitre() {
-		return titre;
-	}
-
-	public void setTitre(String titre) {
-		this.titre = titre;
-	}
-
-	public List<Auteur> getAuteurs() {
-		return auteurs;
-	}
-
-	public void setAuteurs(List<Auteur> auteurs) {
-		this.auteurs = auteurs;
-	}
-
-	public LocalDate getParution() {
-		return parution;
-	}
-
-	public void setParution(LocalDate parution) {
-		this.parution = parution;
-	}
-
-	public List<Genre> getGenres() {
-		return genres;
-	}
-
-	public void setGenres(List<Genre> genres) {
-		this.genres = genres;
-	}
 
 	public String getEdition() {
 		return edition;
@@ -71,4 +48,5 @@ public class Livre {
 	public void setIsbn(String isbn) {
 		this.isbn = isbn;
 	}
+
 }

@@ -2,8 +2,11 @@ package model;
 
 import java.util.List;
 
+import javax.persistence.OneToMany;
+
 public class Editeur {
 		private String nom;
+		@OneToMany(mappedBy = "editeur")
 		private List<Livre> Livre;
 		
 		public Editeur() {

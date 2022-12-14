@@ -1,5 +1,10 @@
 package model;
 
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
+
+@Entity
+@DiscriminatorValue("bibliothecaire")
 public class Bibliothecaire extends Compte{
 	private String nom;
 	private String prenom;
@@ -7,14 +12,6 @@ public class Bibliothecaire extends Compte{
 	
 	public Bibliothecaire() {
 	}
-
-
-	public Bibliothecaire(String login, String password, String nom, String prenom) {
-		super(login, password);
-		this.nom = nom;
-		this.prenom = prenom;
-	}
-
 
 	public String getNom() {
 		return nom;

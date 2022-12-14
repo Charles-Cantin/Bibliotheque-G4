@@ -1,12 +1,14 @@
 package model;
 
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
+
+@Entity
+@DiscriminatorValue("admin")
 public class admin extends Compte{
 	
 	public admin() {
 	}
 
-	public admin(String login, String password) {
-		super(login, password);
-	}
 	
 }
