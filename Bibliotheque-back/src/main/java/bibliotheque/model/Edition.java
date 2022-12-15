@@ -33,6 +33,16 @@ public class Edition{
 	
 	public Edition() {}
 
+	public Edition(String isbn, Livre livre, Editeur editeur, List<Exemplaire> exemplaires) {
+		super();
+		this.isbn = isbn;
+		this.editeur = editeur;
+		this.livre = livre;
+		this.exemplaires = exemplaires;
+	}
+
+
+
 
 	public Integer getId() {
 		return id;

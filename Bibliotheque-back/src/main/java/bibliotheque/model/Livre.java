@@ -1,6 +1,7 @@
 package bibliotheque.model;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -43,26 +44,71 @@ public class Livre {
 	 * l'objet qu'on manipulera le plus, et mettre à jour cet objet
 	 * mettra à jour toutes ses relations, comme ça on devrait être
 	 * tranquille. J'espère.*/
+	
+	// nice  -Charles
+	
 	@ManyToMany
 	@JoinTable(
 			name="join_livre_auteur",
 			joinColumns = @JoinColumn(name = "id_livre"),
 			inverseJoinColumns = @JoinColumn(name = "id_auteur"))
-	private List<Auteur> auteurs;
+	private List<Auteur> auteurs = new ArrayList<Auteur>();
 	
 	@ManyToMany
 	@JoinTable(
 			name="join_livre_genre",
 			joinColumns = @JoinColumn(name = "id_livre"),
 			inverseJoinColumns = @JoinColumn(name = "id_genre"))
-	private List<Genre> genres;
+	private List<Genre> genres = new ArrayList<Genre>();
 	
 	// Lui n'est pas centralisé : la possession est imposée (car OneToMany)
 	@OneToMany(mappedBy = "livre")
-	private List<Edition> editions;
+	private List<Edition> editions = new ArrayList<Edition>();
 	
 	public Livre() {
 	}
+
+	
+	public Livre(String titre, int parutionAnnee, LocalDate parution, List<Auteur> auteurs, List<Genre> genres,
+			List<Edition> editions) {
+		this.titre = titre;
+		this.parutionAnnee = parutionAnnee;
+		this.parution = parution;
+		this.auteurs = auteurs;
+		this.genres = genres;
+		this.editions = editions;
+	}
+
+	public Livre(String titre, int parutionAnnee, LocalDate parution, Auteur auteur, Genre genre,
+			Edition edition) {
+		this.titre = titre;
+		this.parutionAnnee = parutionAnnee;
+		this.parution = parution;
+		this.auteurs.add(auteur);
+		this.genres.add(genre);
+		this.editions.add(edition);
+	}
+	
+	public Livre(String titre, int parutionAnnee, Auteur auteur, Genre genre,
+			Edition edition) {
+		this.titre = titre;
+		this.parutionAnnee = parutionAnnee;
+		this.parution = LocalDate.ofYearDay(parutionAnnee, 1);
+		this.auteurs.add(auteur);
+		this.genres.add(genre);
+		this.editions.add(edition);
+	}
+	
+	public Livre(String titre, LocalDate parution, Auteur auteur, Genre genre,
+			Edition edition) {
+		this.titre = titre;
+		this.parutionAnnee = parution.getYear();
+		this.parution = parution;
+		this.auteurs.add(auteur);
+		this.genres.add(genre);
+		this.editions.add(edition);
+	}
+
 
 	public Integer getId() {
 		return id;

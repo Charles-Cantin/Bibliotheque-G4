@@ -1,5 +1,6 @@
 package bibliotheque.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -18,10 +19,23 @@ public class Genre {
 	private String libelle;
 	
 	@ManyToMany(mappedBy = "genres")
-	private List<Livre> livres;
+	private List<Livre> livres = new ArrayList<Livre>();
 
+	
 	public Genre() {}
+	
+	public Genre(String libelle) {
+		super();
+		this.libelle = libelle;
+	}
 
+	public Genre(String libelle, List<Livre> livres) {
+		super();
+		this.libelle = libelle;
+		this.livres = livres;
+	}
+
+	
 	public Integer getId() {
 		return id;
 	}

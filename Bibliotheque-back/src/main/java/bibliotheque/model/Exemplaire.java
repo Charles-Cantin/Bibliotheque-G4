@@ -20,6 +20,17 @@ public class Exemplaire{
 	private Edition edition;
 	
 	public Exemplaire() {}
+	
+	
+
+	public Exemplaire(Edition edition, boolean disponible) {
+		this.disponible = disponible;
+		this.edition = edition;
+	}
+	
+	
+
+
 
 	public Integer getId() {
 		return id;

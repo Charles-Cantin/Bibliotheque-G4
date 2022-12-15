@@ -1,5 +1,6 @@
 package bibliotheque.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -19,9 +20,26 @@ public class Editeur {
 	private String nom;
 
 	@OneToMany(mappedBy = "editeur")
-	private List<Edition> edition;
+	private List<Edition> editions = new ArrayList<Edition>();
 
 	public Editeur() {}
+	
+	public Editeur(String nom) {
+		this.nom = nom;
+	}
+
+	public Editeur(String nom, List<Edition> editions) {
+		this.nom = nom;
+		this.editions = editions;
+	}
+	
+	public Editeur(String nom, Edition edition) {
+		this.nom = nom;
+		this.editions.add(edition);
+	}
+	
+	
+
 
 	public Integer getId() {
 		return id;
@@ -39,12 +57,12 @@ public class Editeur {
 		this.nom = nom;
 	}
 
-	public List<Edition> getEdition() {
-		return edition;
+	public List<Edition> getEditions() {
+		return editions;
 	}
 
-	public void setEdition(List<Edition> edition) {
-		this.edition = edition;
+	public void setEditions(List<Edition> editions) {
+		this.editions = editions;
 	}
 
 	@Override
