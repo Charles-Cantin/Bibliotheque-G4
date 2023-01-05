@@ -31,7 +31,7 @@ public class Inscrit extends Compte{
 	private boolean blocked;
 	
 	@OneToMany(mappedBy="emprunteur")
-	@JsonView(Views.ViewBase.class)
+	@JsonView(Views.ViewInscrit.class)
 	private List<Emprunt> emprunts = new ArrayList<Emprunt>();
 	
 	public Inscrit() {
