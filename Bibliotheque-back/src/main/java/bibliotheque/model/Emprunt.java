@@ -11,20 +11,31 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 @Entity
 @Table(name="emprunt")
 public class Emprunt {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@JsonView(Views.ViewBase.class)
 	private Integer id;
+
+	@JsonView(Views.ViewBase.class)
 	private LocalDate debut;
+
+	@JsonView(Views.ViewBase.class)
 	private static int dureeJours = 21;
+
+	@JsonView(Views.ViewBase.class)
 	private LocalDate finEffective;
+
+	@JsonView(Views.ViewBase.class)
 	private boolean rendu;
-	
 
 	@OneToOne
+//	@JsonView(Views.ViewBase.class)
 	private Exemplaire exemplaire;
 	
 	@ManyToOne

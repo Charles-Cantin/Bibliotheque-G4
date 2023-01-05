@@ -21,71 +21,71 @@ import org.springframework.web.server.ResponseStatusException;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
-import poudlard.model.Competence;
-import poudlard.model.Views;
-import poudlard.repository.ICompetenceRepository;
+import bibliotheque.dao.IDAOInscrit;
+import bibliotheque.model.Inscrit;
+import bibliotheque.model.Views;
 
 @RestController
-@RequestMapping("/competences")
+@RequestMapping("/inscrits")
 @CrossOrigin("*")
-public class CompetenceResource {
+public class InscritResource {
 	
 	@Autowired
-	private ICompetenceRepository daoCompetence;
+	private IDAOInscrit daoInscrit;
 
 	@GetMapping("")
-	@JsonView(Views.ViewCompetence.class)
-	public List <Competence> findAll() {
-		List<Competence> competences = daoCompetence.findAll();
+	@JsonView(Views.ViewInscrit.class)
+	public List <Inscrit> findAll() {
+		List<Inscrit> inscrits = daoInscrit.findAll();
 
-		return competences;
+		return inscrits;
 	}
 
 	@GetMapping("/{id}")
-	@JsonView(Views.ViewCompetenceDetail.class)
-	public Competence findById(@PathVariable Integer id) {
-		Optional<Competence> optCompetence = daoCompetence.findById(id);
+	@JsonView(Views.ViewInscrit.class)
+	public Inscrit findById(@PathVariable Integer id) {
+		Optional<Inscrit> optInscrit = daoInscrit.findById(id);
 
-		if (optCompetence.isEmpty()) {
+		if (optInscrit.isEmpty()) {
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND);
 		}
 
-		return optCompetence.get();
+		return optInscrit.get();
 	}
 
 	
 	@PostMapping("")
-	@JsonView(Views.ViewCompetenceDetail.class)
-	public Competence create(@Valid @RequestBody Competence competence, BindingResult result) {
+	@JsonView(Views.ViewInscritDetail.class)
+	public Inscrit create(@Valid @RequestBody Inscrit inscrit, BindingResult result) {
 		if (result.hasErrors()) {
-			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Le competence n'a pu être créé");
+			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Le inscrit n'a pu être créé");
 		}
 
-		competence = daoCompetence.save(competence);
+		inscrit = daoInscrit.save(inscrit);
 
-		return competence;
+		return inscrit;
 	}
 
 
 
 	@PutMapping("/{id}")
-	@JsonView(Views.ViewCompetenceDetail.class)
-	public Competence update(@PathVariable Integer id, @RequestBody Competence competence) {
-		if (id != competence.getId() || !daoCompetence.existsById(id)) {
+	@JsonView(Views.ViewInscritDetail.class)
+	public Inscrit update(@PathVariable Integer id, @RequestBody Inscrit inscrit) {
+		if (id != inscrit.getId() || !daoInscrit.existsById(id)) {
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
 		}
 
-		competence = daoCompetence.save(competence);
+		inscrit = daoInscrit.save(inscrit);
 
-		return competence;
+		return inscrit;
 	}
 
 	@DeleteMapping("/{id}")
 	public void delete(@PathVariable Integer id) {
-		if (!daoCompetence.existsById(id)) {
+		if (!daoInscrit.existsById(id)) {
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND);
 		}
 
-		daoCompetence.deleteById(id);
+		daoInscrit.deleteById(id);
 	}
 }

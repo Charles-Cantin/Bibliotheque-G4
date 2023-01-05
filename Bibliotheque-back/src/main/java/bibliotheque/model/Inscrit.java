@@ -9,17 +9,29 @@ import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 @Entity
 @DiscriminatorValue("inscrit")
 public class Inscrit extends Compte{
 	
+	@JsonView(Views.ViewBase.class)
 	private String nom;
+
+	@JsonView(Views.ViewBase.class)
 	private String prenom;
+
+	@JsonView(Views.ViewBase.class)
 	private LocalDate naissance;
+
+	@JsonView(Views.ViewBase.class)
 	private LocalDate finAbonnement;
+
+	@JsonView(Views.ViewBase.class)
 	private boolean blocked;
 	
 	@OneToMany(mappedBy="emprunteur")
+	@JsonView(Views.ViewBase.class)
 	private List<Emprunt> emprunts = new ArrayList<Emprunt>();
 	
 	public Inscrit() {
