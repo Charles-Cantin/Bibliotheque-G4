@@ -1,8 +1,6 @@
 package test;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -12,11 +10,13 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import bibliotheque.dao.IDAOAuteur;
+import bibliotheque.dao.IDAOCompte;
 import bibliotheque.dao.IDAOEditeur;
 import bibliotheque.dao.IDAOEdition;
 import bibliotheque.dao.IDAOExemplaire;
 import bibliotheque.dao.IDAOGenre;
 import bibliotheque.dao.IDAOLivre;
+import bibliotheque.model.Admin;
 import bibliotheque.model.Auteur;
 import bibliotheque.model.Editeur;
 import bibliotheque.model.Edition;
@@ -41,9 +41,11 @@ public class TestDB {
 	private IDAOGenre daoGenre;
 	@Autowired
 	private IDAOAuteur daoAuteur;
+	@Autowired
+	private IDAOCompte daoCompte;
 	
 	@Test
-	public void createAndSaveInDB() {
+	public void createAndSaveBookInDB() {
 		// ARRANGE
 		
 		// ACT
@@ -88,5 +90,20 @@ public class TestDB {
 		// ASSERT
 
 	}
+	
+	@Test
+	public void createAndSaveAccountInDB() {
+		Admin a = new Admin();
+		a.setPassword("pass");
+		a.setLogin("lo");
+		daoCompte.save(a);
+		
+		/*Compte b1 = new Bibliothecaire();
+		b1.setLogin("toto");
+		b1.setPassword("tata");
+		b1.setNom("bob");
+		b1.setPrenom("baba");
 
+		b1 = daoCompte.save(b1);*/
+	}
 }
