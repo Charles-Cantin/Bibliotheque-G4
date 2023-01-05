@@ -29,7 +29,6 @@ public class Emprunt {
 	private LocalDate finEffective;
 	@JsonView(Views.ViewBase.class)
 	private boolean rendu;
-	
 
 	@OneToOne
 	@JsonView(Views.ViewEmprunt.class)
