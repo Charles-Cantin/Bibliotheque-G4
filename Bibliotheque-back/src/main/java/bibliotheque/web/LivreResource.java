@@ -30,7 +30,7 @@ import bibliotheque.model.Edition;
 import bibliotheque.model.Genre;
 import bibliotheque.model.Livre;
 import bibliotheque.model.Views;
-import bibliotheque.web.DTO.LivreDTO;
+import bibliotheque.web.dto.LivreDTO;
 
 @RestController
 @RequestMapping("/livres")
@@ -75,7 +75,7 @@ public class LivreResource {
 	
 	
 	@GetMapping("/{titre}/dto")
-	@JsonView(Views.ViewLivre.class)
+	@JsonView(Views.ViewLivreDTO.class)
 	public List<LivreDTO> findLivreDTOBytitre(@PathVariable String titre) {
 		//final DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 		
@@ -96,8 +96,7 @@ public class LivreResource {
 			livreDTO.setAuteurs(livre.getAuteurs());
 			
 			//à completer
-			List<Boolean> disponibilités = daoExemplaire.findDisponibilitesByLivre(livre.getId());
-			livreDTO.setDisponibilité(disponibilités.contains(true));
+			livreDTO.setDisponibilité(daoExemplaire.livreDisponible(livre.getId()));
 			
 			livreDTO.setPublication(livre.getParution());
 		

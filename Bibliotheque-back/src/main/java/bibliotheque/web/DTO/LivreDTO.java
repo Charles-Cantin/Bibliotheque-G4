@@ -1,4 +1,4 @@
-package bibliotheque.web.DTO;
+package bibliotheque.web.dto;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -9,21 +9,19 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonView;
 
 import bibliotheque.model.Auteur;
-
 import bibliotheque.model.Views;
 
 public class LivreDTO {
 	@JsonView(Views.ViewBase.class)
 	@JsonProperty("Titre")
 	private String titre;
-	@JsonView(Views.ViewLivre.class)
+	@JsonView(Views.ViewLivreDTO.class)
 	@JsonProperty("Auteurs")
 	private List<Auteur> auteurs = new ArrayList<Auteur>();
 	
 	@JsonView(Views.ViewBase.class)
 	@JsonProperty("Disponibilité")
 	private Boolean disponibilité;
-	
 	
 	@JsonView(Views.ViewBase.class)
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")

@@ -51,4 +51,8 @@ public class Views {
 
 	// AUTEURS //
 	public static class ViewAuteurDetail extends ViewBase {}		
+
+	// LivreDTO //
+	public static class ViewLivreDTO extends ViewBase {}
+
 }
