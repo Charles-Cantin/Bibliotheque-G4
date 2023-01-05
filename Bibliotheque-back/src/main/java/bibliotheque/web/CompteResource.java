@@ -54,7 +54,7 @@ public class CompteResource {
 	}
 
 	
-	@PostMapping("")
+	@PostMapping("/inscription")
 	@JsonView(Views.ViewCompte.class)
 	public Compte create(@Valid @RequestBody Compte compte, BindingResult result) {
 		if (result.hasErrors()) {
@@ -65,9 +65,18 @@ public class CompteResource {
 
 		return compte;
 	}
+	
+	@PostMapping("/connexion")
+	@JsonView(Views.ViewCompte.class)
+	public Compte connecter(@RequestBody Compte compte) {
+		
+		compte = daoCompte.findByLoginAndPassword(compte.getLogin(), compte.getPassword());
 
+		return compte;
+	}
+	
 
-
+	
 	@PutMapping("/{id}")
 	@JsonView(Views.ViewCompte.class)
 	public Compte update(@PathVariable Integer id, @RequestBody Compte compte) {
