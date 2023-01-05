@@ -13,6 +13,13 @@ import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
+import bibliotheque.model.Views.ViewAuteurDetail;
+import bibliotheque.model.Views.ViewBase;
+
+
+
+import com.fasterxml.jackson.annotation.JsonView;
+
 @Entity
 @Table(name="auteur")
 public class Auteur {
@@ -29,6 +36,7 @@ public class Auteur {
 	private LocalDate naissance;
 	
 	@ManyToMany(mappedBy = "auteurs")
+	@JsonView(ViewAuteurDetail.class)
 	private List<Livre> livres = new ArrayList<Livre>();
 	
 	public Auteur() {
