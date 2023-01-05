@@ -1,5 +1,6 @@
 package bibliotheque.web;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -22,12 +23,14 @@ import org.springframework.web.server.ResponseStatusException;
 import com.fasterxml.jackson.annotation.JsonView;
 
 import bibliotheque.dao.IDAOEdition;
+import bibliotheque.dao.IDAOExemplaire;
 import bibliotheque.dao.IDAOGenre;
 import bibliotheque.dao.IDAOLivre;
 import bibliotheque.model.Edition;
 import bibliotheque.model.Genre;
 import bibliotheque.model.Livre;
 import bibliotheque.model.Views;
+import bibliotheque.web.DTO.LivreDTO;
 
 @RestController
 @RequestMapping("/livres")
@@ -40,6 +43,8 @@ public class LivreResource {
 	private IDAOGenre daoGenre;
 	@Autowired
 	private IDAOEdition daoEdition;
+	@Autowired
+	private IDAOExemplaire daoExemplaire;
 	
 	@GetMapping("")
 	@JsonView(Views.ViewLivre.class)
@@ -67,6 +72,49 @@ public class LivreResource {
 		return livre;
 	}
 
+	
+	
+	@GetMapping("/{titre}/dto")
+	@JsonView(Views.ViewLivre.class)
+	public List<LivreDTO> findLivreDTOBytitre(@PathVariable String titre) {
+		//final DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+		
+		List<Livre> livres = daoLivre.findByTitreContainingIgnoreCase(titre);
+
+		
+		if (livres.isEmpty()) {
+			throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+		}
+
+		List<LivreDTO> livresDTO = new ArrayList<>();
+		
+		for (Livre livre : livres) {
+			
+			LivreDTO livreDTO = new LivreDTO();
+			
+			livreDTO.setTitre(livre.getTitre());
+			livreDTO.setAuteurs(livre.getAuteurs());
+			
+			//à completer
+			List<Boolean> disponibilités = daoExemplaire.findDisponibilitesByLivre(livre.getId());
+			livreDTO.setDisponibilité(disponibilités.contains(true));
+			
+			livreDTO.setPublication(livre.getParution());
+		
+		    livresDTO.add(livreDTO);
+		}
+	
+		
+		return livresDTO;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	@PostMapping("")
 	@JsonView(Views.ViewLivreDetail.class)
