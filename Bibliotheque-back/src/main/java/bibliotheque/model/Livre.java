@@ -14,15 +14,23 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
+import bibliotheque.model.Views.ViewBase;
+
 @Entity
 @Table(name="livre")
 public class Livre {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@JsonView(ViewBase.class)
 	private Integer id;
+	@JsonView(ViewBase.class)
 	private String titre;
+	@JsonView(ViewBase.class)
 	private int parutionAnnee;
+	@JsonView(ViewBase.class)
 	private LocalDate parution;
 	
 	/* À PROPOS DE LA POSSESSION D'UNE RELATION BIDIRECTIONNELLE
