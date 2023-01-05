@@ -3,6 +3,7 @@ package bibliotheque.web;
 
 
 import java.util.List;
+import java.util.Optional;
 
 import javax.validation.Valid;
 
@@ -24,6 +25,7 @@ import com.fasterxml.jackson.annotation.JsonView;
 
 import bibliotheque.dao.IDAOBibliothecaire;
 import bibliotheque.model.Bibliothecaire;
+import bibliotheque.model.Compte;
 import bibliotheque.model.Views;
 
 @RestController
@@ -31,52 +33,64 @@ import bibliotheque.model.Views;
 @CrossOrigin("*")
 public class BibliothecaireRessource {
 
-@Autowired	
-private IDAOBibliothecaire daoBibliothecaire;
+	@Autowired	
+	private IDAOBibliothecaire daoBibliothecaire;
 
-@GetMapping("")
-@JsonView(Views.ViewBase.class)
-public List <Bibliothecaire> findAll() {
-	List<Bibliothecaire> bibliothecaire = daoBibliothecaire.findAll();
+	@GetMapping("")
+	@JsonView(Views.ViewBase.class)
+	public List <Bibliothecaire> findAll() {
+		List<Bibliothecaire> bibliothecaire = daoBibliothecaire.findAll();
 
-	return bibliothecaire;
-}
-
-
-
-@PostMapping("")
-@JsonView(Views.ViewBase.class)
-public Bibliothecaire create(@Valid @RequestBody Bibliothecaire bibliothecaire, BindingResult result) {
-	if (result.hasErrors()) {
-		throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "L'auteur n'a pu être créé");
+		return bibliothecaire;
 	}
 
-	bibliothecaire = daoBibliothecaire.save(bibliothecaire);
+	@GetMapping("/{id}")
+	@JsonView(Views.ViewCompte.class)
+	public Compte findById(@PathVariable Integer id) {
+		Optional<Bibliothecaire> optBibliothecaire = daoBibliothecaire.findById(id);
 
-	return bibliothecaire;
-}
+		if (optBibliothecaire.isEmpty()) {
+			throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+		}
 
-
-@PutMapping("/{id}")
-@JsonView(Views.ViewBase.class)
-public Bibliothecaire update(@PathVariable Integer id, @RequestBody Bibliothecaire bibliothecaire) {
-	if (id != bibliothecaire.getId() || !daoBibliothecaire.existsById(id)) {
-		throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+		return optBibliothecaire.get();
 	}
 
-	bibliothecaire = daoBibliothecaire.save(bibliothecaire);
 
-	return bibliothecaire;
-}
 
-@DeleteMapping("/{id}")
-public void delete(@PathVariable Integer id) {
-	if (!daoBibliothecaire.existsById(id)) {
-		throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+	@PostMapping("")
+	@JsonView(Views.ViewBase.class)
+	public Bibliothecaire create(@Valid @RequestBody Bibliothecaire bibliothecaire, BindingResult result) {
+		if (result.hasErrors()) {
+			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "L'auteur n'a pu être créé");
+		}
+
+		bibliothecaire = daoBibliothecaire.save(bibliothecaire);
+
+		return bibliothecaire;
 	}
 
-	daoBibliothecaire.deleteById(id);
-}
 
-	
+	@PutMapping("/{id}")
+	@JsonView(Views.ViewBase.class)
+	public Bibliothecaire update(@PathVariable Integer id, @RequestBody Bibliothecaire bibliothecaire) {
+		if (id != bibliothecaire.getId() || !daoBibliothecaire.existsById(id)) {
+			throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+		}
+
+		bibliothecaire = daoBibliothecaire.save(bibliothecaire);
+
+		return bibliothecaire;
+	}
+
+	@DeleteMapping("/{id}")
+	public void delete(@PathVariable Integer id) {
+		if (!daoBibliothecaire.existsById(id)) {
+			throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+		}
+
+		daoBibliothecaire.deleteById(id);
+	}
+
+
 }

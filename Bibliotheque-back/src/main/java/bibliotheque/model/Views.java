@@ -49,7 +49,6 @@ public class Views {
 	public static class ViewEditionDetail extends ViewEdition {}
 
 
-
-	
+	// AUTEURS //
 	public static class ViewAuteurDetail extends ViewBase {}		
 }

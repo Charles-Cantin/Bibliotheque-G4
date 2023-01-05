@@ -43,7 +43,7 @@ public List <Auteur> findAll() {
 }
 
 
-@GetMapping("/{id}/with-livres")
+@GetMapping("/{id}")
 @JsonView(Views.ViewAuteurDetail.class)
 public Auteur findByIdWithLivres(@PathVariable Integer id) {
 	Optional<Auteur> optAuteur = daoAuteur.findByIdWithLivres(id);
