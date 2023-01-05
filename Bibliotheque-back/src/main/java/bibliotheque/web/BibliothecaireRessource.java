@@ -1,7 +1,6 @@
 package bibliotheque.web;
 
-
-
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -24,17 +23,25 @@ import org.springframework.web.server.ResponseStatusException;
 import com.fasterxml.jackson.annotation.JsonView;
 
 import bibliotheque.dao.IDAOBibliothecaire;
+import bibliotheque.dao.IDAOEmprunt;
 import bibliotheque.model.Bibliothecaire;
 import bibliotheque.model.Compte;
+import bibliotheque.model.Emprunt;
 import bibliotheque.model.Views;
+import bibliotheque.web.dto.EmpruntWithLivreAndInscritDTO;
 
 @RestController
 @RequestMapping("/bibliothecaires")
 @CrossOrigin("*")
 public class BibliothecaireRessource {
-
+	
 	@Autowired	
 	private IDAOBibliothecaire daoBibliothecaire;
+	
+	@Autowired
+	private IDAOEmprunt daoEmprunt;
+
+	//////////////////////////////////// CRUD ////////////////////////////////////
 
 	@GetMapping("")
 	@JsonView(Views.ViewBase.class)
@@ -56,8 +63,6 @@ public class BibliothecaireRessource {
 		return optBibliothecaire.get();
 	}
 
-
-
 	@PostMapping("")
 	@JsonView(Views.ViewBase.class)
 	public Bibliothecaire create(@Valid @RequestBody Bibliothecaire bibliothecaire, BindingResult result) {
@@ -69,7 +74,6 @@ public class BibliothecaireRessource {
 
 		return bibliothecaire;
 	}
-
 
 	@PutMapping("/{id}")
 	@JsonView(Views.ViewBase.class)
@@ -92,5 +96,31 @@ public class BibliothecaireRessource {
 		daoBibliothecaire.deleteById(id);
 	}
 
+	///////////////////////////////// INTERFACES /////////////////////////////////
+	
+	@GetMapping("/interface")
+	public List<EmpruntWithLivreAndInscritDTO> interfaceReservations() {
+		List<Emprunt> emprunts = daoEmprunt.findAll();
+		
+		List<EmpruntWithLivreAndInscritDTO> empruntsDTO = new ArrayList<EmpruntWithLivreAndInscritDTO>();
+		
+		for (Emprunt e : emprunts) {
+			EmpruntWithLivreAndInscritDTO eDTO = new EmpruntWithLivreAndInscritDTO();
 
+			eDTO.setIdInscrit(e.getEmprunteur().getId());
+			eDTO.setNomPrenomInscrit(e.getEmprunteur().getNom() + " " + e.getEmprunteur().getPrenom());
+
+			eDTO.setIdLivre(e.getExemplaire().getEdition().getLivre().getId());
+			eDTO.setTitreLivre(e.getExemplaire().getEdition().getLivre().getTitre());
+
+			eDTO.setDebutEmprunt(e.getDebut());
+			eDTO.setFinEmprunt(e.getFinEffective());
+			eDTO.setRendu(e.isRendu());
+			
+			empruntsDTO.add(eDTO);
+		}
+		
+		return empruntsDTO;
+	}
+	
 }
