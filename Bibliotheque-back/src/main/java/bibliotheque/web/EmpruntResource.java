@@ -21,71 +21,71 @@ import org.springframework.web.server.ResponseStatusException;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
-import poudlard.model.Competence;
-import poudlard.model.Views;
-import poudlard.repository.ICompetenceRepository;
+import bibliotheque.dao.IDAOEmprunt;
+import bibliotheque.model.Emprunt;
+import bibliotheque.model.Views;
 
 @RestController
-@RequestMapping("/competences")
+@RequestMapping("/emprunts")
 @CrossOrigin("*")
-public class CompetenceResource {
+public class EmpruntResource {
 	
 	@Autowired
-	private ICompetenceRepository daoCompetence;
+	private IDAOEmprunt daoEmprunt;
 
 	@GetMapping("")
-	@JsonView(Views.ViewCompetence.class)
-	public List <Competence> findAll() {
-		List<Competence> competences = daoCompetence.findAll();
+	@JsonView(Views.ViewEmprunt.class)
+	public List <Emprunt> findAll() {
+		List<Emprunt> emprunts = daoEmprunt.findAll();
 
-		return competences;
+		return emprunts;
 	}
 
 	@GetMapping("/{id}")
-	@JsonView(Views.ViewCompetenceDetail.class)
-	public Competence findById(@PathVariable Integer id) {
-		Optional<Competence> optCompetence = daoCompetence.findById(id);
+	@JsonView(Views.ViewEmpruntDetail.class)
+	public Emprunt findById(@PathVariable Integer id) {
+		Optional<Emprunt> optEmprunt = daoEmprunt.findById(id);
 
-		if (optCompetence.isEmpty()) {
+		if (optEmprunt.isEmpty()) {
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND);
 		}
 
-		return optCompetence.get();
+		return optEmprunt.get();
 	}
 
 	
 	@PostMapping("")
-	@JsonView(Views.ViewCompetenceDetail.class)
-	public Competence create(@Valid @RequestBody Competence competence, BindingResult result) {
+	@JsonView(Views.ViewEmpruntDetail.class)
+	public Emprunt create(@Valid @RequestBody Emprunt emprunt, BindingResult result) {
 		if (result.hasErrors()) {
-			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Le competence n'a pu être créé");
+			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "L'emprunt n'a pu être créé");
 		}
 
-		competence = daoCompetence.save(competence);
+		emprunt = daoEmprunt.save(emprunt);
 
-		return competence;
+		return emprunt;
 	}
 
 
 
 	@PutMapping("/{id}")
-	@JsonView(Views.ViewCompetenceDetail.class)
-	public Competence update(@PathVariable Integer id, @RequestBody Competence competence) {
-		if (id != competence.getId() || !daoCompetence.existsById(id)) {
+	@JsonView(Views.ViewEmpruntDetail.class)
+	public Emprunt update(@PathVariable Integer id, @RequestBody Emprunt emprunt) {
+		if (id != emprunt.getId() || !daoEmprunt.existsById(id)) {
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
 		}
 
-		competence = daoCompetence.save(competence);
+		emprunt = daoEmprunt.save(emprunt);
 
-		return competence;
+		return emprunt;
 	}
 
 	@DeleteMapping("/{id}")
 	public void delete(@PathVariable Integer id) {
-		if (!daoCompetence.existsById(id)) {
+		if (!daoEmprunt.existsById(id)) {
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND);
 		}
 
-		daoCompetence.deleteById(id);
+		daoEmprunt.deleteById(id);
 	}
 }

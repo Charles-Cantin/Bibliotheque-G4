@@ -10,16 +10,22 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 @Entity
 @Table(name = "editeur")
 public class Editeur {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@JsonView(Views.ViewBase.class)
 	private Integer id;
+	
+	@JsonView(Views.ViewBase.class)
 	private String nom;
 
 	@OneToMany(mappedBy = "editeur")
+	@JsonView(Views.ViewEditeurDetail.class)
 	private List<Edition> editions = new ArrayList<Edition>();
 
 	public Editeur() {}
