@@ -6,5 +6,5 @@ import bibliotheque.model.Compte;
 
 public interface IDAOCompte extends JpaRepository<Compte,Integer>{
 	
-	public Compte findDistinctByLoginAndPassword(String login, String password);
+	public Compte findByLoginAndPassword(String login, String password);
 }
