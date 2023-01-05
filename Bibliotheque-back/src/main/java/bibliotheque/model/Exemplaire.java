@@ -7,16 +7,21 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 @Entity
 @Table(name="exemplaire")
 public class Exemplaire{
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@JsonView(Views.ViewBase.class)
 	private Integer id;
+	@JsonView(Views.ViewBase.class)
 	private boolean disponible;
 	
 	@ManyToOne
+	@JsonView(Views.ViewExemplaire.class)
 	private Edition edition;
 	
 	public Exemplaire() {}

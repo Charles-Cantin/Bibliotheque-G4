@@ -11,23 +11,30 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 @Entity
 @Table(name="edition")
 public class Edition{
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@JsonView(Views.ViewBase.class)
 	private Integer id;
+	@JsonView(Views.ViewBase.class)
 	private String isbn;
 	
 	@ManyToOne
 	@JoinColumn(name="id_editeur")
+	@JsonView(Views.ViewEdition.class)
 	private Editeur editeur;
 	
 	@ManyToOne
+	@JsonView(Views.ViewEdition.class)
 	private Livre livre;
 	
 	@OneToMany(mappedBy = "edition")
+	@JsonView(Views.ViewEditionDetail.class)
 	private List<Exemplaire> exemplaires;
 	
 	

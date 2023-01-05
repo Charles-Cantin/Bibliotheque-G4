@@ -1,7 +1,7 @@
 package bibliotheque.model;
 
 public class Views {
-	
+
 	public static class ViewBase {}
 	
 	// COMPTES //
@@ -37,4 +37,14 @@ public class Views {
 	public static class ViewLivre extends ViewLivreWithAuteurAndGenre {}
 	public static class ViewLivreWithAll extends ViewLivreWithAuteurAndGenre {}
 	public static class ViewLivreDetail extends ViewLivreWithAll {}
+	
+	// EXEMPLAIRES //
+	
+	public static class ViewExemplaire extends ViewBase {}
+	public static class ViewExemplaireDetail extends ViewExemplaire {}
+	
+	// EDITIONS //
+	
+	public static class ViewEdition extends ViewBase {}
+	public static class ViewEditionDetail extends ViewEdition {}
 }
