@@ -9,16 +9,21 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonView;
 @Entity
 @Table(name="genre")
 public class Genre {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@JsonView(Views.ViewBase.class)
 	private Integer id;
+	@JsonView(Views.ViewBase.class)
 	private String libelle;
 	
 	@ManyToMany(mappedBy = "genres")
+	@JsonView(Views.ViewGenreWithLivres.class)
 	private List<Livre> livres = new ArrayList<Livre>();
 
 	

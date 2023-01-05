@@ -14,15 +14,21 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 @Entity
 @Table(name="livre")
 public class Livre {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@JsonView(Views.ViewBase.class)
 	private Integer id;
+	@JsonView(Views.ViewBase.class)
 	private String titre;
+	@JsonView(Views.ViewBase.class)
 	private int parutionAnnee;
+	@JsonView(Views.ViewBase.class)
 	private LocalDate parution;
 	
 	/* À PROPOS DE LA POSSESSION D'UNE RELATION BIDIRECTIONNELLE
@@ -52,6 +58,7 @@ public class Livre {
 			name="join_livre_auteur",
 			joinColumns = @JoinColumn(name = "id_livre"),
 			inverseJoinColumns = @JoinColumn(name = "id_auteur"))
+	@JsonView(Views.ViewLivre.class)
 	private List<Auteur> auteurs = new ArrayList<Auteur>();
 	
 	@ManyToMany
@@ -59,10 +66,12 @@ public class Livre {
 			name="join_livre_genre",
 			joinColumns = @JoinColumn(name = "id_livre"),
 			inverseJoinColumns = @JoinColumn(name = "id_genre"))
+	@JsonView(Views.ViewLivreDetail.class)
 	private List<Genre> genres = new ArrayList<Genre>();
 	
 	// Lui n'est pas centralisé : la possession est imposée (car OneToMany)
 	@OneToMany(mappedBy = "livre")
+	@JsonView(Views.ViewLivreDetail.class)
 	private List<Edition> editions = new ArrayList<Edition>();
 	
 	public Livre() {

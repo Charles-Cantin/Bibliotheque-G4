@@ -11,15 +11,21 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 @Entity
 @Table(name="auteur")
 public class Auteur {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@JsonView(Views.ViewBase.class)
 	private Integer id;
+	@JsonView(Views.ViewBase.class)
 	private String nom;
+	@JsonView(Views.ViewBase.class)
 	private String prenom;
+	@JsonView(Views.ViewBase.class)
 	private LocalDate naissance;
 	
 	@ManyToMany(mappedBy = "auteurs")
