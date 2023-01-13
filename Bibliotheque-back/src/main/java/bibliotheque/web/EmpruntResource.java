@@ -62,6 +62,8 @@ public class EmpruntResource {
 		
 		List<Emprunt> emprunts = daoEmprunt.findAllByEmprunteur(id_emprunteur);
 		
+		System.out.println(emprunts);
+		
 		List<EmpruntLecteurDTO> empruntsDTO = new ArrayList<>();
 		
 		for (Emprunt emprunt : emprunts) {
@@ -72,6 +74,9 @@ public class EmpruntResource {
 			empruntLecteurDTO.setTitreLivre(emprunt.getExemplaire().getEdition().getLivre().getTitre());
 			empruntLecteurDTO.setDebut(emprunt.getDebut());
 			empruntLecteurDTO.setFin(emprunt.getFin());
+			empruntLecteurDTO.setRendu(emprunt.isRendu());
+			
+			empruntsDTO.add(empruntLecteurDTO);
 			
 		}
 		

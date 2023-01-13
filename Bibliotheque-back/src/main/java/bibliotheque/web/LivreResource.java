@@ -76,7 +76,7 @@ public class LivreResource {
 	
 	@GetMapping("/{titre}/dto")
 	@JsonView(Views.ViewLivreDTO.class)
-	public List<bibliotheque.web.dto.LivreDTO> findLivreDTOBytitre(@PathVariable String titre) {
+	public List<bibliotheque.web.DTO.LivreDTO> findLivreDTOBytitre(@PathVariable String titre) {
 		//final DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 		
 		List<Livre> livres = daoLivre.findByTitreContainingIgnoreCase(titre);

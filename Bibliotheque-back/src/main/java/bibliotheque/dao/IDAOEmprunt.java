@@ -12,7 +12,7 @@ public interface IDAOEmprunt extends JpaRepository<Emprunt, Integer>{
 	// find by emprunteur
 	
 	@Query("SELECT e from Emprunt e where e.emprunteur.id = :id")
-	public List<Emprunt> findAllByEmprunteur(@Param("id") Integer idEmprunteur);
+	public List<Emprunt> findAllByEmprunteur(@Param("id") Integer id_emprunteur);
 	
 	// find by exemplaire
 	

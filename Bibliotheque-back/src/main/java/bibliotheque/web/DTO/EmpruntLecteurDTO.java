@@ -9,6 +9,7 @@ import bibliotheque.model.Views;
 
 public class EmpruntLecteurDTO {
 	
+	@JsonView(Views.ViewBase.class)
 	private Integer idExemplaire;
 	
 	@JsonView(Views.ViewBase.class)
