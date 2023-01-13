@@ -8,10 +8,16 @@ import { InscriptionHttpService } from './inscription-http.service';
   styleUrls: ['./inscription.component.scss']
 })
 export class InscriptionComponent {
-  formCompte: Compte = null;
+  formCompte: Compte = new Compte();
+  
+
 
   constructor(private inscriptionService:InscriptionHttpService) {
     
+  }
+
+  create() : void {
+    this.inscriptionService.create(this.formCompte);
   }
 
 }
