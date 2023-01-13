@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { Compte } from 'src/model';
+import { Router } from '@angular/router';
+import { GlobalVariablesService } from 'src/app/global-variables.service';
 import { ConnexionService } from './connexion.service';
 
 @Component({
@@ -10,14 +11,19 @@ import { ConnexionService } from './connexion.service';
 export class ConnexionComponent {
   login: string;
   password: string;
-  compteConnecte: Compte;
 
-  constructor(private connexionService: ConnexionService){}
+  constructor(private connexionService: ConnexionService, private globalVariables: GlobalVariablesService, private router: Router){}
 
-  auth(login: string, password: string) {
-    this.connexionService.findByLoginAndPassword(login, password).subscribe(resp => {
-      this.compteConnecte = resp;
-      // TODO : redirections
+  auth(): void {
+    this.connexionService.findByLoginAndPassword(this.login, this.password).subscribe(resp => {
+      // TODO Si ça marche pas ?
+      this.globalVariables.compteConnecte = resp;
+
+      switch (resp.type) {
+        case 'admin': alert("connection admin ok ; mais pas encore page admin"); this.router.navigate(['']) ; break;
+        case 'bibliothecaire': this.router.navigate(['bibliothecaire']) ; break;
+        case 'inscrit': this.router.navigate(['lecteur']) ; break;
+      }
     });
   }
 }

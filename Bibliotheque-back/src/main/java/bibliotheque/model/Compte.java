@@ -25,8 +25,8 @@ import com.fasterxml.jackson.annotation.JsonView;
 		property = "type")
 @JsonSubTypes({ 
 	@Type(value = Bibliothecaire.class, name = "bibliothecaire"), 
-	@Type(value = Inscrit.class, name = "admin"),
-	@Type(value = Admin.class, name = "inscrit")})
+	@Type(value = Inscrit.class, name = "inscrit"),
+	@Type(value = Admin.class, name = "admin")})
 public abstract class Compte {
 
 	@Id

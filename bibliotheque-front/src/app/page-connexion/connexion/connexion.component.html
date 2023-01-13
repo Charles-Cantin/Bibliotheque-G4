@@ -1,15 +1,17 @@
-<fieldset class="container">
-    <legend>Connection</legend>
-    <div class="mb-3">
-        <label for="loginForm" class="form-label" [(ngModel)]="login">Login</label>
-        <input class="form-control" id="loginForm" placeholder="Login">
-    </div>
-    <div class="mb-3">
-        <label for="PWForm" class="form-label" [(ngModel)]="password">Password</label>
-        <input class="form-control" id="PWForm" placeholder="Password" />
-    </div>
-    <div class="col-auto">
-        <button type="submit" class="btn btn-primary mb-3" (click)="auth(login,password)">Se connecter</button>
-    </div>
+<div class="container card">
+    <fieldset class="card-body">
+        <legend>Connection</legend>
+        <div class="mb-3">
+            <label for="loginForm" class="form-label">Login</label>
+            <input class="form-control" id="loginForm" placeholder="Login" [(ngModel)]="login">
+        </div>
+        <div class="mb-3">
+            <label for="PWForm" class="form-label">Password</label>
+            <input class="form-control" id="PWForm" placeholder="Password" [(ngModel)]="password"/>
+        </div>
+        <div class="col-auto">
+            <button type="submit" class="btn btn-primary mb-3" (click)="auth()">Se connecter</button>
+        </div>
 
-</fieldset>
+    </fieldset>
+</div>
