@@ -8,8 +8,8 @@ import { SearchBarComponent } from './search-bar/search-bar.component';
 import { PageLecteurComponent } from './page-lecteur/page-lecteur.component';
 import { PageBibliothecaireComponent } from './page-bibliothecaire/page-bibliothecaire.component';
 import { PageConnexionComponent } from './page-connexion/page-connexion.component';
-import { ConnexionComponent } from './connexion/connexion.component';
-import { InscriptionComponent } from './inscription/inscription.component';
+import { ConnexionComponent } from './page-connexion/connexion/connexion.component';
+import { InscriptionComponent } from './page-connexion/inscription/inscription.component';
 
 @NgModule({
   declarations: [
