@@ -17,7 +17,6 @@ export class ConnexionComponent {
   auth(): void {
     this.connexionService.findByLoginAndPassword(this.login, this.password).subscribe(resp => {
       // TODO Si ça marche pas ?
-      console.log(resp);
       this.globalVariables.compteConnecte = resp;
 
       switch (resp.type) {
