@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Compte } from 'src/model';
+import { InscriptionHttpService } from './inscription-http.service';
 
 @Component({
   selector: 'app-inscription',
@@ -6,5 +8,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./inscription.component.scss']
 })
 export class InscriptionComponent {
+  formCompte: Compte = null;
+
+  constructor(private inscriptionService:InscriptionHttpService) {
+    
+  }
 
 }

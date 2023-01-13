@@ -26,6 +26,8 @@ public class Emprunt {
 	@JsonView(Views.ViewBase.class)
 	private static int dureeJours = 21;
 	@JsonView(Views.ViewBase.class)
+	private LocalDate fin = this.debut.plusDays(dureeJours);
+	@JsonView(Views.ViewBase.class)
 	private LocalDate finEffective;
 	@JsonView(Views.ViewBase.class)
 	private boolean rendu;

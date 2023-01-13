@@ -8,6 +8,8 @@ import { SearchBarComponent } from './search-bar/search-bar.component';
 import { PageLecteurComponent } from './page-lecteur/page-lecteur.component';
 import { PageBibliothecaireComponent } from './page-bibliothecaire/page-bibliothecaire.component';
 import { PageConnexionComponent } from './page-connexion/page-connexion.component';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 import { ConnexionComponent } from './page-connexion/connexion/connexion.component';
 import { InscriptionComponent } from './page-connexion/inscription/inscription.component';
 
@@ -24,7 +26,9 @@ import { InscriptionComponent } from './page-connexion/inscription/inscription.c
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
