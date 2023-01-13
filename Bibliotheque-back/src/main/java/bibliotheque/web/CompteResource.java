@@ -70,9 +70,9 @@ public class CompteResource {
 	@JsonView(Views.ViewCompte.class)
 	public Compte connecter(@RequestBody Compte compte) {
 		
-		compte = daoCompte.findByLoginAndPassword(compte.getLogin(), compte.getPassword());
+		Optional<Compte> optCompte = daoCompte.findByLoginAndPassword(compte.getLogin(), compte.getPassword());
 
-		return compte;
+		return optCompte.get();
 	}
 	
 

@@ -8,7 +8,7 @@ import bibliotheque.model.Exemplaire;
 
 public interface IDAOExemplaire extends JpaRepository<Exemplaire, Integer>{
 
-	// TODO : VÉRIFIER CETTE HORREUR ANTÉDÉLUVIENNE
+/* Cette requête vérifie si, pour un livre donné, il existe au moins un exemplaire disponible */
 	@Query("select max(ex.disponible) from Exemplaire ex join ex.edition.livre l where l.id = :id")
     Boolean livreDisponible(@Param("id") Integer idLivre);
 	

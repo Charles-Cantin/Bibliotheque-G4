@@ -17,8 +17,6 @@ public interface IDAOAuteur extends JpaRepository<Auteur,Integer>{
 	public Optional<Auteur> findByIdWithLivres(@Param("id") Integer id);
 
 	
-	
-	
 	@Query("select distinct a from Auteur a join a.livres l where l.id = :id")
 	List<Auteur> findAllByLivre(@Param("id") Integer idLivre);
 }
