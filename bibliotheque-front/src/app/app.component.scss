@@ -1,0 +1,25 @@
+/* Polices d'écritures */
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300;400&display=swap');
+
+//$font-family-sans-serif : "Libre Baskerville" !important;
+
+body {
+	background-color:#F4EFE7 !important;
+	font-family:"Libre Baskerville", serif !important;
+}
+
+.display-1, .display-2, .display-3, .display-4, .display-5, .display-6{
+	font-family:"Oswald", sans-serif;
+	font-weight:bold;
+}
+
+.blockquote {
+	/* Citation */
+	font-style: italic;
+}
+
+.blockquote-footer{
+	/* Légende des citation */
+	text-align:right;
+}

@@ -12,6 +12,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ConnexionComponent } from './page-connexion/connexion/connexion.component';
 import { InscriptionComponent } from './page-connexion/inscription/inscription.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { InscriptionComponent } from './page-connexion/inscription/inscription.c
     PageBibliothecaireComponent,
     PageConnexionComponent,
     ConnexionComponent,
-    InscriptionComponent
+    InscriptionComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
