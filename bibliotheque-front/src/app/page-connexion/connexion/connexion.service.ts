@@ -12,8 +12,7 @@ export class ConnexionService {
   serviceUrl: string;
 
   constructor(private http: HttpClient, private appConfig: AppConfigService) { 
-    this.serviceUrl = appConfig.backEndUrl + "comptes";
-    // TODO check cette addresse !!!!!!!!!!!!!!!!!!
+    this.serviceUrl = appConfig.backEndUrl + "comptes/";
   }
 
   //findAll(): Array<Compte> {
@@ -25,18 +24,18 @@ export class ConnexionService {
   //}
 
   findByLoginAndPassword(login: string, password: string): Observable<Compte> {
-    let authDTO = {login: login, password: password}
-    return this.http.post<Compte>(this.serviceUrl, authDTO);
+    let authDTO: Object = {login: login, password: password};
+    return this.http.post<Compte>(this.serviceUrl + 'connexion/', authDTO);
   }
 
-  //create(ordinateur: Ordinateur): void {
-  //  this.http.post<Ordinateur>(this.serviceUrl, ordinateur).subscribe(resp => {
+  //create(compte: Compte): void {
+  //  this.http.post<Compte>(this.serviceUrl, compte).subscribe(resp => {
   //    this.load();
   //  });
   //}
 
-  //update(ordinateur: Ordinateur): void {
-  //  this.http.put<Ordinateur>(this.serviceUrl + ordinateur.id, ordinateur).subscribe(resp => {
+  //update(compte: Compte): void {
+  //  this.http.put<Compte>(this.serviceUrl + compte.id, compte).subscribe(resp => {
   //    this.load();
   //  });
   //}
@@ -48,8 +47,8 @@ export class ConnexionService {
   //}
 
   //private load(): void {
-  //  this.http.get<Array<Ordinateur>>(this.serviceUrl).subscribe(response => {
-  //    this.ordinateurs = response;
+  //  this.http.get<Array<Compte>>(this.serviceUrl).subscribe(response => {
+  //    this.comptes = response;
   //  });
   //}
 }
