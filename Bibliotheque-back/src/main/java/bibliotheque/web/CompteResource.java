@@ -24,12 +24,13 @@ import com.fasterxml.jackson.annotation.JsonView;
 import bibliotheque.dao.IDAOCompte;
 import bibliotheque.model.Compte;
 import bibliotheque.model.Views;
+import bibliotheque.web.dto.AuthDTO;
 
 @RestController
 @RequestMapping("/comptes")
 @CrossOrigin("*")
 public class CompteResource {
-	
+
 	@Autowired
 	private IDAOCompte daoCompte;
 
@@ -53,7 +54,7 @@ public class CompteResource {
 		return optCompte.get();
 	}
 
-	
+
 	@PostMapping("/inscription")
 	@JsonView(Views.ViewCompte.class)
 	public Compte create(@Valid @RequestBody Compte compte, BindingResult result) {
@@ -65,18 +66,19 @@ public class CompteResource {
 
 		return compte;
 	}
-	
+
 	@PostMapping("/connexion")
 	@JsonView(Views.ViewCompte.class)
-	public Compte connecter(@RequestBody Compte compte) {
-		
-		Optional<Compte> optCompte = daoCompte.findByLoginAndPassword(compte.getLogin(), compte.getPassword());
+	public Compte connecter(@RequestBody AuthDTO authDTO) {
+		Optional<Compte> optCompte = daoCompte.findByLoginAndPassword(authDTO.getLogin(), authDTO.getPassword());
 
+		if (optCompte.isEmpty()) {
+			throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+		}
+		
 		return optCompte.get();
 	}
-	
 
-	
 	@PutMapping("/{id}")
 	@JsonView(Views.ViewCompte.class)
 	public Compte update(@PathVariable Integer id, @RequestBody Compte compte) {
