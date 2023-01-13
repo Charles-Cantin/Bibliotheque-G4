@@ -7,5 +7,7 @@ export class Compte {
   nom: string;
   prenom: string;
   naissance: string;
+
+  constructor(id?: number, login?: string, password?: string, type?: string, nom?: string, prenom?: string, naissance?: string) {}
   
 }
