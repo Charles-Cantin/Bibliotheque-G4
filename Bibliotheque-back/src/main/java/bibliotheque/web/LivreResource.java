@@ -30,7 +30,7 @@ import bibliotheque.model.Edition;
 import bibliotheque.model.Genre;
 import bibliotheque.model.Livre;
 import bibliotheque.model.Views;
-import bibliotheque.web.dto.LivreDTO;
+import bibliotheque.web.DTO.LivreDTO;
 
 @RestController
 @RequestMapping("/livres")
@@ -106,13 +106,6 @@ public class LivreResource {
 		
 		return livresDTO;
 	}
-	
-	
-	
-	
-	
-	
-	
 	
 	
 	@PostMapping("")

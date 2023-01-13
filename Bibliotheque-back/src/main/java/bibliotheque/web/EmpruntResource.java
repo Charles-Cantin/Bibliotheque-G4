@@ -1,5 +1,6 @@
 package bibliotheque.web;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -24,6 +25,7 @@ import com.fasterxml.jackson.annotation.JsonView;
 import bibliotheque.dao.IDAOEmprunt;
 import bibliotheque.model.Emprunt;
 import bibliotheque.model.Views;
+import bibliotheque.web.DTO.EmpruntLecteurDTO;
 
 @RestController
 @RequestMapping("/emprunts")
@@ -53,6 +55,29 @@ public class EmpruntResource {
 		return optEmprunt.get();
 	}
 
+	@GetMapping("/{id_emprunteur}/empruntsDTO")
+	@JsonView(Views.ViewEmpruntLecteurDTO.class)
+	
+	public List<EmpruntLecteurDTO> findEmpruntsByLecteur(@PathVariable Integer id_emprunteur) {
+		
+		List<Emprunt> emprunts = daoEmprunt.findAllByEmprunteur(id_emprunteur);
+		
+		List<EmpruntLecteurDTO> empruntsDTO = new ArrayList<>();
+		
+		for (Emprunt emprunt : emprunts) {
+			
+			EmpruntLecteurDTO empruntLecteurDTO = new EmpruntLecteurDTO();
+			
+			empruntLecteurDTO.setIdExemplaire(emprunt.getExemplaire().getId());
+			empruntLecteurDTO.setTitreLivre(emprunt.getExemplaire().getEdition().getLivre().getTitre());
+			empruntLecteurDTO.setDebut(emprunt.getDebut());
+			empruntLecteurDTO.setFin(emprunt.getFin());
+			
+		}
+		
+		return empruntsDTO;
+	}
+	
 	
 	@PostMapping("")
 	@JsonView(Views.ViewEmpruntDetail.class)

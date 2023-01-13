@@ -11,8 +11,8 @@ import bibliotheque.model.Emprunt;
 public interface IDAOEmprunt extends JpaRepository<Emprunt, Integer>{
 	// find by emprunteur
 	
-//	@Query("SELECT e from Emprunt e where e.emprunteur.id = :id")
-//	public List<Emprunt> findAllByEmprunteur(@Param("id") Integer idEmprunteur);
+	@Query("SELECT e from Emprunt e where e.emprunteur.id = :id")
+	public List<Emprunt> findAllByEmprunteur(@Param("id") Integer idEmprunteur);
 	
 	// find by exemplaire
 	
@@ -23,4 +23,5 @@ public interface IDAOEmprunt extends JpaRepository<Emprunt, Integer>{
 	
 //	@Query("SELECT e from Emprunt e where e.rendu = false")
 //	public List<Emprunt> findByRenduFalse();
+	
 }

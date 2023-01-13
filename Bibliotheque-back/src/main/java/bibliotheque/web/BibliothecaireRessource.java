@@ -28,7 +28,7 @@ import bibliotheque.model.Bibliothecaire;
 import bibliotheque.model.Compte;
 import bibliotheque.model.Emprunt;
 import bibliotheque.model.Views;
-import bibliotheque.web.dto.EmpruntWithLivreAndInscritDTO;
+import bibliotheque.web.DTO.EmpruntWithLivreAndInscritDTO;
 
 @RestController
 @RequestMapping("/bibliothecaires")

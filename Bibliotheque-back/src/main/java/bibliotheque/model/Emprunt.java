@@ -26,6 +26,8 @@ public class Emprunt {
 	@JsonView(Views.ViewBase.class)
 	private static int dureeJours = 21;
 	@JsonView(Views.ViewBase.class)
+    private LocalDate fin = this.debut.plusDays(dureeJours);
+	@JsonView(Views.ViewBase.class)
 	private LocalDate finEffective;
 	@JsonView(Views.ViewBase.class)
 	private boolean rendu;
@@ -96,6 +98,14 @@ public class Emprunt {
 
 	public void setEmprunteur(Inscrit emprunteur) {
 		this.emprunteur = emprunteur;
+	}
+
+	public LocalDate getFin() {
+		return fin;
+	}
+
+	public void setFin(LocalDate fin) {
+		this.fin = fin;
 	}
 	
 }
