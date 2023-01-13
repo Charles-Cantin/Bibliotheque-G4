@@ -10,6 +10,7 @@ import { PageBibliothecaireComponent } from './page-bibliothecaire/page-biblioth
 import { PageConnexionComponent } from './page-connexion/page-connexion.component';
 import { ConnexionComponent } from './page-connexion/connexion/connexion.component';
 import { InscriptionComponent } from './page-connexion/inscription/inscription.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { InscriptionComponent } from './page-connexion/inscription/inscription.c
     PageBibliothecaireComponent,
     PageConnexionComponent,
     ConnexionComponent,
-    InscriptionComponent
+    InscriptionComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
