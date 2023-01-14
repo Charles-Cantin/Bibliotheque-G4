@@ -22,14 +22,15 @@
                 <input type="search" class="form-control form-control-dark text-bg-dark" placeholder="Search..." aria-label="Search">
             </form>
 
+
             <!-- Boutons Login -->
-            <div class="text-end">
-                <button *ngIf="gvs.compteConnecte==null" [routerLink]="['connexion']" type="button" class="btn btn-outline-light me-2">Login</button>
-                <button *ngIf="gvs.compteConnecte==null" [routerLink]="['inscription']" type="button" class="btn btn-warning">Sign-up</button>
+            <div ng-init="test()" class="text-end">
+                <button *ngIf="connectedAccount==null" [routerLink]="['connexion']" type="button" class="btn btn-outline-light me-2">Login</button>
+                <button *ngIf="connectedAccount==null" [routerLink]="['inscription']" type="button" class="btn btn-warning">Sign-up</button>
                 
                 <div class="btn-group" role="group" aria-label="Basic example">
-                    <button *ngIf="gvs.compteConnecte!=null" type="button" class="btn btn-warning">{{gvs.compteConnecte.nom}} {{gvs.compteConnecte.prenom}}</button>
-                    <button *ngIf="gvs.compteConnecte!=null" type="button" class="btn btn-outline-light" (click)="unAuth()">Se déconnecter</button>
+                    <button *ngIf="connectedAccount!=null" type="button" class="btn btn-warning">{{connectedAccount.nom}} {{connectedAccount.prenom}}</button>
+                    <button *ngIf="connectedAccount!=null" type="button" class="btn btn-outline-light" (click)="unAuth()">Se déconnecter</button>
                 </div>
             </div>
         </div>

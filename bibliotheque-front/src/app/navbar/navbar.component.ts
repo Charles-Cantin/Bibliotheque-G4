@@ -1,7 +1,7 @@
-import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, HostListener } from '@angular/core';
+import { NavigationEnd, Router } from '@angular/router';
 import { Compte } from 'src/model';
-import { GlobalVariablesService } from '../global-variables.service';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-navbar',
@@ -10,11 +10,19 @@ import { GlobalVariablesService } from '../global-variables.service';
 })
 export class NavbarComponent {
 
-  constructor(protected gvs: GlobalVariablesService, private router: Router){}
+  connectedAccount: Compte;
 
-  unAuth(): void {
-    this.gvs.compteConnecte = null;
-    this.router.navigate(['']);
+  constructor(protected authS: AuthService, private router: Router){
+    // Met à jour la var locale connectedAccount à chaque changement de route; 
+    this.router.events.subscribe((ev) => {
+      if (ev instanceof NavigationEnd) {
+        this.connectedAccount = authS.getLoggedInAccount();
+      }
+    });
   }
 
+  unAuth(): void {
+    this.authS.setLoggedInAccount(null);
+    this.router.navigate(['']);
+  }
 }

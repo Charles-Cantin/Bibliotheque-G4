@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { GlobalVariablesService } from 'src/app/global-variables.service';
+import { AuthService } from 'src/app/auth.service';
 import { ConnexionService } from './connexion.service';
 
 @Component({
@@ -12,12 +12,12 @@ export class ConnexionComponent {
   login: string;
   password: string;
 
-  constructor(private connexionService: ConnexionService, private globalVariables: GlobalVariablesService, private router: Router){}
+  constructor(private connexionService: ConnexionService, private authService: AuthService, private router: Router){}
 
   auth(): void {
     this.connexionService.findByLoginAndPassword(this.login, this.password).subscribe(resp => {
       // TODO Si ça marche pas ?
-      this.globalVariables.compteConnecte = resp;
+      this.authService.setLoggedInAccount(resp);
 
       switch (resp.type) {
         case 'admin': alert("connection admin ok ; mais pas encore page admin"); this.router.navigate(['']) ; break;
