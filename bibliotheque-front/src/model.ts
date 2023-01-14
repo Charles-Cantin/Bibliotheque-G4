@@ -10,18 +10,17 @@ export class Compte {
   blocked: boolean;
   finAbonnement:string;
 
-  constructor(
-    id?: number,
-    login?: string,
-    password?: string,
-    type?: string,
-    nom?: string,
-    prenom?: string,
-    naissance?: string,
-    blocked?: boolean,
-    finAbonnement?:string
-    ) {}
-  
+  constructor(id?: number, login?: string, password?: string, type?: string, nom?: string, prenom?: string, naissance?: string, blocked?: boolean, finAbonnement?:string ) {
+    this.id = id;
+    this.login = login;
+    this.password = password;
+    this.type = type;
+    this.nom = nom;
+    this.prenom = prenom;
+    this.naissance = naissance;
+    this.blocked = blocked;
+    this.finAbonnement = finAbonnement;
+  }
 }
 
 export class Emprunt {
@@ -35,7 +34,6 @@ export class Emprunt {
   emprunteur: Inscrit;
   
   constructor(id?: number, dateDebut?: string, duree?: number, dateFin?: string, rendu?: boolean, exemplaire?: Exemplaire, emprunteur?: Inscrit) {
-  
         this.id = id;
         this.dateDebut = dateDebut;
         this.duree = duree;
@@ -56,15 +54,15 @@ export class EmpruntDTO {
   titreLivre: string;
   
   constructor(idExemplaire?: number, debut?: string, duree?: number, fin?: string, rendu?: boolean, titreLivre?: string) {
-  
-        this.idExemplaire = idExemplaire;
-        this.debut = debut;
-        this.duree = duree;
-        this.fin = fin;
-        this.rendu = rendu;
-        this.titreLivre = titreLivre;
+    this.idExemplaire = idExemplaire;
+    this.debut = debut;
+    this.duree = duree;
+    this.fin = fin;
+    this.rendu = rendu;
+    this.titreLivre = titreLivre;
   }
 }
+
 export class Exemplaire {
 
   id: number;
@@ -72,12 +70,44 @@ export class Exemplaire {
   //edition: Edition;
   
   constructor(id?: number, disponible?: boolean) {
-  
-        this.id = id;
-        this.disponible = disponible;
-        
+    this.id = id;
+    this.disponible = disponible;
   }
 }
 
 export class Inscrit extends Compte {
+}
+
+export class EditionDTO {
+
+  // from Edition
+  idEdition: number;
+  ISBN: string;
+  pages: number;
+  format: string;
+  langue: string;
+
+  // from Livre
+  titre: string;
+  resume: string;
+  anneeParution: number;
+
+  // from others (just get 1 property)
+  nomsAuteurs: string;
+  nomEditeur: string;
+  nomsGenres: string;
+  
+  constructor(idEdition?:number, titre?:string, resume?: string, ISBN?: string, pages?: number, anneeParution?: number, format?: string, langue?: string, nomsAuteurs?: string, nomEditeur?: string, nomsGenres?: string) {
+    this.idEdition = idEdition;
+    this.titre = titre;
+    this.resume = resume;
+    this.ISBN = ISBN;
+    this.pages = pages;
+    this.anneeParution = anneeParution;
+    this.format = format;
+    this.langue = langue;
+    this.nomsAuteurs = nomsAuteurs;
+    this.nomEditeur = nomEditeur;
+    this.nomsGenres = nomsGenres;
+  }
 }

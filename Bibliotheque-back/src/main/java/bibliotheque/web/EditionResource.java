@@ -22,8 +22,13 @@ import org.springframework.web.server.ResponseStatusException;
 import com.fasterxml.jackson.annotation.JsonView;
 
 import bibliotheque.dao.IDAOEdition;
+import bibliotheque.model.Auteur;
+import bibliotheque.model.Editeur;
 import bibliotheque.model.Edition;
+import bibliotheque.model.Genre;
+import bibliotheque.model.Livre;
 import bibliotheque.model.Views;
+import bibliotheque.web.dto.EditionDTO;
 
 @RestController
 @RequestMapping("/editions")
@@ -53,7 +58,57 @@ public class EditionResource {
 		return optEdition.get();
 	}
 
-	
+	@GetMapping("/{id}/dto")
+	@JsonView(Views.ViewEditionDTO.class)
+	public EditionDTO findDTOById(@PathVariable Integer id) {
+		Optional<Edition> optEdition = daoEdition.findById(id);
+
+		if (optEdition.isEmpty()) {
+			throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+		}
+		
+		Edition edition = optEdition.get();
+		Livre livre = edition.getLivre() ;
+		Editeur editeur = edition.getEditeur();
+		
+		EditionDTO editionDTO = new EditionDTO();
+
+		editionDTO.setIdEdition(edition.getId()) ;
+		editionDTO.setISBN(edition.getIsbn()) ;
+		editionDTO.setPages(edition.getPages()) ;
+		editionDTO.setFormat(edition.getFormat()) ;
+		editionDTO.setLangue(edition.getLangue()) ;
+
+		editionDTO.setTitre(livre.getTitre()) ;
+		editionDTO.setResume(livre.getResume()) ;
+		editionDTO.setAnneeParution(livre.getDateParution().getYear()) ;
+
+		String nomEditeur = editeur.getNom();
+		String nomsAuteurs = "";
+		String nomsGenres = "";
+
+		int i = 0;
+		for (Auteur auteur : livre.getAuteurs()) {
+			nomsAuteurs = nomsAuteurs + auteur.getPrenom() + " " + auteur.getNom();
+			// n'ajoute de virgule que si l'on n'est pas à la fin de la liste
+			if (i!=livre.getAuteurs().size()-1) {nomsAuteurs = nomsAuteurs + ", ";}
+			i++;
+		}
+		
+		i=0;
+		for (Genre genre : livre.getGenres()) {
+			nomsGenres = nomsGenres + genre.getLibelle();
+			// n'ajoute de virgule que si l'on n'est pas à la fin de la liste
+			if (i!=livre.getGenres().size()-1) {nomsGenres = nomsGenres + " ; ";}
+			i++;
+		}
+
+		editionDTO.setNomsAuteurs(nomsAuteurs);
+		editionDTO.setNomEditeur(nomEditeur);
+		editionDTO.setNomsGenres(nomsGenres);
+
+		return editionDTO;
+	}
 	
 	@PostMapping("")
 	@JsonView(Views.ViewEditionDetail.class)

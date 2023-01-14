@@ -98,7 +98,7 @@ public class LivreResource {
 			//à completer
 			livreDTO.setDisponibilité(daoExemplaire.livreDisponible(livre.getId()));
 			
-			livreDTO.setPublication(livre.getParution());
+			livreDTO.setPublication(livre.getDateParution());
 		
 		    livresDTO.add(livreDTO);
 		}

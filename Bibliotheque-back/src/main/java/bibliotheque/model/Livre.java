@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -27,9 +28,10 @@ public class Livre {
 	@JsonView(Views.ViewBase.class)
 	private String titre;
 	@JsonView(Views.ViewBase.class)
-	private int parutionAnnee;
+	@Column(columnDefinition = "Text")
+	private String resume;
 	@JsonView(Views.ViewBase.class)
-	private LocalDate parution;
+	private LocalDate dateParution;
 	
 	/* À PROPOS DE LA POSSESSION D'UNE RELATION BIDIRECTIONNELLE
 	 * Bien que la relation soit bidirectionnelle,il existe en fait
@@ -74,50 +76,7 @@ public class Livre {
 	@JsonView(Views.ViewLivreDetail.class)
 	private List<Edition> editions = new ArrayList<Edition>();
 	
-	public Livre() {
-	}
-
-	
-	public Livre(String titre, int parutionAnnee, LocalDate parution, List<Auteur> auteurs, List<Genre> genres,
-			List<Edition> editions) {
-		this.titre = titre;
-		this.parutionAnnee = parutionAnnee;
-		this.parution = parution;
-		this.auteurs = auteurs;
-		this.genres = genres;
-		this.editions = editions;
-	}
-
-	public Livre(String titre, int parutionAnnee, LocalDate parution, Auteur auteur, Genre genre,
-			Edition edition) {
-		this.titre = titre;
-		this.parutionAnnee = parutionAnnee;
-		this.parution = parution;
-		this.auteurs.add(auteur);
-		this.genres.add(genre);
-		this.editions.add(edition);
-	}
-	
-	public Livre(String titre, int parutionAnnee, Auteur auteur, Genre genre,
-			Edition edition) {
-		this.titre = titre;
-		this.parutionAnnee = parutionAnnee;
-		this.parution = LocalDate.ofYearDay(parutionAnnee, 1);
-		this.auteurs.add(auteur);
-		this.genres.add(genre);
-		this.editions.add(edition);
-	}
-	
-	public Livre(String titre, LocalDate parution, Auteur auteur, Genre genre,
-			Edition edition) {
-		this.titre = titre;
-		this.parutionAnnee = parution.getYear();
-		this.parution = parution;
-		this.auteurs.add(auteur);
-		this.genres.add(genre);
-		this.editions.add(edition);
-	}
-
+	public Livre() {}
 
 	public Integer getId() {
 		return id;
@@ -135,20 +94,20 @@ public class Livre {
 		this.titre = titre;
 	}
 
-	public int getParutionAnnee() {
-		return parutionAnnee;
+	public String getResume() {
+		return resume;
 	}
 
-	public void setParutionAnnee(int parutionAnnee) {
-		this.parutionAnnee = parutionAnnee;
+	public void setResume(String resume) {
+		this.resume = resume;
 	}
 
-	public LocalDate getParution() {
-		return parution;
+	public LocalDate getDateParution() {
+		return dateParution;
 	}
 
-	public void setParution(LocalDate parution) {
-		this.parution = parution;
+	public void setDateParution(LocalDate dateParution) {
+		this.dateParution = dateParution;
 	}
 
 	public List<Auteur> getAuteurs() {
@@ -177,8 +136,8 @@ public class Livre {
 
 	@Override
 	public String toString() {
-		return "Livre [id=" + id + ", titre=" + titre + ", parutionAnnee=" + parutionAnnee + ", parution=" + parution
-				+ ", auteurs=" + auteurs + ", genres=" + genres + "]";
+		return "Livre [id=" + id + ", titre=" + titre + ", resume=" + resume + ", anneeParution=" + dateParution
+				+ ", auteurs=" + auteurs + ", genres=" + genres + ", editions=" + editions + "]";
 	}
 	
 }
