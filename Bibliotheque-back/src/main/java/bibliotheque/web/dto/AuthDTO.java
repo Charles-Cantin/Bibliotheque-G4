@@ -1,4 +1,4 @@
-package bibliotheque.web.DTO;
+package bibliotheque.web.dto;
 
 import com.fasterxml.jackson.annotation.JsonView;
 

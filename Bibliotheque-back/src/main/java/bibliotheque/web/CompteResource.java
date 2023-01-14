@@ -24,7 +24,7 @@ import com.fasterxml.jackson.annotation.JsonView;
 import bibliotheque.dao.IDAOCompte;
 import bibliotheque.model.Compte;
 import bibliotheque.model.Views;
-import bibliotheque.web.DTO.AuthDTO;
+import bibliotheque.web.dto.AuthDTO;
 
 @RestController
 @RequestMapping("/comptes")

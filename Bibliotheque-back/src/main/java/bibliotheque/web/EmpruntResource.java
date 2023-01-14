@@ -25,7 +25,7 @@ import com.fasterxml.jackson.annotation.JsonView;
 import bibliotheque.dao.IDAOEmprunt;
 import bibliotheque.model.Emprunt;
 import bibliotheque.model.Views;
-import bibliotheque.web.DTO.EmpruntLecteurDTO;
+import bibliotheque.web.dto.EmpruntLecteurDTO;
 
 @RestController
 @RequestMapping("/emprunts")

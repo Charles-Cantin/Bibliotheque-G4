@@ -30,7 +30,7 @@ import bibliotheque.model.Edition;
 import bibliotheque.model.Genre;
 import bibliotheque.model.Livre;
 import bibliotheque.model.Views;
-import bibliotheque.web.DTO.LivreDTO;
+import bibliotheque.web.dto.LivreDTO;
 
 @RestController
 @RequestMapping("/livres")
@@ -76,7 +76,7 @@ public class LivreResource {
 	
 	@GetMapping("/{titre}/dto")
 	@JsonView(Views.ViewLivreDTO.class)
-	public List<bibliotheque.web.DTO.LivreDTO> findLivreDTOBytitre(@PathVariable String titre) {
+	public List<LivreDTO> findLivreDTOBytitre(@PathVariable String titre) {
 		//final DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 		
 		List<Livre> livres = daoLivre.findByTitreContainingIgnoreCase(titre);

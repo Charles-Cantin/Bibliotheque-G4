@@ -1,4 +1,4 @@
-package bibliotheque.web.DTO;
+package bibliotheque.web.dto;
 
 import java.time.LocalDate;
 
