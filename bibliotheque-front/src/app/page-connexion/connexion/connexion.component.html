@@ -1,17 +1,27 @@
-<div class="container card">
-    <fieldset class="card-body">
-        <legend>Connection</legend>
-        <div class="mb-3">
-            <label for="loginForm" class="form-label">Login</label>
-            <input class="form-control" id="loginForm" placeholder="Login" [(ngModel)]="login">
+<section class="gradient-custom">
+    <div class="container py-5 h-100">
+      <div class="row justify-content-center align-items-center h-100">
+        <div class="col-12 col-lg-9 col-xl-7">
+            <div class="card-body p-4 p-md-10">
+              <div class="container card">
+                <fieldset class="card-body">
+                    <legend>Connexion</legend>
+                    <div class="mb-3">
+                        <label for="loginForm" class="form-label">Login</label>
+                        <input class="form-control" id="loginForm" placeholder="Login" [(ngModel)]="login">
+                    </div>
+                    <div class="mb-3">
+                        <label for="PWForm" class="form-label">Password</label>
+                        <input class="form-control" id="PWForm" placeholder="Password" [(ngModel)]="password"/>
+                    </div>
+                    <div class="col-auto">
+                        <button type="submit" class="btn btn-primary mb-3" (click)="auth()">Se connecter</button>
+                    </div>
+            
+                </fieldset>
+            </div>
+            </div>
+          </div>
         </div>
-        <div class="mb-3">
-            <label for="PWForm" class="form-label">Password</label>
-            <input class="form-control" id="PWForm" placeholder="Password" [(ngModel)]="password"/>
-        </div>
-        <div class="col-auto">
-            <button type="submit" class="btn btn-primary mb-3" (click)="auth()">Se connecter</button>
-        </div>
-
-    </fieldset>
-</div>
+      </div>
+  </section>
