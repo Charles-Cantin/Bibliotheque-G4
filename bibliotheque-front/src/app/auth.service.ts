@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { Compte } from 'src/model';
 
 @Injectable({
@@ -8,7 +9,7 @@ export class AuthService {
 
   private loggedInAccount: Compte;
 
-  constructor() {}
+  constructor(private router: Router) {}
 
   getLoggedInAccount(): Compte {
     /* Fetches the locally stored (in nav) account infos, and syncs it with
@@ -25,6 +26,14 @@ export class AuthService {
     }
     else {
       localStorage.setItem('loggedInAccount', JSON.stringify(compte) );
+    }
+  }
+
+  redirectMonCompte(type: string) {
+    switch (type) {
+      case 'admin': alert("connection admin ok ; mais pas encore page admin"); this.router.navigate(['']) ; break;
+      case 'bibliothecaire': this.router.navigate(['bibliothecaire']) ; break;
+      case 'inscrit': this.router.navigate(['lecteur']) ; break;
     }
   }
 }

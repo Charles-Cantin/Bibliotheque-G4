@@ -4,10 +4,12 @@ import { PageBibliothecaireComponent } from './page-bibliothecaire/page-biblioth
 import { InscriptionComponent } from './page-connexion/inscription/inscription.component';
 import { PageLecteurComponent } from './page-lecteur/page-lecteur.component';
 import { PageEditionComponent } from './page-edition/page-edition.component';
+import { PageConnexionComponent } from './page-connexion/page-connexion.component';
 
 const routes: Routes = [
   {path: "", redirectTo: "livre", pathMatch: 'full'},
-  {path: "inscription", component: InscriptionComponent},
+  {path: "inscription", redirectTo: "connexion"},
+  {path: "connexion", component: PageConnexionComponent},
   {path: "bibliothecaire", component: PageBibliothecaireComponent},
   {path: "lecteur", component: PageLecteurComponent},
   {path: "livre", component: PageEditionComponent}];

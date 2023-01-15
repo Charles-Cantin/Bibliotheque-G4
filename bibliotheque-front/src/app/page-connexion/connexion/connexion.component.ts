@@ -18,12 +18,7 @@ export class ConnexionComponent {
     this.connexionService.findByLoginAndPassword(this.login, this.password).subscribe(resp => {
       // TODO Si ça marche pas ?
       this.authService.setLoggedInAccount(resp);
-
-      switch (resp.type) {
-        case 'admin': alert("connection admin ok ; mais pas encore page admin"); this.router.navigate(['']) ; break;
-        case 'bibliothecaire': this.router.navigate(['bibliothecaire']) ; break;
-        case 'inscrit': this.router.navigate(['lecteur']) ; break;
-      }
+      this.authService.redirectMonCompte(resp.type);
     });
   }
 }

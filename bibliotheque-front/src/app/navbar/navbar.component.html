@@ -10,11 +10,11 @@
 
             <!-- Menu navigation -->
             <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-                <li><a href="#" class="nav-link px-2 text-secondary">Home</a></li>
-                <li><a href="#" class="nav-link px-2 text-white">Features</a></li>
-                <li><a href="#" class="nav-link px-2 text-white">Pricing</a></li>
-                <li><a href="#" class="nav-link px-2 text-white">FAQs</a></li>
-                <li><a href="#" class="nav-link px-2 text-white">About</a></li>
+                <li><a [routerLink]="['']" class="nav-link px-2 text-secondary">Home</a></li>
+                <li><a [routerLink]="['']" class="nav-link px-2 text-white">Features</a></li>
+                <li><a [routerLink]="['']" class="nav-link px-2 text-white">Pricing</a></li>
+                <li><a [routerLink]="['']" class="nav-link px-2 text-white">FAQs</a></li>
+                <li><a [routerLink]="['']" class="nav-link px-2 text-white">About</a></li>
             </ul>
 
             <!-- Barre recherche -->
@@ -29,8 +29,8 @@
                 <button *ngIf="connectedAccount==null" [routerLink]="['inscription']" type="button" class="btn btn-warning">Sign-up</button>
                 
                 <div class="btn-group" role="group" aria-label="Basic example">
-                    <button *ngIf="connectedAccount!=null" type="button" class="btn btn-warning">{{connectedAccount.nom}} {{connectedAccount.prenom}}</button>
-                    <button *ngIf="connectedAccount!=null" type="button" class="btn btn-outline-light" (click)="unAuth()">Se déconnecter</button>
+                    <button *ngIf="connectedAccount!=null" [routerLink]="['/connexion']" (click)="redirectMonCompte(connectedAccount.type)" type="button" class="btn btn-warning">{{connectedAccount.nom}} {{connectedAccount.prenom}}</button>
+                    <button *ngIf="connectedAccount!=null" [routerLink]="['/connexion']" (click)="unAuth()" type="button" class="btn btn-outline-light">Se déconnecter</button>
                 </div>
             </div>
         </div>
