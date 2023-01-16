@@ -1,5 +1,6 @@
 package bibliotheque.web;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -22,8 +23,10 @@ import org.springframework.web.server.ResponseStatusException;
 import com.fasterxml.jackson.annotation.JsonView;
 
 import bibliotheque.dao.IDAOExemplaire;
+import bibliotheque.model.Editeur;
 import bibliotheque.model.Exemplaire;
 import bibliotheque.model.Views;
+import bibliotheque.web.dto.ExemplaireByEditionDTO;
 
 @RestController
 @RequestMapping("/exemplaires")
@@ -53,7 +56,27 @@ public class ExemplaireResource {
 		return optExemplaire.get();
 	}
 
-	
+	@GetMapping("/by-edition/{id}")
+	@JsonView(Views.ViewExemplaireDetail.class)
+	public List<ExemplaireByEditionDTO> findByEdition(@PathVariable Integer id) {
+		List<Exemplaire> exemplaires = daoExemplaire.findByEdition(id);
+		List<ExemplaireByEditionDTO> exemplairesByEditions = new ArrayList<ExemplaireByEditionDTO>();
+		
+		for (Exemplaire e : exemplaires) {
+			Editeur editeur = e.getEdition().getEditeur();
+			
+			ExemplaireByEditionDTO eDTO = new ExemplaireByEditionDTO();
+			eDTO.setIdExemplaire(e.getId());
+			eDTO.setDisponible(e.isDisponible());
+			eDTO.setNomEditeur(editeur.getNom());
+			//eDTO.setDateProchaineDispo(null); // TODO
+			
+			exemplairesByEditions.add(eDTO);
+		}
+		
+		return exemplairesByEditions;
+	}
+
 	@PostMapping("")
 	@JsonView(Views.ViewExemplaireDetail.class)
 	public Exemplaire create(@Valid @RequestBody Exemplaire exemplaire, BindingResult result) {
@@ -66,8 +89,6 @@ public class ExemplaireResource {
 		
 		return optExemplaire.get();
 	}
-
-
 
 	@PutMapping("/{id}")
 	@JsonView(Views.ViewExemplaireDetail.class)
