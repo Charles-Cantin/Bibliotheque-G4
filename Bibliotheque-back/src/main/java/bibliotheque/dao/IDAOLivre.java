@@ -27,7 +27,9 @@ public interface IDAOLivre extends JpaRepository<Livre,Integer>{
 	@Query("select distinct l from Livre l left join fetch l.editions where l.id = :id")
 	Optional<Livre> findByIdWithEditions(@Param("id") Integer id);
 	
-	List<Livre> findByTitreContainingIgnoreCase(String titre);
+	List<Livre> findByTitreContainingIgnoreCase(String searchTerm);
+	
+	List<Livre> findByAuteursContainingIgnoreCase(String searchTerm);
 	
 	
 	

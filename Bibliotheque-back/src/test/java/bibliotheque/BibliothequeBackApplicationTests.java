@@ -2,6 +2,7 @@ package bibliotheque;
 
 import java.time.LocalDate;
 import java.util.Arrays;
+import java.util.List;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -126,6 +127,18 @@ class BibliothequeBackApplicationTests {
 		b1.setPrenom("baba");
 
 		b1 = daoCompte.save(b1);
+	}
+	
+	@Test
+	public void rechercheLivreParTitre() {
+		
+		List<Livre> livres = daoLivre.findByTitreContainingIgnoreCase("dune");
+		System.out.println(livres);
+		Boolean livreTrouve = false;
+		for(Livre l : livres) {
+			if (l.getTitre()=="Dune") {livreTrouve = true;}
+		}
+		assert(livreTrouve);
 	}
 
 }
