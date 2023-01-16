@@ -29,9 +29,9 @@ import { RechercheComponent } from './recherche/recherche.component';
     FooterComponent,
     PageEditionComponent,
     HomeComponent,
-    RechercheComponent
-    PageAdminComponent
-    PageExemplairesComponent,
+    RechercheComponent,
+    PageAdminComponent,
+    PageExemplairesComponent
   ],
   imports: [
     BrowserModule,

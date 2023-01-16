@@ -131,19 +131,19 @@ export class Livre{
   id: number;
   titre: string;
   resume: string;
-  parution: string;
-  nomAuteurs: string; // transformer en array<auteurDTO> ?? at least nom auteur + id (possibly lien vers page auteur plus tard)
+  publication: string;
+  auteurs: string; // transformer en array<auteurDTO> ?? at least nom auteur + id (possibly lien vers page auteur plus tard)
   editions: Array<number>; //liste des ID d'editions
   nomGenres: string;
   disponibilite: number;
 
 
-  constructor(id?: number, titre?: string, resume?: string, parution?: string, nomAuteurs?: string, editions?: Array<number>, nomGenres?: string, disponibilite?: number) {
+  constructor(id?: number, titre?: string, resume?: string, publication?: string, auteurs?: string, editions?: Array<number>, nomGenres?: string, disponibilite?: number) {
     this.id = id;
     this.titre = titre;
     this.resume = resume;
-    this.parution = parution;
-    this.nomAuteurs = nomAuteurs;
+    this.publication = publication;
+    this.auteurs = auteurs;
     this.editions = editions;
     this.nomGenres = nomGenres;
     this.disponibilite = disponibilite;

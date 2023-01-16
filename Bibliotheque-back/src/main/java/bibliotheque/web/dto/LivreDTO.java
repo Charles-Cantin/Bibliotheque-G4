@@ -1,27 +1,22 @@
 package bibliotheque.web.dto;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonView;
 
-import bibliotheque.model.Auteur;
 import bibliotheque.model.Views;
 
 public class LivreDTO {
 	@JsonView(Views.ViewBase.class)
-	@JsonProperty("Titre")
+	private Integer id;
+	@JsonView(Views.ViewBase.class)
 	private String titre;
 	@JsonView(Views.ViewLivreDTO.class)
-	@JsonProperty("Auteurs")
-	private List<Auteur> auteurs = new ArrayList<Auteur>();
+	private String auteurs;
 	
 	@JsonView(Views.ViewBase.class)
-	@JsonProperty("Disponibilité")
-	private Boolean disponibilité;
+	private Boolean disponibilite;
 	
 	@JsonView(Views.ViewBase.class)
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
@@ -36,21 +31,12 @@ public class LivreDTO {
 	public void setTitre(String titre) {
 		this.titre = titre;
 	}
-
-	public List<Auteur> getAuteurs() {
-		return auteurs;
+	public Boolean getDisponibilite() {
+		return disponibilite;
 	}
 
-	public void setAuteurs(List<Auteur> auteurs) {
-		this.auteurs = auteurs;
-	}
-
-	public Boolean getDisponibilité() {
-		return disponibilité;
-	}
-
-	public void setDisponibilité(Boolean disponibilité) {
-		this.disponibilité = disponibilité;
+	public void setDisponibilite(Boolean disponibilite) {
+		this.disponibilite = disponibilite;
 	}
 
 	public LocalDate getPublication() {
@@ -61,10 +47,21 @@ public class LivreDTO {
 		this.publication = publication;
 	}
 
-	
-	
-	
-	
+	public String getAuteurs() {
+		return auteurs;
+	}
+
+	public void setAuteurs(String auteurs) {
+		this.auteurs = auteurs;
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
 
 }
 

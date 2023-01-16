@@ -14,7 +14,6 @@ export class LivreService {
 
   constructor(private http: HttpClient, private appConfig: AppConfigService) {
     this.serviceUrl = appConfig.backEndUrl + "livres/";
-    this.load();
    }
 
    findAll(): Array<Livre> {
@@ -25,11 +24,8 @@ export class LivreService {
     return this.http.get<Livre>(this.serviceUrl + id);
   }
 
-  findByTitle(searchText: string): Array<Livre> {
-    this.http.post<Array<Livre>>(this.serviceUrl + "strict-title-search", searchText).subscribe(resp => {
-      this.livres = resp;
-    });
-    return this.livres;
+  findByTitle(searchText: string): Observable<Array<Livre>>{
+    return this.http.post<Array<Livre>>(this.serviceUrl + "strict-title-search", searchText);
    }
 
   create(livre: Livre): void {

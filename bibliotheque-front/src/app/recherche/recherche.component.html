@@ -8,7 +8,7 @@
                     <th>Auteurs</th>
                     <th>Date de Parution</th>
                     <th>Genres</th>
-                    <th>Disponibilité</th>
+                    <th>Disponible</th>
                     <th></th>
                 </tr>
             </thead>
@@ -16,10 +16,10 @@
             <tbody>
                 <tr *ngFor="let livre of livres">
                     <td>{{livre.titre}}</td>
-                    <td>{{livre.nomAuteurs}}</td>
-                    <td>{{livre.parution}</td>
-                    <td>{{livre.disponibilite}}</td>
+                    <td>{{livre.auteurs}}</td>
+                    <td>{{livre.publication}}</td>
                     <td>{{livre.nomGenres}}</td>
+                    <td>{{livre.disponibilite? 'Oui' : 'Non'}}</td>
                 </tr>
             </tbody>
 

@@ -12,15 +12,15 @@ import { LivreService } from '../livre.service';
 
 
 export class RechercheComponent {
-  livres:Array<Livre> = this.livreService.livres;
-  searchTerm:string;
+  livres:Array<Livre>;
 
   constructor(private livreService: LivreService, private route: ActivatedRoute) {
     this.route.queryParams.subscribe(params => {
-      console.log(params[0]);
-      this.searchTerm = params[0];
-      this.livreService.findByTitle(this.searchTerm);
-      this.livres = this.livreService.livres;
+      let searchTerm:string = params['search'];
+      this.livreService.findByTitle(searchTerm).subscribe(resp => {
+        this.livres = resp;
+        console.log(resp);
+      })
     })
   }
 }

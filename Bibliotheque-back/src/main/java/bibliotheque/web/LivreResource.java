@@ -26,6 +26,7 @@ import bibliotheque.dao.IDAOEdition;
 import bibliotheque.dao.IDAOExemplaire;
 import bibliotheque.dao.IDAOGenre;
 import bibliotheque.dao.IDAOLivre;
+import bibliotheque.model.Auteur;
 import bibliotheque.model.Edition;
 import bibliotheque.model.Genre;
 import bibliotheque.model.Livre;
@@ -77,7 +78,6 @@ public class LivreResource {
 	public List<LivreDTO> postfindLivreDTOBytitre(@RequestBody String titre) {
 		//final DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 		
-		System.out.println(titre);
 		List<Livre> livres = daoLivre.findByTitreContainingIgnoreCase(titre);
 
 		
@@ -90,12 +90,20 @@ public class LivreResource {
 		for (Livre livre : livres) {
 			
 			LivreDTO livreDTO = new LivreDTO();
-			
+			livreDTO.setId(livre.getId());
 			livreDTO.setTitre(livre.getTitre());
-			livreDTO.setAuteurs(livre.getAuteurs());
+			String nomsAuteurs = "";
+			int i = 0;
+			for (Auteur auteur : livre.getAuteurs()) {
+				nomsAuteurs = nomsAuteurs + auteur.getPrenom() + " " + auteur.getNom();
+				// n'ajoute de virgule que si l'on n'est pas à la fin de la liste
+				if (i!=livre.getAuteurs().size()-1) {nomsAuteurs = nomsAuteurs + ", ";}
+				i++;
+			}
+			livreDTO.setAuteurs(nomsAuteurs);
 			
 			//à completer
-			livreDTO.setDisponibilité(daoExemplaire.livreDisponible(livre.getId()));
+			livreDTO.setDisponibilite(daoExemplaire.livreDisponible(livre.getId()));
 			
 			livreDTO.setPublication(livre.getDateParution());
 		
