@@ -21,6 +21,7 @@ public class LivreDTO {
 	@JsonView(Views.ViewBase.class)
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
 	private LocalDate publication;
+	
 
     public LivreDTO() {}
 

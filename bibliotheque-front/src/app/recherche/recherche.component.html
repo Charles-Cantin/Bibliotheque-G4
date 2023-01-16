@@ -14,13 +14,18 @@
             </thead>
 
             <tbody>
-                <tr *ngFor="let livre of livres">
+                <ng-container *ngFor="let livre of livres, let indexOfelement=index;">
+                <tr>
                     <td>{{livre.titre}}</td>
                     <td>{{livre.auteurs}}</td>
                     <td>{{livre.publication}}</td>
                     <td>{{livre.nomGenres}}</td>
                     <td>{{livre.disponibilite? 'Oui' : 'Non'}}</td>
                 </tr>
+                <ng-container *ngIf="indexOfelement==focusedRow">
+
+                </ng-container>
+            </ng-container>
             </tbody>
 
         </table>

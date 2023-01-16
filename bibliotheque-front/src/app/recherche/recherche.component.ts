@@ -12,6 +12,7 @@ import { LivreService } from '../livre.service';
 
 
 export class RechercheComponent {
+  focusedRow: number;
   livres:Array<Livre>;
 
   constructor(private livreService: LivreService, private route: ActivatedRoute) {
