@@ -1,0 +1,64 @@
+
+
+<div class="card mt-3" >
+
+    <div class="card-header bg-primary text-white display-6">Ajout d'un livre</div>
+    
+    <div class="card-body">
+        <div class="form-group">
+            <label for="id">Titre:</label> <input type="text" class="form-control" id="id" name="id" [(ngModel)]="formLivre.titre" />
+        </div>
+        <div class="form-group">
+            <label for="version">Resumer:</label> <input type="text" class="form-control" id="resumer" name="resumer" [(ngModel)]="formLivre.resume"/>
+        </div>
+        <div class="form-group">
+            <label for="Date de parution">Date de parution :</label> <input type="date" class="form-control" id="marque" name="marque" [(ngModel)]="formLivre.publication" />
+        </div>
+        <div class="form-group">
+            <label for="Auteurs">Auteurs:</label>
+            <select class="form-control" [(ngModel)]="formLivre.auteurs">
+                <option value="">Sélectionner un auteur</option>
+                <option *ngFor="let aut of listauteurs()" [value]="aut.id">{{aut.id}} - {{aut.nom}} - {{aut.prenom}} </option>
+            </select>
+            <div class="card-footer">
+                <div class="btn-group btn-group-lg float-right">
+                    <a class="btn btn-success" (click)="save_livre()"><i class="bi bi-check-square-fill"></i></a>
+                    <a class="btn btn-warning" (click)="cancel_livre()"><i class="bi bi-backspace-fill"></i></a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="card-footer">
+            <a class="btn btn-success btn-lg" (click)="add()"><i
+                class="bi bi-plus-square"></i></a>
+        </div>
+
+
+    </div>
+
+  <div>
+    
+        <div class="card mt-3" *ngIf="formAuteur">
+            <div class="card-header bg-primary text-white display-6">Ajout d'un auteur</div>
+            <div class="card-body">
+                
+                <label for="nom">Nom:</label> <input type="text" class="form-control" id="nom" name="nom" [(ngModel)]="formAuteur.nom" />
+                </div>
+                <div class="form-group">
+                    <label for="prenom">Prénom:</label> <input type="text" class="form-control" id="prenom" name="prenom" [(ngModel)]="formAuteur.prenom" />
+                </div>
+                <div class="form-group">
+                    <label for="date de naissance">Date de naissance:</label> <input type="date" class="form-control" id="datedenaissance" name="datedenaissance" [(ngModel)]="formAuteur.naissance" />
+                </div>
+                
+                <div class="card-footer">
+                    <div class="btn-group btn-group-lg float-right">
+                        <a class="btn btn-success" (click)="save_auteur()"><i class="bi bi-check-square-fill"></i></a>
+                        <a class="btn btn-warning" (click)="cancel_auteur()"><i class="bi bi-backspace-fill"></i></a>
+                    </div>
+                </div>
+            </div>
+        <div>
+    </div>
+
+</div>

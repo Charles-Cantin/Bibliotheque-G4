@@ -16,6 +16,8 @@ import { PageAdminComponent } from './page-admin/page-admin.component';
 import { FormsModule } from '@angular/forms';
 import { HomeComponent } from './home/home.component';
 import { RechercheComponent } from './recherche/recherche.component';
+import { AjoutlivreComponent } from './ajoutlivre/ajoutlivre.component';
+import { BibliothecaireEmpruntsComponent } from './bibliothecaire-emprunts/bibliothecaire-emprunts.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +33,9 @@ import { RechercheComponent } from './recherche/recherche.component';
     HomeComponent,
     RechercheComponent,
     PageAdminComponent,
-    PageExemplairesComponent
+    PageExemplairesComponent,
+    AjoutlivreComponent,
+    BibliothecaireEmpruntsComponent
   ],
   imports: [
     BrowserModule,

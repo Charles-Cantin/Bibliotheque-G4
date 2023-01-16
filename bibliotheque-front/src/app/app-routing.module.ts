@@ -10,6 +10,8 @@ import { PageConnexionComponent } from './page-connexion/page-connexion.componen
 import { PageExemplairesComponent } from './page-exemplaires/page-exemplaires.component';
 import { PageAdminComponent } from './page-admin/page-admin.component';
 import { RechercheComponent } from './recherche/recherche.component';
+import { BibliothecaireEmpruntsComponent } from './bibliothecaire-emprunts/bibliothecaire-emprunts.component';
+import { AjoutlivreComponent } from './ajoutlivre/ajoutlivre.component';
 
 const routes: Routes = [
   {path: "", redirectTo: "livre", pathMatch: 'full'},
@@ -21,7 +23,9 @@ const routes: Routes = [
   {path: "lecteur", component: PageLecteurComponent},
   {path: "admin", component: PageAdminComponent},
   {path: "livre", component: PageEditionComponent},
-  {path: "exemplaires", component: PageExemplairesComponent}];
+  {path: "exemplaires", component: PageExemplairesComponent},
+  {path: "bibliothecaires-emprunts", component: BibliothecaireEmpruntsComponent},
+  {path: "ajout-livre", component: AjoutlivreComponent}];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

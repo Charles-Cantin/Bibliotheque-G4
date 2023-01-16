@@ -22,6 +22,7 @@ import org.springframework.web.server.ResponseStatusException;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
+import bibliotheque.dao.IDAOAuteur;
 import bibliotheque.dao.IDAOEdition;
 import bibliotheque.dao.IDAOExemplaire;
 import bibliotheque.dao.IDAOGenre;
@@ -31,6 +32,7 @@ import bibliotheque.model.Edition;
 import bibliotheque.model.Genre;
 import bibliotheque.model.Livre;
 import bibliotheque.model.Views;
+import bibliotheque.web.dto.LivreCreationDTO;
 import bibliotheque.web.dto.LivreDTO;
 
 @RestController
@@ -46,6 +48,9 @@ public class LivreResource {
 	private IDAOEdition daoEdition;
 	@Autowired
 	private IDAOExemplaire daoExemplaire;
+	
+	@Autowired
+	private IDAOAuteur daoAuteur;
 	
 	@GetMapping("")
 	@JsonView(Views.ViewLivre.class)
@@ -115,7 +120,7 @@ public class LivreResource {
 	}
 	
 	
-	@PostMapping("")
+	/*@PostMapping("")
 	@JsonView(Views.ViewLivreDetail.class)
 	public Livre create(@Valid @RequestBody Livre livre, BindingResult result) {
 		if (result.hasErrors()) {
@@ -124,9 +129,32 @@ public class LivreResource {
 
 		livre = daoLivre.save(livre);
 		return findById(livre.getId());
+	}*/
+
+	@PostMapping("")
+	@JsonView(Views.ViewLivreDetail.class)
+	public Livre create(@Valid @RequestBody LivreCreationDTO livredto, BindingResult result) {
+		if (result.hasErrors()) {
+			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Le livre n'a pu être créé");
+		}
+
+		 Livre livre = new Livre();
+		 
+		 List<Auteur> listauteurs = new ArrayList<Auteur>();
+		 
+		// for (Integer id : ) {}
+			
+		listauteurs.add(daoAuteur.findById(livredto.getAuteurs()).get());	 		 
+		 livre.setTitre(livredto.getTitre());
+		 livre.setResume(livredto.getResume());
+		 livre.setDateParution(livredto.getPublication());
+		 livre.setAuteurs(listauteurs);
+		 
+		 
+		 
+		livre = daoLivre.save(livre);
+		return findById(livre.getId());
 	}
-
-
 
 	@PutMapping("/{id}")
 	@JsonView(Views.ViewLivreDetail.class)

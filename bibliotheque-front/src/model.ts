@@ -63,6 +63,29 @@ export class EmpruntDTO {
   }
 }
 
+
+export class EmpruntDetail {
+    idInscrit:        number;
+    nomPrenomInscrit: string;
+    idLivre:          number;
+    titreLivre:       string;
+    debutEmprunt:     Date;
+    finEmprunt:       Date;
+    rendu:            boolean;
+
+    constructor(idInscrit?:number, nomPrenomInscrit?: string , idLivre?: number, titreLivre?: string, debutEmprunt? :Date, finEmprunt?: Date,rendu?:boolean) {
+        this.idInscrit = idInscrit;
+        this.nomPrenomInscrit = nomPrenomInscrit;
+        this.idLivre = idLivre;
+        this.titreLivre = titreLivre;
+        this.debutEmprunt = debutEmprunt;
+        this.finEmprunt = finEmprunt;
+        this.rendu = rendu;
+    }
+
+}
+
+
 export class Exemplaire {
 
   id: number;
@@ -149,4 +172,19 @@ export class Livre{
     this.disponibilite = disponibilite;
   }
 
+}
+
+export class Auteur {
+  id:        number;
+  nom:       string;
+  prenom:    string;
+  naissance: Date;
+
+  constructor(id?:number, nom?: string,prenom?:string,naissance?:Date ) {
+      this.id = id;
+      this.nom = nom;
+      this.prenom=prenom;
+      this.naissance=naissance;
+  
+  }
 }

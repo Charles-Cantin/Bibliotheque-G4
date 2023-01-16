@@ -1,0 +1,36 @@
+<p>bibliothecaire-emprunts works!</p>
+<div class="card mt-3">
+    <div class="card-header bg-primary text-white display-6">Details des emprunts</div>
+    <div class="card-body">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Numero Abonné</th>
+                    <th>Nom Prenom</th>
+                    <th>ID Livre</th>
+                    <th>nom livre</th>
+                    <th>debut</th>
+                    <th>fin</th>
+                    <th>rendu</th>
+                    <th>rendre un livre</th>
+                    <th></th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr *ngFor="let eDetail of list()">
+                    <td>{{eDetail.idInscrit}}</td>
+                    <td>{{eDetail.nomPrenomInscrit}}</td>
+                    <td>{{eDetail. idLivre}}</td>
+                    <td>{{eDetail.titreLivre}}</td>
+                    <td>{{eDetail.debutEmprunt}}</td>
+                    <td>{{eDetail.finEmprunt}}</td>
+                    <td>{{eDetail.rendu}}</td>
+                  
+               <td><a class="btn btn-primary" *ngIf="eDetail.rendu==false" (click)="Rendrelivre(eDetail.idInscrit)"><i
+                class="bi bi-pencil-square"></i></a></td>
+                </tr>
+            </tbody>
+
+        </table>
+    </div>
