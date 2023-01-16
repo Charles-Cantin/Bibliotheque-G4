@@ -111,3 +111,18 @@ export class EditionDTO {
     this.nomsGenres = nomsGenres;
   }
 }
+
+export class ExemplaireByEditionDTO {
+
+  idExemplaire: number;
+  disponible: Boolean;
+  nomEditeur: string;
+  dateProchaineDispo: string;
+
+  constructor(idExemplaire: number, disponible: Boolean, nomEditeur: string, dateProchaineDispo: string) {
+    this.idExemplaire = idExemplaire;
+    this.disponible = disponible;
+    this.nomEditeur = nomEditeur;
+    this.dateProchaineDispo = dateProchaineDispo;
+  }
+}

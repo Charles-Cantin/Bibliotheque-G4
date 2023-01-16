@@ -9,8 +9,8 @@
 
             <!-- Boutons de réservation -->
             <div class="btn-group w-100 p-3" role="group" aria-label="Basic mixed styles example">
-                <button type="button" class="btn btn-outline-dark">Vérifier la disponibilité</button>
-                <button type="button" class="btn btn-warning btn-outline-dark">Réserver</button>
+                <button type="button" class="btn btn-outline-dark" [routerLink]="['/exemplaires']" [queryParams]="{'id': fetchedEdition.idEdition}" >Vérifier la disponibilité</button>
+                <button type="button" class="btn btn-warning btn-outline-dark" [routerLink]="['/exemplaires']" [queryParams]="{'id': fetchedEdition.idEdition}" >Réserver</button>
             </div>
         </div>
 

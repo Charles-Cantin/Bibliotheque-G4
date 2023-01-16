@@ -1,0 +1,26 @@
+<div class="card mt-3">
+    <div class="card-header bg-primary text-white display-6">Exemplaires du livre : TODO</div>
+    <div class="card-body">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ID exemplaire</th>
+                    <th>Edition</th>
+                    <th>Disponibilité</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr *ngFor="let ex of list()">
+                    <td>{{ex.idExemplaire}}</td>
+                    <td>{{ex.nomEditeur}}</td>
+                    <td>{{ex.disponible? 'Oui' : 'Non'}}</td>
+                    <td>
+                        <button *ngIf="ex.disponible" class="btn btn-primary">Réserver</button>
+                    </td>
+                </tr>
+            </tbody>
+
+        </table>
+</div>
