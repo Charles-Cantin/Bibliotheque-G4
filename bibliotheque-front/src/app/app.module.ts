@@ -15,6 +15,7 @@ import { InscriptionComponent } from './page-connexion/inscription/inscription.c
 import { FooterComponent } from './footer/footer.component';
 import { PageEditionComponent } from './page-edition/page-edition.component';
 import { PageExemplairesComponent } from './page-exemplaires/page-exemplaires.component';
+import { PageAdminComponent } from './page-admin/page-admin.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { PageExemplairesComponent } from './page-exemplaires/page-exemplaires.co
     InscriptionComponent,
     FooterComponent,
     PageEditionComponent,
-    PageExemplairesComponent
+    PageExemplairesComponent,
+    PageAdminComponent
   ],
   imports: [
     BrowserModule,

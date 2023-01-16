@@ -31,7 +31,7 @@ export class AuthService {
 
   redirectMonCompte(type: string) {
     switch (type) {
-      case 'admin': alert("connection admin ok ; mais pas encore page admin"); this.router.navigate(['']) ; break;
+      case 'admin': this.router.navigate(['admin']) ; break;
       case 'bibliothecaire': this.router.navigate(['bibliothecaire']) ; break;
       case 'inscrit': this.router.navigate(['lecteur']) ; break;
     }

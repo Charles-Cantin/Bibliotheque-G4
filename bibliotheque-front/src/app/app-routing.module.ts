@@ -6,6 +6,7 @@ import { PageLecteurComponent } from './page-lecteur/page-lecteur.component';
 import { PageEditionComponent } from './page-edition/page-edition.component';
 import { PageConnexionComponent } from './page-connexion/page-connexion.component';
 import { PageExemplairesComponent } from './page-exemplaires/page-exemplaires.component';
+import { PageAdminComponent } from './page-admin/page-admin.component';
 
 const routes: Routes = [
   {path: "", redirectTo: "livre", pathMatch: 'full'},
@@ -13,6 +14,7 @@ const routes: Routes = [
   {path: "connexion", component: PageConnexionComponent},
   {path: "bibliothecaire", component: PageBibliothecaireComponent},
   {path: "lecteur", component: PageLecteurComponent},
+  {path: "admin", component: PageAdminComponent},
   {path: "livre", component: PageEditionComponent},
   {path: "exemplaires", component: PageExemplairesComponent}];
 
