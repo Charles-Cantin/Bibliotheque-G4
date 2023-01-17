@@ -1,6 +1,42 @@
+<div class="container card h-100">
+  <fieldset class="card-body">
+  <h5 class="text-center">Connexion</h5>
+
+     <hr>
+  
+         <div class="row mb-3">
+             <div>
+                 <p class="row align-items-center mb-1">Login</p>
+             </div>
+             <div class="row">
+                 <input type="text" id="loginForm" placeholder="" [(ngModel)]="login"/>
+             </div>
+         </div>
+  
+         <div class="row mb-4">
+             <div>
+                 <p class="row align-items-center mb-1">Password</p>
+             </div>
+             <div class="row">
+                 <input type="text" id="PWForm" placeholder="" [(ngModel)]="password"/>
+             </div>
+         </div>
+
+         <div>  
+             <div class="position-absolute bottom-0">
+                <button type="button" class="btn btn-primary ms-5 mb-3" (click)="auth()">Se connecter</button>
+             </div>  
+         </div> 
+             
+     </fieldset>
+  </div>
+
+<!--Ancien Formulaire-->
+
+<!--
 <section class="gradient-custom">
     <div class="container py-5 h-100">
-      <div class="row justify-content-center align-items-center h-100">
+      <div class="row justify-content-center align-items-center h-50">
         <div class="col-12 col-lg-9 col-xl-7">
             <div class="card-body p-4 p-md-10">
               <div class="container card">
@@ -25,3 +61,4 @@
         </div>
       </div>
   </section>
+-->
