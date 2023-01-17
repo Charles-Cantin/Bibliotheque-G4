@@ -1,64 +1,25 @@
-<div class="container card h-100">
-  <fieldset class="card-body">
-  <h5 class="text-center">Connexion</h5>
+<div class="p-4 p-md-4 border rounded-3 bg-light">
+    <fieldset class="">
+        <h5 class="text-center">Connexion</h5>
 
-     <hr>
-  
-         <div class="row mb-3">
-             <div>
-                 <p class="row align-items-center mb-1">Login</p>
-             </div>
-             <div class="row">
-                 <input type="text" id="loginForm" placeholder="" [(ngModel)]="login"/>
-             </div>
-         </div>
-  
-         <div class="row mb-4">
-             <div>
-                 <p class="row align-items-center mb-1">Password</p>
-             </div>
-             <div class="row">
-                 <input type="text" id="PWForm" placeholder="" [(ngModel)]="password"/>
-             </div>
-         </div>
+        <hr>
 
-         <div>  
-             <div class="position-absolute bottom-0">
-                <button type="button" class="btn btn-primary ms-5 mb-3" (click)="auth()">Se connecter</button>
-             </div>  
-         </div> 
-             
-     </fieldset>
-  </div>
-
-<!--Ancien Formulaire-->
-
-<!--
-<section class="gradient-custom">
-    <div class="container py-5 h-100">
-      <div class="row justify-content-center align-items-center h-50">
-        <div class="col-12 col-lg-9 col-xl-7">
-            <div class="card-body p-4 p-md-10">
-              <div class="container card">
-                <fieldset class="card-body">
-                    <legend>Connexion</legend>
-                    <div class="mb-3">
-                        <label for="loginForm" class="form-label">Login</label>
-                        <input class="form-control" id="loginForm" placeholder="Login" [(ngModel)]="login">
-                    </div>
-                    <div class="mb-3">
-                        <label for="PWForm" class="form-label">Password</label>
-                        <input class="form-control" id="PWForm" placeholder="Password" [(ngModel)]="password"/>
-                    </div>
-                    <div class="col-auto">
-                        <button type="submit" class="btn btn-primary mb-3" (click)="auth()">Se connecter</button>
-                    </div>
-            
-                </fieldset>
+        <div class="row mb-3">
+            <div class="col-12">
+                <label for="login" class="form-label">Nom d'utilisateur</label>
+                <input class="form-control" id="login" [(ngModel)]="login" />
             </div>
-            </div>
-          </div>
         </div>
-      </div>
-  </section>
--->
+
+        <div class="row mb-3">
+            <div>
+                <label for="password" class="form-label">Mot de passe</label>
+                <input class="form-control" type="password" id="password" [(ngModel)]="password" />
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <button type="button" class="btn btn-primary" (click)="auth()">Se connecter</button>
+        </div>
+    </fieldset>
+</div>

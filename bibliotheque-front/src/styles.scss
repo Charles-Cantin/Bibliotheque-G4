@@ -4,8 +4,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300;400&display=swap');
 
+/* Variables globales */
+:root {
+	--bg-color: #F4EFE7;
+}
+
 body {
-	background-color:#F4EFE7 !important;
+	background-color: var(--bg-color) !important;
 	font-family:"Libre Baskerville", serif !important;
 }
 

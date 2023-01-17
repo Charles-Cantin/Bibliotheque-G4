@@ -6,3 +6,9 @@
     align-items:center;
     background-color:darkslategrey;
 }
+
+.hero-accueil-image {
+    background-image: linear-gradient(to right, #f4efe7cc 30%, var(--bg-color) 100%), url("../../assets/img/accueil.png");
+    background-size: 50% ;
+    background-repeat: no-repeat;
+}
