@@ -192,3 +192,49 @@ export class Auteur {
   
   }
 }
+
+export class ResultatDTO {
+  idLivre: number;
+  titre: string;
+  auteurs: string;
+  genres: string;
+  livreDispo: boolean;
+  publication: string;
+  editions: Array<ResultatEddy>; //liste des ID d'editions
+
+
+  constructor(idLivre?: number, titre?: string, auteurs?: string, genres?: string, livreDispo?:boolean, publication?: string, editions?: Array<ResultatEddy>) {
+    this.idLivre = idLivre;
+    this.titre = titre;
+    this.publication = publication;
+    this.auteurs = auteurs;
+    this.genres = genres;
+    this.editions = editions;
+    this.livreDispo = livreDispo;
+  }
+
+}
+
+export class ResultatEddy{
+  idEdition: number;
+  ISBN: string;
+  pages: number;
+  format: string;
+  langue: string;
+  nomEditeur: string;
+  nombreEditionDispo: number;
+
+  constructor(editionDispo?: number, idEdition?: number, ISBN?: string, pages?: number, format?: string, langue?: string, nomEditeur?: string) {
+    this.nombreEditionDispo = editionDispo;
+    this.idEdition = idEdition;
+    this.ISBN = ISBN;
+    this.pages = pages;
+    this.format = format;
+    this.langue = langue;
+    this.nomEditeur = nomEditeur;
+  }
+}
+
+
+
+

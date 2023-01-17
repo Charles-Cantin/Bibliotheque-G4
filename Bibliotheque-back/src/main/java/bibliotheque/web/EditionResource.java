@@ -22,10 +22,8 @@ import org.springframework.web.server.ResponseStatusException;
 import com.fasterxml.jackson.annotation.JsonView;
 
 import bibliotheque.dao.IDAOEdition;
-import bibliotheque.model.Auteur;
 import bibliotheque.model.Editeur;
 import bibliotheque.model.Edition;
-import bibliotheque.model.Genre;
 import bibliotheque.model.Livre;
 import bibliotheque.model.Views;
 import bibliotheque.web.dto.EditionDTO;
@@ -82,30 +80,9 @@ public class EditionResource {
 		editionDTO.setTitre(livre.getTitre()) ;
 		editionDTO.setResume(livre.getResume()) ;
 		editionDTO.setAnneeParution(livre.getDateParution().getYear()) ;
-
-		String nomEditeur = editeur.getNom();
-		String nomsAuteurs = "";
-		String nomsGenres = "";
-
-		int i = 0;
-		for (Auteur auteur : livre.getAuteurs()) {
-			nomsAuteurs = nomsAuteurs + auteur.getPrenom() + " " + auteur.getNom();
-			// n'ajoute de virgule que si l'on n'est pas à la fin de la liste
-			if (i!=livre.getAuteurs().size()-1) {nomsAuteurs = nomsAuteurs + ", ";}
-			i++;
-		}
-		
-		i=0;
-		for (Genre genre : livre.getGenres()) {
-			nomsGenres = nomsGenres + genre.getLibelle();
-			// n'ajoute de virgule que si l'on n'est pas à la fin de la liste
-			if (i!=livre.getGenres().size()-1) {nomsGenres = nomsGenres + " ; ";}
-			i++;
-		}
-
-		editionDTO.setNomsAuteurs(nomsAuteurs);
-		editionDTO.setNomEditeur(nomEditeur);
-		editionDTO.setNomsGenres(nomsGenres);
+		editionDTO.setNomsAuteurs(livre.auteursToDTO());
+		editionDTO.setNomEditeur(editeur.getNom());
+		editionDTO.setNomsGenres(livre.genresToDTO());
 
 		return editionDTO;
 	}

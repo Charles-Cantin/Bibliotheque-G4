@@ -140,4 +140,30 @@ public class Livre {
 				+ ", auteurs=" + auteurs + ", genres=" + genres + ", editions=" + editions + "]";
 	}
 	
+	public String auteursToDTO() {
+		String nomsAuteurs = "";
+		int i = 0;
+		for (Auteur auteur : this.auteurs) {
+			nomsAuteurs = nomsAuteurs + auteur.getPrenom() + " " + auteur.getNom();
+			// n'ajoute de virgule que si l'on n'est pas à la fin de la liste
+			if (i!=this.auteurs.size()-1) {nomsAuteurs = nomsAuteurs + ", ";}
+			i++;
+		}
+		return nomsAuteurs;
+	}
+	
+	public String genresToDTO() {
+		String nomsGenres = "";
+		int i=0;
+		for (Genre genre : this.genres) {
+			nomsGenres = nomsGenres + genre.getLibelle();
+			// n'ajoute de virgule que si l'on n'est pas à la fin de la liste
+			if (i!=this.genres.size()-1) {nomsGenres = nomsGenres + " ; ";}
+			i++;
+		}
+		return nomsGenres;
+	}
+	
+	
+	
 }

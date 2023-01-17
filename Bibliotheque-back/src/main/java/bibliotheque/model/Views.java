@@ -2,7 +2,13 @@ package bibliotheque.model;
 
 public class Views {
 
+	
+
 	public static class ViewBase {}
+	
+	public class ViewResultatsDTO extends ViewBase{
+
+	}
 	
 	// COMPTES //
 

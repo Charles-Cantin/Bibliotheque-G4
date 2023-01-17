@@ -27,11 +27,17 @@ public interface IDAOLivre extends JpaRepository<Livre,Integer>{
 	@Query("select distinct l from Livre l left join fetch l.editions where l.id = :id")
 	Optional<Livre> findByIdWithEditions(@Param("id") Integer id);
 	
-	List<Livre> findByTitreContainingIgnoreCase(String searchTerm);
+	/* Y a-t-il au moins un exemplaire disponible pour un livre donné ? UNTESTED*/
+	@Query("select max(ex.disponible) from Exemplaire ex join ex.edition.livre l where l.id = ?1")
+	Boolean livreDisponible(Integer idLivre);
 	
-	List<Livre> findByAuteursContainingIgnoreCase(String searchTerm);
+	@Query("from Livre l where lower(l.titre) like lower(concat('%',?1,'%'))")
+	List<Livre> findByTitleContainingIgnoreCase(String searchTerm);
 	
-	
-	
+	@Query("from Livre l join l.auteurs a "
+			+ "where lower(l.titre) like lower(concat('%',?1,'%')) "
+			+ "or lower(a.nom) like lower(concat('%',?1,'%')) "
+			+ "or lower(a.prenom) like lower(concat('%',?1,'%'))")
+	List<Livre> findByTitleOrAuteursContainingIgnoreCase(String searchTerm);
 	
 }

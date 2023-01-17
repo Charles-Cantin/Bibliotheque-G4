@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Livre } from 'src/model';
-import { LivreService } from '../livre.service';
+import { ResultatDTO } from 'src/model';
+import { SearchService } from './search.service';
 
 @Component({
   selector: 'app-recherche',
@@ -9,19 +9,33 @@ import { LivreService } from '../livre.service';
   styleUrls: ['./recherche.component.scss']
 })
 
-
-
 export class RechercheComponent {
   focusedRow: number;
-  livres:Array<Livre>;
+  resultats: Array<ResultatDTO> = new Array<ResultatDTO>();
+  searchText: string;
 
-  constructor(private livreService: LivreService, private route: ActivatedRoute) {
+  constructor(private searchService: SearchService, private route: ActivatedRoute) {
+
     this.route.queryParams.subscribe(params => {
-      let searchTerm:string = params['search'];
-      this.livreService.findByTitle(searchTerm).subscribe(resp => {
-        this.livres = resp;
-        console.log(resp);
-      })
+      this.searchText = params['search'];
+      this.load();
     })
   }
+
+  public load() {
+    this.searchService.findByTitle(this.searchText).subscribe(resp => {
+      this.resultats = resp;
+    })
+  }
+
+  public focus(clickedRowIndex: number) {
+    if (this.focusedRow == clickedRowIndex) {
+      this.focusedRow = -1;
+    }
+    else {
+      this.focusedRow = clickedRowIndex;
+    }
+  }
+
+
 }
