@@ -11,10 +11,19 @@ export class AjoutEmpruntComponent {
 formEmprunt = {idEmprunteur:-1,idExemplaire:-1,debut:""};
 
 constructor(private ajoutEmpruntService: AjoutEmpruntHttpService) {
+
+  this.cancel_emprunt();
 }
 
 cancel_emprunt(): void {
-  this.formEmprunt = {idEmprunteur:null,idExemplaire:null,debut:""};
+  let dateDebut: Date = new Date(); 
+  let Day: number = dateDebut.getDate();
+  let Month: number = dateDebut.getMonth()+1; 
+  let Year: number = dateDebut.getFullYear();
+  let dateString: string = Year +"-"+ ((Month < 10) ? "0" : "") + Month +"-"  + ((Day < 10) ? "0" : "") + Day;
+
+  this.formEmprunt = {idEmprunteur:null,idExemplaire:null, debut: dateString};
+  console.log(dateString);
 }
 
 save_emprunt():void{
