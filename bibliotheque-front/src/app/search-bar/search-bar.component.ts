@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { LivreService } from '../livre.service';
 
@@ -9,11 +9,9 @@ import { LivreService } from '../livre.service';
 })
 export class SearchBarComponent {
 
-  searchText: string = null;
+  @Input() searchText: string = null;
 
-  constructor(private livreService: LivreService, private router: Router){
-
-  }
+  constructor(private livreService: LivreService, private router: Router){}
 
   public goToSearch() {
     this.router.navigate(['/recherche'], { queryParams :{'search': this.searchText}});
