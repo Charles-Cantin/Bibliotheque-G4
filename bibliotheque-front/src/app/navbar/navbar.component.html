@@ -17,10 +17,13 @@
                 <li class="nav-item"><a class="nav-link px-2 text-secondary" [routerLink]="['/tpt']"   routerLinkActive="text-light link-light">About</a></li>
             </ul>
 
-            <!-- Barre recherche -->
+            <!-- Barre recherche --> <!--
             <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
                 <input type="search" class="form-control form-control-dark text-bg-dark" placeholder="Search..." aria-label="Search">
-            </form>
+            </form>-->
+            <div class="col-12 col-lg-auto me-3" style="width: 25vw;" role="search">
+                <app-search-bar></app-search-bar>
+            </div>
 
 
             <!-- Boutons Login -->
@@ -29,8 +32,8 @@
                 <button *ngIf="connectedAccount==null" [routerLink]="['inscription']" type="button" class="btn btn-warning">Sign-up</button>
                 
                 <div class="btn-group" role="group" aria-label="Basic example">
-                    <button *ngIf="connectedAccount!=null" [routerLink]="['/connexion']" (click)="redirectMonCompte(connectedAccount.type)" type="button" class="btn btn-warning">{{connectedAccount.nom}} {{connectedAccount.prenom}}</button>
-                    <button *ngIf="connectedAccount!=null" [routerLink]="['/connexion']" (click)="unAuth()" type="button" class="btn btn-outline-light">Se déconnecter</button>
+                    <button *ngIf="connectedAccount!=null" [routerLink]="['/connexion']" (click)="redirectMonCompte(connectedAccount.type)" type="button" class="btn btn-warning border">{{connectedAccount.nom}} {{connectedAccount.prenom}}</button>
+                    <button *ngIf="connectedAccount!=null" [routerLink]="['/connexion']" (click)="unAuth()"                                 type="button" class="btn btn-outline-light">Se déconnecter</button>
                 </div>
             </div>
         </div>

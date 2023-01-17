@@ -8,9 +8,8 @@
             </div>
 
             <!-- Boutons de réservation -->
-            <div class="btn-group w-100 p-3" role="group" aria-label="Basic mixed styles example">
-                <button type="button" class="btn btn-outline-dark" [routerLink]="['/exemplaires']" [queryParams]="{'id': fetchedEdition.idEdition}" >Vérifier la disponibilité</button>
-                <button type="button" class="btn btn-warning btn-outline-dark" [routerLink]="['/exemplaires']" [queryParams]="{'id': fetchedEdition.idEdition}" >Réserver</button>
+            <div class="p-3">
+                <button type="button" class="btn btn-warning btn-outline-dark w-100" [routerLink]="['/exemplaires']" [queryParams]="{'id': fetchedEdition.idEdition}" >Réserver</button>
             </div>
         </div>
 
@@ -25,10 +24,16 @@
 
             <!-- Plus d'infos sur le bouquin (retrouvé de la DB) -->
             <div class="container px-0">
-                <!-- Bouton déclanchant le déploiement de la boite contenant les infos -->
-                <button class="btn btn-warning" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-                    Détails de l'édition
-                </button>
+                <div class="btn-group" role="group">
+                    <!-- Bouton déclanchant le déploiement de la boite contenant les infos -->
+                    <button class="btn btn-warning border border-dark" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                        Détails de l'édition
+                    </button>
+                    <!-- Bouton retour -->
+                    <button class="btn btn-outline-dark" type="button" onclick="javascript:history.back()">
+                        Retour
+                    </button>
+                </div>
 
                 <!-- Boite contenant les infos (affichées grâce à une table) -->
                 <div class="collapse py-2" id="collapseExample">
@@ -48,7 +53,7 @@
                         </dl>
                         </div>
                     </div>
-                </div>
+                </div> 
             </div>
         </div>
     </div>

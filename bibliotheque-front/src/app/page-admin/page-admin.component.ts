@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-page-admin',
@@ -6,5 +7,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./page-admin.component.scss']
 })
 export class PageAdminComponent {
+
+  constructor(authService: AuthService){
+    authService.kickSiMauvaisCompte('admin');
+  }
 
 }

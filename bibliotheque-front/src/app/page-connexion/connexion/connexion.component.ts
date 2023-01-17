@@ -15,6 +15,7 @@ export class ConnexionComponent {
   constructor(private connexionService: ConnexionService, private authService: AuthService, private router: Router){}
 
   auth(): void {
+    
     this.connexionService.findByLoginAndPassword(this.login, this.password).subscribe(resp => {
       // TODO Si ça marche pas ?
       this.authService.setLoggedInAccount(resp);
