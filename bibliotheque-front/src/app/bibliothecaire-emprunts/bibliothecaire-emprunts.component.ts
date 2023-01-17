@@ -12,20 +12,29 @@ export class BibliothecaireEmpruntsComponent {
   Empruntdetailrendu: EmpruntDetail = null;
   
   formEmpruntrendu : EmpruntDetail;
- 
+  recherche:string;
+
+  Empruntfiltre:Array<Emprunt>=new Array<Emprunt>();
 
   constructor(private bibliothecair_emprunt:BibliothecaireEmpruntsHttpService) {
   }
 
   list(): Array<EmpruntDetail> {
-    return this.bibliothecair_emprunt.findAll();
-  }
+
+    if(this.recherche){
+    
+      return this.bibliothecair_emprunt.findAll().filter(resp => resp.nomPrenomInscrit.toLowerCase().indexOf(this.recherche.toLowerCase()) != -1 || resp.titreLivre.toLowerCase().indexOf(this.recherche.toLowerCase()) != -1);
+  }else{
+    return this.bibliothecair_emprunt.findAll()
+  }}
 
 Rendrelivre(id : number) :void{
 
 this.bibliothecair_emprunt.rendrebyid(id);
 
-
 }
+
+
+
 
 }
