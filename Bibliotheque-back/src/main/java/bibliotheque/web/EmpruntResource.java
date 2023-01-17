@@ -12,6 +12,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -31,7 +32,7 @@ import bibliotheque.web.dto.EmpruntLecteurDTO;
 @RequestMapping("/emprunts")
 @CrossOrigin("*")
 public class EmpruntResource {
-	
+
 	@Autowired
 	private IDAOEmprunt daoEmprunt;
 
@@ -57,33 +58,33 @@ public class EmpruntResource {
 
 	@GetMapping("/{id_emprunteur}/empruntsDTO")
 	@JsonView(Views.ViewEmpruntLecteurDTO.class)
-	
+
 	public List<EmpruntLecteurDTO> findEmpruntsByLecteur(@PathVariable Integer id_emprunteur) {
-		
+
 		List<Emprunt> emprunts = daoEmprunt.findAllByEmprunteur(id_emprunteur);
-		
+
 		System.out.println(emprunts);
-		
+
 		List<EmpruntLecteurDTO> empruntsDTO = new ArrayList<>();
-		
+
 		for (Emprunt emprunt : emprunts) {
-			
+
 			EmpruntLecteurDTO empruntLecteurDTO = new EmpruntLecteurDTO();
-			
+
 			empruntLecteurDTO.setIdExemplaire(emprunt.getExemplaire().getId());
 			empruntLecteurDTO.setTitreLivre(emprunt.getExemplaire().getEdition().getLivre().getTitre());
 			empruntLecteurDTO.setDebut(emprunt.getDebut());
 			empruntLecteurDTO.setFin(emprunt.getFin());
 			empruntLecteurDTO.setRendu(emprunt.isRendu());
-			
+
 			empruntsDTO.add(empruntLecteurDTO);
-			
+
 		}
-		
+
 		return empruntsDTO;
 	}
-	
-	
+
+
 	@PostMapping("")
 	@JsonView(Views.ViewEmpruntDetail.class)
 	public Emprunt create(@Valid @RequestBody Emprunt emprunt, BindingResult result) {
@@ -109,6 +110,22 @@ public class EmpruntResource {
 
 		return emprunt;
 	}
+
+
+	@GetMapping("/rendre/{id}")
+	@JsonView(Views.ViewEmpruntDetail.class)
+	public Emprunt update(@PathVariable Integer id) {
+
+		Emprunt empruntarendre = daoEmprunt.findById(id).get();
+
+		empruntarendre.setRendu(true);
+
+		empruntarendre=daoEmprunt.save(empruntarendre);
+
+		return empruntarendre;
+	}
+
+
 
 	@DeleteMapping("/{id}")
 	public void delete(@PathVariable Integer id) {

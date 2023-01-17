@@ -14,7 +14,7 @@ import { BibliothecaireEmpruntsComponent } from './bibliothecaire-emprunts/bibli
 import { AjoutlivreComponent } from './ajoutlivre/ajoutlivre.component';
 
 const routes: Routes = [
-  {path: "", redirectTo: "livre", pathMatch: 'full'},
+  {path: "", redirectTo: "home", pathMatch: 'full'},
   {path: "inscription", component: InscriptionComponent},
   {path: "home", component: HomeComponent},
   {path: "recherche", component: RechercheComponent},

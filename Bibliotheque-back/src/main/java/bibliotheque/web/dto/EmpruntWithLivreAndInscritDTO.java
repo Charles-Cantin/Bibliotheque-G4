@@ -4,6 +4,10 @@ import java.time.LocalDate;
 
 public class EmpruntWithLivreAndInscritDTO {
 
+	
+	private int id;
+	
+	
 	private Integer idInscrit;
 	private String nomPrenomInscrit;
 
@@ -71,4 +75,14 @@ public class EmpruntWithLivreAndInscritDTO {
 	public void setRendu(Boolean rendu) {
 		this.rendu = rendu;
 	}
+	
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	
 }
