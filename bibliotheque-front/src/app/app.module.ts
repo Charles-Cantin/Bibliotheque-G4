@@ -16,10 +16,10 @@ import { PageAdminComponent } from './page-admin/page-admin.component';
 import { FormsModule } from '@angular/forms';
 import { HomeComponent } from './home/home.component';
 import { RechercheComponent } from './recherche/recherche.component';
-import { AjoutlivreComponent } from './ajoutlivre/ajoutlivre.component';
-import { BibliothecaireEmpruntsComponent } from './bibliothecaire-emprunts/bibliothecaire-emprunts.component';
+import { AjoutlivreComponent } from './page-bibliothecaire/ajoutlivre/ajoutlivre.component';
 import { SearchBarComponent } from './search-bar/search-bar.component';
-import { AjoutEmpruntComponent } from './ajout-emprunt/ajout-emprunt.component';
+import { BibliothecaireEmpruntsComponent } from './page-bibliothecaire/bibliothecaire-emprunts/bibliothecaire-emprunts.component';
+import { AjoutEmpruntComponent } from './page-bibliothecaire/ajout-emprunt/ajout-emprunt.component';
 
 @NgModule({
   declarations: [

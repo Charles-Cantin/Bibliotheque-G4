@@ -16,7 +16,7 @@ export class BibliothecaireEmpruntsComponent {
 
   Empruntfiltre:Array<Emprunt>=new Array<Emprunt>();
 
-  constructor(private bibliothecair_emprunt:BibliothecaireEmpruntsHttpService) {
+  constructor(private bibliothecair_emprunt: BibliothecaireEmpruntsHttpService) {
   }
 
   list(): Array<EmpruntDetail> {

@@ -10,8 +10,7 @@ import { PageConnexionComponent } from './page-connexion/page-connexion.componen
 import { PageExemplairesComponent } from './page-exemplaires/page-exemplaires.component';
 import { PageAdminComponent } from './page-admin/page-admin.component';
 import { RechercheComponent } from './recherche/recherche.component';
-import { BibliothecaireEmpruntsComponent } from './bibliothecaire-emprunts/bibliothecaire-emprunts.component';
-import { AjoutlivreComponent } from './ajoutlivre/ajoutlivre.component';
+import { AjoutlivreComponent } from './page-bibliothecaire/ajoutlivre/ajoutlivre.component';
 
 const routes: Routes = [
   {path: "", redirectTo: "home", pathMatch: 'full'},
@@ -27,10 +26,7 @@ const routes: Routes = [
   {path: "admin", component: PageAdminComponent},
   // CRUDs
   {path: "livre", component: PageEditionComponent},
-  {path: "exemplaires", component: PageExemplairesComponent},
-  // À supprimer ! ce sont des composants de la page bibliothécaire 
-  {path: "bibliothecaires-emprunts", component: BibliothecaireEmpruntsComponent},
-  {path: "ajout-livre", component: AjoutlivreComponent}];
+  {path: "exemplaires", component: PageExemplairesComponent}];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { AppConfigService } from 'src/app/app-config.service';
 import { Livre } from 'src/model';
-import { AppConfigService } from '../app-config.service';
 
 
 @Injectable({

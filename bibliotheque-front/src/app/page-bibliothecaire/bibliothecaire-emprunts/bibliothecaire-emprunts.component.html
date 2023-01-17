@@ -1,7 +1,4 @@
-
-Recherche : <input type="text" [(ngModel)]="recherche" /><br/>
-
-
+Recherche : <input type="text" [(ngModel)]="recherche" /><br />
 
 <div class="card mt-3">
     <div class="card-header bg-secondary text-white display-6">Details des emprunts</div>
@@ -24,19 +21,20 @@ Recherche : <input type="text" [(ngModel)]="recherche" /><br/>
 
             <tbody>
                 <tr *ngFor="let eDetail of list()">
-                    <td >{{eDetail.id}}</td>
-                    <td >{{eDetail.idInscrit}}</td>
-                    <td >{{eDetail.nomPrenomInscrit}}</td>
-                    <td >{{eDetail. idLivre}}</td>
+                    <td>{{eDetail.id}}</td>
+                    <td>{{eDetail.idInscrit}}</td>
+                    <td>{{eDetail.nomPrenomInscrit}}</td>
+                    <td>{{eDetail. idLivre}}</td>
                     <td>{{eDetail.titreLivre}}</td>
                     <td>{{eDetail.debutEmprunt}}</td>
                     <td>{{eDetail.finEmprunt}}</td>
                     <td>{{eDetail.rendu}}</td>
-                  
-               <td><a class="btn btn-primary" *ngIf="eDetail.rendu==false" (click)="Rendrelivre(eDetail.id)"><i
-                class="bi bi-pencil-square"></i></a></td>
+
+                    <td><a class="btn btn-primary" *ngIf="eDetail.rendu==false" (click)="Rendrelivre(eDetail.id)"><i
+                                class="bi bi-pencil-square"></i></a></td>
                 </tr>
             </tbody>
 
         </table>
     </div>
+</div>

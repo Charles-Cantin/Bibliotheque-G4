@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Auteur } from 'src/model';
-import { AppConfigService } from '../app-config.service';
+import { AppConfigService } from '../../app-config.service';
 
 
 @Injectable({
