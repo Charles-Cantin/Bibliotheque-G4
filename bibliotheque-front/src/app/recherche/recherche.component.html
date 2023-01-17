@@ -1,6 +1,7 @@
 <div class="card mt-3">
     <div class="card-header bg-primary text-white display-6">Resultats de recherche</div>
     <div class="card-body">
+        <input type="text" [(ngModel)]="searchText"><button (click)="load()">coucou</button>
         <table class="table table-striped">
             <thead>
                 <tr>
@@ -14,19 +15,38 @@
             </thead>
 
             <tbody>
-                <ng-container *ngFor="let livre of livres, let indexOfelement=index;">
-                <tr>
-                    <td>{{livre.titre}}</td>
-                    <td>{{livre.auteurs}}</td>
-                    <td>{{livre.publication}}</td>
-                    <td>{{livre.nomGenres}}</td>
-                    <td>{{livre.disponibilite? 'Oui' : 'Non'}}</td>
-                </tr>
-                <ng-container *ngIf="indexOfelement==focusedRow">
-
+                <ng-container *ngFor="let res of resultats, let indexOfelement=index;">
+                    <tr class="clickable" (click)="focus(indexOfelement)" [ngClass]="{'data-selected': focusedRow === indexOfelement}">
+                        <td>{{res.titre}}</td>
+                        <td>{{res.auteurs}}</td>
+                        <td>{{res.genres}}</td>
+                        <td>{{res.publication}}</td>
+                        <td>{{res.livreDispo? 'Oui' : 'Non'}}</td>
+                        <td><button class="btn btn-primary">Editions</button></td>
+                    </tr>
+                    <ng-container *ngIf="indexOfelement == focusedRow">
+                            <tr>
+                                <th>Ex</th>
+                                <th>Format</th>
+                                <th>Langue</th>
+                                <th>Editeur</th>
+                                <th>ISBN</th>
+                                <th>Pages</th>
+                                <th></th>
+                            </tr>
+    
+                            <tr *ngFor="let ed of res.editions">
+                            <td>{{ed.nombreEditionDispo}}</td>
+                            <td>{{ed.format}}</td>
+                            <td>{{ed.langue}}</td>
+                            <td>{{ed.nomEditeur}}</td>
+                            <td>{{ed.ISBN}}</td>
+                            <td>{{ed.pages}}</td>
+                            <td><button class="btn btn-primary" [routerLink]="['/livre']" [queryParams]="{id:ed.idEdition}">Voir</button></td>
+                            </tr>
+                    </ng-container>
                 </ng-container>
-            </ng-container>
             </tbody>
 
         </table>
-</div>
+    </div>
