@@ -1,7 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { Compte, Emprunt, EmpruntDTO } from 'src/model';
+import { EmpruntDTO } from 'src/model';
 import { AppConfigService } from '../app-config.service';
 import { AuthService } from '../auth.service';
 

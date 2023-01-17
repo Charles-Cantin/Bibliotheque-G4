@@ -1,0 +1,43 @@
+<div class="container card h-100">
+    <fieldset class="card-body">
+    <h5 class="text-center">Ajouter emprunt</h5>
+
+   <hr>
+
+       <div class="row mb-3">
+           <div>
+               <p class="row align-items-center mb-1">ID abonné</p>
+           </div>
+           <div class="row">
+               <input type="number" id="idEmprunteur" placeholder="" [(ngModel)]="formEmprunt.idEmprunteur"/>
+           </div>
+       </div>
+
+       <div class="row mb-3">
+           <div>
+               <p class="row align-items-center mb-1">ID exemplaire</p>
+           </div>
+           <div class="row">
+               <input type="number" id="idExemplaire" placeholder="" [(ngModel)]="formEmprunt.idExemplaire"/>
+           </div>
+       </div>
+
+       <div class="row mb-3">
+        <div>
+            <p class="row align-items-center mb-1">Date d'emprunt</p>
+        </div>
+        <div class="row">
+            <input type="date" id="debut" placeholder="" [(ngModel)]="formEmprunt.debut"/>
+        </div>
+    </div>
+
+
+       <div class="row mb-1">  
+           <div class=" col-9 position-absolute bottom-0 end-0">
+               <button type="button" (click)="cancel_emprunt()" class="btn btn-danger btn-md me-2 mb-3" type="submit" value="Submit">Reset</button>
+               <button type="button" (click)="save_emprunt()" class="btn btn-success btn-md mb-3" type="submit" value="Submit">Submit</button>
+           </div>  
+       </div> 
+           
+   </fieldset>
+</div>

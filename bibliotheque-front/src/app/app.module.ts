@@ -19,6 +19,7 @@ import { RechercheComponent } from './recherche/recherche.component';
 import { AjoutlivreComponent } from './ajoutlivre/ajoutlivre.component';
 import { BibliothecaireEmpruntsComponent } from './bibliothecaire-emprunts/bibliothecaire-emprunts.component';
 import { SearchBarComponent } from './search-bar/search-bar.component';
+import { AjoutEmpruntComponent } from './ajout-emprunt/ajout-emprunt.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { SearchBarComponent } from './search-bar/search-bar.component';
     AjoutlivreComponent,
     BibliothecaireEmpruntsComponent,
     SearchBarComponent
+    AjoutEmpruntComponent
   ],
   imports: [
     BrowserModule,

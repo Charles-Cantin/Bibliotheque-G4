@@ -63,6 +63,7 @@ public class Views {
 	public static class ViewLivreDTO extends ViewBase {}
 	
 	// EmpruntLecteur //
-		public static class ViewEmpruntLecteurDTO extends ViewBase {}
+	public static class ViewEmpruntLecteurDTO extends ViewBase {}
+	
 
 }

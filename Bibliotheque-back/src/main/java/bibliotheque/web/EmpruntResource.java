@@ -24,8 +24,11 @@ import org.springframework.web.server.ResponseStatusException;
 import com.fasterxml.jackson.annotation.JsonView;
 
 import bibliotheque.dao.IDAOEmprunt;
+import bibliotheque.dao.IDAOExemplaire;
+import bibliotheque.dao.IDAOInscrit;
 import bibliotheque.model.Emprunt;
 import bibliotheque.model.Views;
+import bibliotheque.web.dto.AjoutEmpruntDTO;
 import bibliotheque.web.dto.EmpruntLecteurDTO;
 
 @RestController
@@ -35,6 +38,10 @@ public class EmpruntResource {
 
 	@Autowired
 	private IDAOEmprunt daoEmprunt;
+	@Autowired
+	private IDAOExemplaire daoExemplaire;
+	@Autowired
+	private IDAOInscrit daoInscrit;
 
 	@GetMapping("")
 	@JsonView(Views.ViewEmprunt.class)
@@ -83,9 +90,9 @@ public class EmpruntResource {
 
 		return empruntsDTO;
 	}
-
-
-	@PostMapping("")
+	
+	
+/*	@PostMapping("")
 	@JsonView(Views.ViewEmpruntDetail.class)
 	public Emprunt create(@Valid @RequestBody Emprunt emprunt, BindingResult result) {
 		if (result.hasErrors()) {
@@ -96,8 +103,26 @@ public class EmpruntResource {
 
 		return emprunt;
 	}
-
-
+*/
+	@PostMapping("")
+	@JsonView(Views.ViewEmpruntDetail.class)
+	public Emprunt create(@Valid @RequestBody AjoutEmpruntDTO ajoutEmprunt, BindingResult result) {
+		if (result.hasErrors()) {
+			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "L'emprunt n'a pu être créé");
+		}
+		
+		Emprunt emprunt = new Emprunt();
+		
+		emprunt.setExemplaire(daoExemplaire.findById(ajoutEmprunt.getIdExemplaire()).get());
+		emprunt.setEmprunteur(daoInscrit.findById(ajoutEmprunt.getIdEmprunteur()).get());
+		emprunt.setDebut(ajoutEmprunt.getDebut());
+		emprunt.setFin(ajoutEmprunt.getDebut().plusDays(21));
+		emprunt.setRendu(false);
+		
+		emprunt = daoEmprunt.save(emprunt);
+		
+		return emprunt;
+	}
 
 	@PutMapping("/{id}")
 	@JsonView(Views.ViewEmpruntDetail.class)
