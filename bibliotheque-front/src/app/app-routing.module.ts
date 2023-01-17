@@ -15,15 +15,20 @@ import { AjoutlivreComponent } from './ajoutlivre/ajoutlivre.component';
 
 const routes: Routes = [
   {path: "", redirectTo: "home", pathMatch: 'full'},
-  {path: "inscription", component: InscriptionComponent},
+  // Recherches
   {path: "home", component: HomeComponent},
   {path: "recherche", component: RechercheComponent},
+  //Connexions
   {path: "connexion", component: PageConnexionComponent},
+  {path: "inscription", component: InscriptionComponent},
+  //Comptes
   {path: "bibliothecaire", component: PageBibliothecaireComponent},
   {path: "lecteur", component: PageLecteurComponent},
   {path: "admin", component: PageAdminComponent},
+  // CRUDs
   {path: "livre", component: PageEditionComponent},
   {path: "exemplaires", component: PageExemplairesComponent},
+  // À supprimer ! ce sont des composants de la page bibliothécaire 
   {path: "bibliothecaires-emprunts", component: BibliothecaireEmpruntsComponent},
   {path: "ajout-livre", component: AjoutlivreComponent}];
 
