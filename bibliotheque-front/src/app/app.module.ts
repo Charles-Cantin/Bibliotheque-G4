@@ -37,9 +37,7 @@ import { AjoutEmpruntComponent } from './ajout-emprunt/ajout-emprunt.component';
     PageAdminComponent,
     PageExemplairesComponent,
     AjoutlivreComponent,
-    BibliothecaireEmpruntsComponent,
-    SearchBarComponent
-    AjoutEmpruntComponent
+    BibliothecaireEmpruntsComponent
   ],
   imports: [
     BrowserModule,
