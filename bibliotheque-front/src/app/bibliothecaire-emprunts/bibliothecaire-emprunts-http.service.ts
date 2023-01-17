@@ -8,6 +8,7 @@ import { EmpruntDetail } from 'src/model';
   providedIn: 'root'
 })
 export class BibliothecaireEmpruntsHttpService {
+  
 
   serviceUrl: string;
   EmpruntDetails: Array<EmpruntDetail> = new Array<EmpruntDetail>();
@@ -41,6 +42,12 @@ export class BibliothecaireEmpruntsHttpService {
   }
 
   
-  
+  rendrebyid(id: number) {
+    
+     this.http.get<EmpruntDetail>("http://localhost:9999/emprunts/rendre/"+id).subscribe(resp=>{this.load()});
+    
+  }
+
+
 }
 
