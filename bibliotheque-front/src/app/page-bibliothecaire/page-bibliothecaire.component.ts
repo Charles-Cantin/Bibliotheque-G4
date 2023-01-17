@@ -9,6 +9,6 @@ import { AuthService } from '../auth.service';
 export class PageBibliothecaireComponent {
 
   constructor(private authService: AuthService) {
-    authService.kickSiMauvaisCompte('bibliothécaire')
+    authService.kickSiMauvaisCompte('bibliothecaire')
   }
 }
