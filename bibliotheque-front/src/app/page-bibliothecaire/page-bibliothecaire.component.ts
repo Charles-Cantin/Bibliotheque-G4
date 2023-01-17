@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-page-bibliothecaire',
@@ -7,4 +8,7 @@ import { Component } from '@angular/core';
 })
 export class PageBibliothecaireComponent {
 
+  constructor(private authService: AuthService) {
+    authService.kickSiMauvaisCompte('bibliothécaire')
+  }
 }

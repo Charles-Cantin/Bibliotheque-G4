@@ -36,4 +36,10 @@ export class AuthService {
       case 'inscrit': this.router.navigate(['lecteur']) ; break;
     }
   }
+
+  kickSiMauvaisCompte(typeAutorise: string): void {
+    if (this.getLoggedInAccount().type != typeAutorise) {
+      this.router.navigate([''])
+    }
+  }
 }
