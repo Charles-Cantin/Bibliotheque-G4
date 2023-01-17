@@ -65,6 +65,8 @@ export class EmpruntDTO {
 
 
 export class EmpruntDetail {
+    
+    id:               number;
     idInscrit:        number;
     nomPrenomInscrit: string;
     idLivre:          number;
@@ -73,7 +75,9 @@ export class EmpruntDetail {
     finEmprunt:       Date;
     rendu:            boolean;
 
-    constructor(idInscrit?:number, nomPrenomInscrit?: string , idLivre?: number, titreLivre?: string, debutEmprunt? :Date, finEmprunt?: Date,rendu?:boolean) {
+    constructor( id?: number, idInscrit?:number, nomPrenomInscrit?: string , idLivre?: number, titreLivre?: string, debutEmprunt? :Date, finEmprunt?: Date,rendu?:boolean) {
+        
+        this.id= id;
         this.idInscrit = idInscrit;
         this.nomPrenomInscrit = nomPrenomInscrit;
         this.idLivre = idLivre;

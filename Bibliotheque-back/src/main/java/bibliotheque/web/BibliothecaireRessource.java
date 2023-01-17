@@ -104,9 +104,15 @@ public class BibliothecaireRessource {
 		
 		List<EmpruntWithLivreAndInscritDTO> empruntsDTO = new ArrayList<EmpruntWithLivreAndInscritDTO>();
 		
+		
 		for (Emprunt e : emprunts) {
+			
+			
+							
 			EmpruntWithLivreAndInscritDTO eDTO = new EmpruntWithLivreAndInscritDTO();
-
+            
+			
+			eDTO.setId(e.getId());
 			eDTO.setIdInscrit(e.getEmprunteur().getId());
 			eDTO.setNomPrenomInscrit(e.getEmprunteur().getNom() + " " + e.getEmprunteur().getPrenom());
 
@@ -118,7 +124,9 @@ public class BibliothecaireRessource {
 			eDTO.setRendu(e.isRendu());
 			
 			empruntsDTO.add(eDTO);
+		 
 		}
+			
 		
 		return empruntsDTO;
 	}

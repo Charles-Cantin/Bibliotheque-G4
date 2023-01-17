@@ -5,6 +5,7 @@
         <table class="table table-striped">
             <thead>
                 <tr>
+                    <th>id</th>
                     <th>Numero Abonné</th>
                     <th>Nom Prenom</th>
                     <th>ID Livre</th>
@@ -19,15 +20,16 @@
 
             <tbody>
                 <tr *ngFor="let eDetail of list()">
-                    <td>{{eDetail.idInscrit}}</td>
-                    <td>{{eDetail.nomPrenomInscrit}}</td>
-                    <td>{{eDetail. idLivre}}</td>
+                    <td >{{eDetail.id}}</td>
+                    <td >{{eDetail.idInscrit}}</td>
+                    <td >{{eDetail.nomPrenomInscrit}}</td>
+                    <td >{{eDetail. idLivre}}</td>
                     <td>{{eDetail.titreLivre}}</td>
                     <td>{{eDetail.debutEmprunt}}</td>
                     <td>{{eDetail.finEmprunt}}</td>
                     <td>{{eDetail.rendu}}</td>
                   
-               <td><a class="btn btn-primary" *ngIf="eDetail.rendu==false" (click)="Rendrelivre(eDetail.idInscrit)"><i
+               <td><a class="btn btn-primary" *ngIf="eDetail.rendu==false" (click)="Rendrelivre(eDetail.id)"><i
                 class="bi bi-pencil-square"></i></a></td>
                 </tr>
             </tbody>

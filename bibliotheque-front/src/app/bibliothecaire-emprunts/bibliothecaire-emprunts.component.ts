@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { EmpruntDetail } from 'src/model';
+import { Emprunt, EmpruntDetail } from 'src/model';
 import { BibliothecaireEmpruntsHttpService } from './bibliothecaire-emprunts-http.service';
 
 @Component({
@@ -10,6 +10,9 @@ import { BibliothecaireEmpruntsHttpService } from './bibliothecaire-emprunts-htt
 export class BibliothecaireEmpruntsComponent {
 
   Empruntdetailrendu: EmpruntDetail = null;
+  
+  formEmpruntrendu : EmpruntDetail;
+ 
 
   constructor(private bibliothecair_emprunt:BibliothecaireEmpruntsHttpService) {
   }
@@ -20,8 +23,9 @@ export class BibliothecaireEmpruntsComponent {
 
 Rendrelivre(id : number) :void{
 
- 
-  
+this.bibliothecair_emprunt.rendrebyid(id);
+
+
 }
 
 }
