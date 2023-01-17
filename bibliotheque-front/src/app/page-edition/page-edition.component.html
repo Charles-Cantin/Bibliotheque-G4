@@ -31,24 +31,9 @@
                 </button>
 
                 <!-- Boite contenant les infos (affichées grâce à une table) -->
-                <div class="collapse py-2" id="collapseExample">
-                    <div class="container card card-body">
-                        <!-- Table d'infos, retrouvés en DB -->
-                        <div class="row">
-                        <dl class="col-sm">
-                            <dt>Genre</dt><dd>{{fetchedEdition.nomsGenres}}</dd>
-                            <dt>ISBN</dt><dd>{{fetchedEdition.ISBN}}</dd>
-                            <dt>Nombre de pages</dt><dd>{{fetchedEdition.pages}}</dd>
-                            <dt>Publication</dt><dd>{{fetchedEdition.anneeParution}}</dd>
-                        </dl>
-                        <dl class="col-sm">
-                            <dt>Format</dt><dd>{{fetchedEdition.format}}</dd>
-                            <dt>Éditeur </dt><dd>{{fetchedEdition.nomEditeur}}</dd>                            
-                            <dt>Langue</dt><dd>{{fetchedEdition.langue}}</dd>
-                        </dl>
-                        </div>
-                    </div>
-                </div>
+                <button class="btn btn-warning" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                    Détails de l'édition
+                </button>
             </div>
         </div>
     </div>

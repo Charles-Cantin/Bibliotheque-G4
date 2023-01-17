@@ -1,52 +1,65 @@
-<div class="card mt-3">
-    <div class="card-header bg-primary text-white display-6">Resultats de recherche</div>
-    <div class="card-body">
-        <input type="text" [(ngModel)]="searchText"><button (click)="load()">coucou</button>
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th>Titre</th>
-                    <th>Auteurs</th>
-                    <th>Date de Parution</th>
-                    <th>Genres</th>
-                    <th>Disponible</th>
-                    <th></th>
-                </tr>
-            </thead>
+<div class="mb-3"><app-search-bar [searchText]="searchText"></app-search-bar></div>
 
-            <tbody>
-                <ng-container *ngFor="let res of resultats, let indexOfelement=index;">
-                    <tr class="clickable" (click)="focus(indexOfelement)" [ngClass]="{'data-selected': focusedRow === indexOfelement}">
-                        <td>{{res.titre}}</td>
-                        <td>{{res.auteurs}}</td>
-                        <td>{{res.genres}}</td>
-                        <td>{{res.publication}}</td>
-                        <td>{{res.livreDispo? 'Oui' : 'Non'}}</td>
-                        <td><button class="btn btn-primary">Editions</button></td>
-                    </tr>
-                    <ng-container *ngIf="indexOfelement == focusedRow">
-                            <tr>
-                                <th>Ex</th>
-                                <th>Format</th>
-                                <th>Langue</th>
-                                <th>Editeur</th>
-                                <th>ISBN</th>
-                                <th>Pages</th>
-                                <th></th>
-                            </tr>
-    
-                            <tr *ngFor="let ed of res.editions">
-                            <td>{{ed.nombreEditionDispo}}</td>
-                            <td>{{ed.format}}</td>
-                            <td>{{ed.langue}}</td>
-                            <td>{{ed.nomEditeur}}</td>
-                            <td>{{ed.ISBN}}</td>
-                            <td>{{ed.pages}}</td>
-                            <td><button class="btn btn-primary" [routerLink]="['/livre']" [queryParams]="{id:ed.idEdition}">Voir</button></td>
-                            </tr>
-                    </ng-container>
-                </ng-container>
-            </tbody>
+<div class="container bg-success border-success-subtle border-top border-bottom" style="--bs-bg-opacity: .25;" *ngFor="let res of resultats, let indexOfelement=index;">
+    <div class="row align-items-center">
+        <!-- Column 1 : thumbnail -->
+        <div class="col-2 d-flex justify-content-center">
+            <img class="h-100 mt-3 mb-3"  style="max-height:175px" [src]="'assets/img/book-covers/' + res.editions[0].idEdition + '.jpg'" alt="">
+        </div>
 
-        </table>
+        <!-- Column 2 : infos -->
+        <div class="col border-start border-end border-warning-subtle">
+            <h5>{{res.titre}}</h5>
+            <h6>{{res.auteurs}}</h6>
+            <div class="container card card-body">
+                <!-- Table d'infos, retrouvés en DB -->
+                <div class="row">
+                <dl class="col-sm">
+                    <dt>Date de parution</dt><dd>{{res.publication}}</dd>
+                </dl>
+                <dl class="col-sm">
+                    <dt>Genre</dt><dd>{{res.genres}}</dd>
+                </dl>
+                <dl class="col-sm">
+                    <dt>Disponible ?</dt><dd>{{res.livreDispo? 'Oui' : 'Non'}}</dd>
+                </dl>
+                </div>
+            </div>
+        </div>
+
+        <!-- Column 3 : Actions -->
+        <div class="col-2">
+            <button class="btn btn-warning" type="button" data-bs-toggle="collapse" [attr.data-bs-target]="'#collapse'+res.idLivre" aria-expanded="false" [attr.aria-controls]="'collapse'+res.idLivre">
+                Voir les éditions
+            </button>
+        </div>
     </div>
+    <!-- Tableau éditions -->
+    <div class="collapse py-2" [attr.id]="'collapse'+res.idLivre">
+        <div class="container card card-body">
+            <!-- Table d'infos, retrouvés en DB -->
+            <table class="table">
+                <thead><tr>
+                    <th>Ex</th>
+                    <th>Format</th>
+                    <th>Langue</th>
+                    <th>Editeur</th>
+                    <th>ISBN</th>
+                    <th>Pages</th>
+                    <th>bouton</th>
+                </tr></thead>
+                <tbody>
+                    <tr *ngFor="let ed of res.editions">
+                        <td>{{ed.nombreEditionDispo}}</td>
+                        <td>{{ed.format}}</td>
+                        <td>{{ed.langue}}</td>
+                        <td>{{ed.nomEditeur}}</td>
+                        <td>{{ed.ISBN}}</td>
+                        <td>{{ed.pages}}</td>
+                        <td><button class="btn btn-primary" [routerLink]="['/livre']" [queryParams]="{id:ed.idEdition}">Voir</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

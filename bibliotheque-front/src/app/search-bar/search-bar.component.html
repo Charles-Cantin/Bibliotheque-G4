@@ -1,7 +1,7 @@
-<div class="homeSearchBar" (keyup.enter)="searchText? goToSearch() : false">
-    <input type="text" [(ngModel)]="searchText" size="50" placeholder="Chercher un titre"/>
+<div class="input-group" (keyup.enter)="searchText? goToSearch() : false">
+    <input class="form-control" type="text" size="100%" placeholder="Chercher un titre" [(ngModel)]="searchText"/>
 
-    <button (click)="searchText? goToSearch() : false">
+    <button class="btn btn-warning" (click)="searchText? goToSearch() : false">
         <i class="bi bi-search"></i>
     </button>
 </div>
