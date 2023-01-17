@@ -1,6 +1,4 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
-import { LivreService } from '../livre.service';
 
 @Component({
   selector: 'app-home',
@@ -10,13 +8,4 @@ import { LivreService } from '../livre.service';
 
 export class HomeComponent {
 
-  searchText: string = null;
-
-  constructor(private livreService: LivreService, private router: Router){
-
-  }
-
-  public goToSearch() {
-    this.router.navigate(['/recherche'], { queryParams :{'search': this.searchText}});
-   }
 }
