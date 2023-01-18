@@ -21,6 +21,7 @@ export class GestionComptesComponent {
 
   add():void {
     this.formGestionComptes = new Compte();
+    this.formGestionComptes.type = "";
   }
 
   edit(id: number): void {

@@ -1,5 +1,5 @@
 <div class="card  mt-3 mb-3 ms-3 me-3">
-    <div class="card-header bg-primary text-white display-6">Liste des Comptes</div>
+    <h1 class="card-header bg-dark text-white h3">Liste des comptes</h1>
     <div class="card-body">
         <table class="table table-striped">
             <thead>
@@ -64,8 +64,8 @@
 
             <div class="form-group mb-3">
                 <label for="type-select" class="form-label">Compte:</label>
-                <select class="form-control" id="type-select" [(ngModel)]="formGestionComptes.type">
-                    <option value="">--Choisir le type de compte--</option>
+                <select class="form-select" placeholder="--Choisir le type de compte--" id="type-select" [(ngModel)]="formGestionComptes.type">
+                    <option value="" selected>--Choisir le type de compte--</option>
                     <option value="bibliothecaire">Bibliothecaire</option>
                     <option value="admin">Administrateur</option>
                     <option value="inscrit">Inscrit</option>
