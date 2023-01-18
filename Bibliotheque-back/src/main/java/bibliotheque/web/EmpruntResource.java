@@ -143,7 +143,12 @@ public class EmpruntResource {
 
 		Emprunt empruntarendre = daoEmprunt.findById(id).get();
 
-		empruntarendre.setRendu(true);
+		if(empruntarendre.isRendu()) {
+			
+			empruntarendre.setRendu(false);  
+			}else {
+		
+		empruntarendre.setRendu(true);}
 
 		empruntarendre=daoEmprunt.save(empruntarendre);
 
