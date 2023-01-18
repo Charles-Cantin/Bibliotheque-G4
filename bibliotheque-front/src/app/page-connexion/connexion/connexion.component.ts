@@ -15,11 +15,15 @@ export class ConnexionComponent {
   constructor(private connexionService: ConnexionService, private authService: AuthService, private router: Router){}
 
   auth(): void {
-    
-    this.connexionService.findByLoginAndPassword(this.login, this.password).subscribe(resp => {
-      // TODO Si ça marche pas ?
-      this.authService.setLoggedInAccount(resp);
-      this.authService.redirectMonCompte(resp.type);
+    this.connexionService.findByLoginAndPassword(this.login, this.password).subscribe({
+      next: (resp) => { // Success
+        this.authService.setLoggedInAccount(resp);
+        this.authService.redirectMonCompte(resp.type);
+      },
+      error: (err) => { // Erreur
+        alert("Mauvais nom d'utilisateur ou mot de passe.")
+      }
     });
   }
+
 }

@@ -35,7 +35,7 @@
             <!-- Boutons Login -->
             <div ng-init="test()" class="text-end">
                 <button *ngIf="connectedAccount==null" [routerLink]="['connexion']" type="button"
-                    class="btn btn-warning">Se connecter</button>
+                    class="btn btn-warning">Inscription/Connexion</button>
                 <div class="btn-group" role="group" aria-label="Basic example">
                     <button *ngIf="connectedAccount!=null" [routerLink]="['/connexion']"
                         (click)="redirectMonCompte(connectedAccount.type)" type="button"

@@ -9,6 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonSubTypes.Type;
@@ -36,17 +37,18 @@ public abstract class Compte {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@JsonView(Views.ViewBase.class)
 	protected Integer id;
-
+	@NotNull
 	@Column(unique = true, nullable=false)
 	@JsonView(Views.ViewBase.class)
 	protected String login;
-
-	@JsonView(Views.ViewBase.class)
+	@NotNull
 	@Column(nullable=false)
+	@JsonView(Views.ViewBase.class)
 	protected String password;
-
+	@NotNull
 	@JsonView(ViewBase.class)
 	private String nom;
+	@NotNull
 	@JsonView(ViewBase.class)
 	private String prenom;
 	
