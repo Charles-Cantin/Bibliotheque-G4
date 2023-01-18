@@ -1,23 +1,23 @@
 package bibliotheque.dao;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
 
 import bibliotheque.model.Emprunt;
 
 public interface IDAOEmprunt extends JpaRepository<Emprunt, Integer>{
 	// find by emprunteur
 	
-	@Query("SELECT e from Emprunt e where e.emprunteur.id = :id")
-	public List<Emprunt> findAllByEmprunteur(@Param("id") Integer id_emprunteur);
+	@Query("SELECT e from Emprunt e where e.emprunteur.id = ?1")
+	public List<Emprunt> findAllByEmprunteur(Integer id_emprunteur);
 	
 	// find by exemplaire
 	
-//	@Query("SELECT e from Emprunt e where e.exemplaire.id = :id")
-//	public List<Emprunt> findAllByExemplaire(@Param("id") Integer idExemplaire);
+	@Query("select e from Emprunt e where e.exemplaire.id = ?1 and e.rendu = false")
+	public Optional<Emprunt> findCurrentByExemplaire(Integer idExemplaire);
 	
 	// trouver emprunts en cours
 	

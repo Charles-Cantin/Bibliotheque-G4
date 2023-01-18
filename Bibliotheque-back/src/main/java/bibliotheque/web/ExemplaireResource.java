@@ -22,8 +22,10 @@ import org.springframework.web.server.ResponseStatusException;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
+import bibliotheque.dao.IDAOEmprunt;
 import bibliotheque.dao.IDAOExemplaire;
 import bibliotheque.model.Editeur;
+import bibliotheque.model.Emprunt;
 import bibliotheque.model.Exemplaire;
 import bibliotheque.model.Views;
 import bibliotheque.web.dto.ExemplaireByEditionDTO;
@@ -35,6 +37,8 @@ public class ExemplaireResource {
 	
 	@Autowired
 	private IDAOExemplaire daoExemplaire;
+	@Autowired
+	private IDAOEmprunt daoEmprunt;
 
 	@GetMapping("")
 	@JsonView(Views.ViewExemplaire.class)
@@ -69,7 +73,14 @@ public class ExemplaireResource {
 			eDTO.setIdExemplaire(e.getId());
 			eDTO.setDisponible(e.isDisponible());
 			eDTO.setNomEditeur(editeur.getNom());
-			//eDTO.setDateProchaineDispo(null); // TODO
+			Optional<Emprunt> optEmprunt = daoEmprunt.findCurrentByExemplaire(e.getId());
+			
+			if(optEmprunt.isEmpty()) {
+				throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+			}
+
+			
+			eDTO.setDateProchaineDispo(optEmprunt.get().getFin());
 			
 			exemplairesByEditions.add(eDTO);
 		}

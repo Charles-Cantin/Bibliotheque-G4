@@ -29,15 +29,17 @@ export class Emprunt {
   dateDebut: string;
   duree: number;
   dateFin: string;
+  dateFinEffective: string;
   rendu: boolean;
   exemplaire: Exemplaire;
   emprunteur: Inscrit;
 
-  constructor(id?: number, dateDebut?: string, duree?: number, dateFin?: string, rendu?: boolean, exemplaire?: Exemplaire, emprunteur?: Inscrit) {
+  constructor(id?: number, dateDebut?: string, duree?: number, dateFin?: string, dateFinEffective?: string, rendu?: boolean, exemplaire?: Exemplaire, emprunteur?: Inscrit) {
     this.id = id;
     this.dateDebut = dateDebut;
     this.duree = duree;
     this.dateFin = dateFin;
+    this.dateFinEffective = dateFinEffective;
     this.rendu = rendu;
     this.exemplaire = exemplaire;
     this.emprunteur = emprunteur;

@@ -24,11 +24,8 @@ public class Emprunt {
 	@JsonView(Views.ViewBase.class)
 	private LocalDate debut;
 	@JsonView(Views.ViewBase.class)
-	private static int dureeJours = 21;
+	private int dureeJours;
 	@JsonView(Views.ViewBase.class)
-	/* Si début n'est pas défini, on ne peut pas appeler null.plusDays(dureeJours) !
-	 * À voir avec Éric ? Je pense qu'on ne fait pas d'arithmétique dans les entités en BDD
-	 * TODO à virer ? */
 	private LocalDate fin;
 	@JsonView(Views.ViewBase.class)
 	private LocalDate finEffective;
@@ -71,13 +68,6 @@ public class Emprunt {
 		this.debut = debut;
 	}
 
-	public static int getDureeJours() {
-		return dureeJours;
-	}
-
-	public static void setDureeJours(int dureeJours) {
-		Emprunt.dureeJours = dureeJours;
-	}
 
 	public LocalDate getFinEffective() {
 		return finEffective;
@@ -109,6 +99,14 @@ public class Emprunt {
 
 	public void setFin(LocalDate fin) {
 		this.fin = fin;
+	}
+
+	public int getDureeJours() {
+		return dureeJours;
+	}
+
+	public void setDureeJours(int dureeJours) {
+		this.dureeJours = dureeJours;
 	}
 	
 }

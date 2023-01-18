@@ -44,7 +44,7 @@ export class BibliothecaireEmpruntsHttpService {
   
   rendrebyid(id: number) {
     
-     this.http.get<EmpruntDetail>("http://localhost:9999/emprunts/rendre/"+id).subscribe(resp=>{this.load()});
+     this.http.patch<EmpruntDetail>("http://localhost:9999/emprunts/rendre/"+id, {}).subscribe(resp=>{this.load()});
     
   }
 

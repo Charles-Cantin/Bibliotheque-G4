@@ -82,6 +82,7 @@ public class EmpruntResource {
 			empruntLecteurDTO.setTitreLivre(emprunt.getExemplaire().getEdition().getLivre().getTitre());
 			empruntLecteurDTO.setDebut(emprunt.getDebut());
 			empruntLecteurDTO.setFin(emprunt.getFin());
+			empruntLecteurDTO.setFinEffective(emprunt.getFinEffective());
 			empruntLecteurDTO.setRendu(emprunt.isRendu());
 
 			empruntsDTO.add(empruntLecteurDTO);
@@ -92,18 +93,6 @@ public class EmpruntResource {
 	}
 	
 	
-/*	@PostMapping("")
-	@JsonView(Views.ViewEmpruntDetail.class)
-	public Emprunt create(@Valid @RequestBody Emprunt emprunt, BindingResult result) {
-		if (result.hasErrors()) {
-			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "L'emprunt n'a pu être créé");
-		}
-
-		emprunt = daoEmprunt.save(emprunt);
-
-		return emprunt;
-	}
-*/
 	@PostMapping("")
 	@JsonView(Views.ViewEmpruntDetail.class)
 	public Emprunt create(@Valid @RequestBody AjoutEmpruntDTO ajoutEmprunt, BindingResult result) {
@@ -116,7 +105,8 @@ public class EmpruntResource {
 		emprunt.setExemplaire(daoExemplaire.findById(ajoutEmprunt.getIdExemplaire()).get());
 		emprunt.setEmprunteur(daoInscrit.findById(ajoutEmprunt.getIdEmprunteur()).get());
 		emprunt.setDebut(ajoutEmprunt.getDebut());
-		emprunt.setFin(ajoutEmprunt.getDebut().plusDays(21));
+		emprunt.setFin(ajoutEmprunt.getFin());
+		emprunt.setDureeJours(ajoutEmprunt.getDuree());
 		emprunt.setRendu(false);
 		
 		emprunt = daoEmprunt.save(emprunt);
@@ -137,17 +127,21 @@ public class EmpruntResource {
 	}
 
 
-	@GetMapping("/rendre/{id}")
+	@PatchMapping("/rendre/{id}")
 	@JsonView(Views.ViewEmpruntDetail.class)
 	public Emprunt update(@PathVariable Integer id) {
+		
+		Optional<Emprunt> optEmprunt = daoEmprunt.findById(id);
 
-		Emprunt empruntarendre = daoEmprunt.findById(id).get();
+		if (optEmprunt.isEmpty()) {
+			throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+		}
+		
+		Emprunt empruntARendre = optEmprunt.get();
+		empruntARendre.setRendu(true);
+		empruntARendre = daoEmprunt.save(empruntARendre);
 
-		empruntarendre.setRendu(true);
-
-		empruntarendre=daoEmprunt.save(empruntarendre);
-
-		return empruntarendre;
+		return empruntARendre;
 	}
 
 
