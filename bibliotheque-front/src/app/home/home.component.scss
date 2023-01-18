@@ -8,7 +8,9 @@
 }
 
 .hero-accueil-image {
-    background-image: linear-gradient(to right, #f4efe7cc 30%, var(--bg-color) 100%), url("../../assets/img/accueil.png");
-    background-size: 50% ;
+    // Test/tune linear gradient :
+    //background-image: linear-gradient(to right, #ff0000 00%, #0000ff 100%), url("../../assets/img/accueil.png");
+    background-image: linear-gradient(to right, #f4efe7cc 00%, #f4efe7cc 100%), url("../../assets/img/accueil.png");
+    background-size: cover ;
     background-repeat: no-repeat;
 }

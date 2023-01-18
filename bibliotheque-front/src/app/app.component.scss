@@ -6,11 +6,6 @@ body {
 	font-family:"Libre Baskerville", serif !important;
 }
 
-.display-1, .display-2, .display-3, .display-4, .display-5, .display-6{
-	font-family:"Oswald", sans-serif;
-	font-weight:bold;
-}
-
 .blockquote {
 	/* Citation */
 	font-style: italic;
@@ -19,8 +14,4 @@ body {
 .blockquote-footer{
 	/* Légende des citation */
 	text-align:right;
-}
-
-app-navbar {
-	z-index: 10;
 }

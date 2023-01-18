@@ -17,9 +17,39 @@ export class InscriptionHttpService {
    }
 
   create(formCompte: Compte) {
-    this.http.post<Compte>(this.serviceUrl, formCompte).subscribe(resp => {
-      this.authService.setLoggedInAccount(resp);
-      this.authService.redirectMonCompte(resp.type);
-    })
+
+   if(formCompte.type==null){
+     alert("Merci de renseigner un type de compte de compte pour commencer");
+   }  
+   
+
+  if(formCompte.type=="bibliothecaire" || formCompte.type=="inscrit"){
+  
+  if(formCompte.prenom==null||formCompte.nom==null||formCompte.login==null||formCompte.password==null) {
+    alert("Merci de compléter les champs suivants: Nom,Prénom,Nom d'utilisateur,Mot de passe");
+  } 
+    else{
+      
+      this.http.post<Compte>(this.serviceUrl, formCompte).subscribe(resp => {
+        this.authService.setLoggedInAccount(resp)
+        this.authService.redirectMonCompte(resp.type)})
+      }
+
+      }
+      
+      if(formCompte.type=="admin"){
+  
+        if(formCompte.login==null||formCompte.password==null) {
+          alert("Merci de compléter les champs suivants: Nom d'utilisateur, Mot de passe");
+        } 
+          else{
+            
+            this.http.post<Compte>(this.serviceUrl, formCompte).subscribe(resp => {
+              this.authService.setLoggedInAccount(resp)
+              this.authService.redirectMonCompte(resp.type)})
+            }
+      
+            }
+
+    }
   }
-}
