@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PageAdminComponent } from './page-admin.component';
+import { PageAccesComponent } from './page-acces.component';
 
-describe('PageAdminComponent', () => {
-  let component: PageAdminComponent;
-  let fixture: ComponentFixture<PageAdminComponent>;
+describe('PageAccesComponent', () => {
+  let component: PageAccesComponent;
+  let fixture: ComponentFixture<PageAccesComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ PageAdminComponent ]
+      declarations: [ PageAccesComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(PageAdminComponent);
+    fixture = TestBed.createComponent(PageAccesComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
