@@ -11,6 +11,7 @@ import { PageExemplairesComponent } from './page-exemplaires/page-exemplaires.co
 import { PageAdminComponent } from './page-admin/page-admin.component';
 import { RechercheComponent } from './recherche/recherche.component';
 import { AjoutlivreComponent } from './page-bibliothecaire/ajoutlivre/ajoutlivre.component';
+import { PageAccesComponent } from './page-acces/page-acces.component';
 
 const routes: Routes = [
   {path: "", redirectTo: "home", pathMatch: 'full'},
@@ -24,6 +25,8 @@ const routes: Routes = [
   {path: "bibliothecaire", component: PageBibliothecaireComponent},
   {path: "lecteur", component: PageLecteurComponent},
   {path: "admin", component: PageAdminComponent},
+  // Acces
+  {path: "acces", component: PageAccesComponent},
   // CRUDs
   {path: "livre", component: PageEditionComponent},
   {path: "exemplaires", component: PageExemplairesComponent}];
