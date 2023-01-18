@@ -1,5 +1,5 @@
 <!-- Header -->
-<header class="p-3 text-bg-dark ">
+<header class="p-3 text-bg-dark vw-100">
     <div class="container">
         <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
             <!-- Logo -->
@@ -10,32 +10,42 @@
 
             <!-- Menu navigation -->
             <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-                <li class="nav-item"><a class="nav-link px-2 text-secondary" [routerLink]="['/home']"  routerLinkActive="text-light link-light">Home</a></li>
-                <li class="nav-item"><a class="nav-link px-2 text-secondary" [routerLink]="['/livre']" routerLinkActive="text-light link-light" [queryParams]="{id:1}">Voir un livre</a></li>
-                <li class="nav-item"><a class="nav-link px-2 text-secondary" [routerLink]="['/livre']" routerLinkActive="text-light link-light" [queryParams]="{id:2}">En voir un autre</a></li>
-                <li class="nav-item"><a class="nav-link px-2 text-secondary" [routerLink]="['/tpt']"   routerLinkActive="text-light link-light">FAQs</a></li>
-                <li class="nav-item"><a class="nav-link px-2 text-secondary" [routerLink]="['/tpt']"   routerLinkActive="text-light link-light">About</a></li>
+                <li class="nav-item"><a class="nav-link px-2 text-secondary" [routerLink]="['/home']"
+                        routerLinkActive="text-light link-light">Home</a></li>
+                <li class="nav-item"><a class="nav-link px-2 text-secondary" [routerLink]="['/livre']"
+                        routerLinkActive="text-light link-light" [queryParams]="{id:1}">Voir un livre</a></li>
+                <li class="nav-item"><a class="nav-link px-2 text-secondary" [routerLink]="['/livre']"
+                        routerLinkActive="text-light link-light" [queryParams]="{id:2}">En voir un autre</a></li>
+                <li class="nav-item"><a class="nav-link px-2 text-secondary" [routerLink]="['/tpt']"
+                        routerLinkActive="text-light link-light">FAQs</a></li>
+                <li class="nav-item"><a class="nav-link px-2 text-secondary" [routerLink]="['/tpt']"
+                        routerLinkActive="text-light link-light">About</a></li>
             </ul>
 
-            <!-- Barre recherche --> <!--
+            <!-- Barre recherche -->
+            <!--
             <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
                 <input type="search" class="form-control form-control-dark text-bg-dark" placeholder="Search..." aria-label="Search">
             </form>-->
-            <div class="col-12 col-lg-auto me-3" style="width: 25vw;" role="search">
-                <app-search-bar [maListeDeClasses]="['form-control', 'form-control-dark', 'text-bg-dark']"></app-search-bar>
+            <div class="col-12 col-lg-auto mb-lg-0 me-3 w-25" role="search">
+                <app-search-bar [maListeDeClasses]="['form-control', 'form-control-dark', 'text-bg-dark']">
+                </app-search-bar>
             </div>
-
 
             <!-- Boutons Login -->
             <div ng-init="test()" class="text-end">
-                <button *ngIf="connectedAccount==null" [routerLink]="['connexion']" type="button" class="btn btn-outline-light me-2">Login</button>
-                <button *ngIf="connectedAccount==null" [routerLink]="['inscription']" type="button" class="btn btn-warning">Sign-up</button>
-                
+                <button *ngIf="connectedAccount==null" [routerLink]="['connexion']" type="button"
+                    class="btn btn-warning">Se connecter</button>
                 <div class="btn-group" role="group" aria-label="Basic example">
-                    <button *ngIf="connectedAccount!=null" [routerLink]="['/connexion']" (click)="redirectMonCompte(connectedAccount.type)" type="button" class="btn btn-warning border">{{connectedAccount.nom}} {{connectedAccount.prenom}}</button>
-                    <button *ngIf="connectedAccount!=null" [routerLink]="['/connexion']" (click)="unAuth()"                                 type="button" class="btn btn-outline-light">Se déconnecter</button>
+                    <button *ngIf="connectedAccount!=null" [routerLink]="['/connexion']"
+                        (click)="redirectMonCompte(connectedAccount.type)" type="button"
+                        class="btn btn-warning border">{{connectedAccount.nom}} {{connectedAccount.prenom}}</button>
+                    <button *ngIf="connectedAccount!=null" [routerLink]="['/connexion']" (click)="unAuth()"
+                        type="button" class="btn btn-outline-light">Se déconnecter</button>
                 </div>
             </div>
+
+
         </div>
     </div>
 </header>

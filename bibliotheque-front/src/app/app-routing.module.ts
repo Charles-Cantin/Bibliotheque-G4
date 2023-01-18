@@ -19,7 +19,6 @@ const routes: Routes = [
   {path: "recherche", component: RechercheComponent},
   //Connexions
   {path: "connexion", component: PageConnexionComponent},
-  {path: "inscription", component: InscriptionComponent},
   //Comptes
   {path: "bibliothecaire", component: PageBibliothecaireComponent},
   {path: "lecteur", component: PageLecteurComponent},
