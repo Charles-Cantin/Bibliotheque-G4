@@ -10,6 +10,7 @@ import { SearchService } from './search.service';
 })
 
 export class RechercheComponent {
+  [x: string]: any;
   focusedRow: number;
   resultats: Array<ResultatDTO> = new Array<ResultatDTO>();
   searchText: string;
@@ -24,8 +25,11 @@ export class RechercheComponent {
 
   public load() {
     this.searchService.findByTitle(this.searchText).subscribe(resp => {
-      this.resultats = resp;
-    })
+    this.resultats = resp; 
+    
+  })
+    
+
   }
 
   public focus(clickedRowIndex: number) {

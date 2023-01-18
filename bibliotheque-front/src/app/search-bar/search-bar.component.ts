@@ -15,6 +15,15 @@ export class SearchBarComponent {
   constructor(private livreService: LivreService, private router: Router){}
 
   public goToSearch() {
-    this.router.navigate(['/recherche'], { queryParams :{'search': this.searchText}});
+
+      this.router.navigate(['/recherche'], { queryParams :{'search': this.searchText}});
    }
+
+  public ecriretitre() {
+
+  alert("Veuillez renseigner un titre")
 }
+
+
+  }
+

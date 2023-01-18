@@ -3,7 +3,9 @@
     <app-search-bar [searchText]="searchText"></app-search-bar>
   </div>
 
-  <div class="container px-4 card card-body table bg-light">
+<div  *ngIf="resultats.length===0"><h1>Aucun résultat trouvé :(</h1></div>
+
+  <div class="container px-4 card card-body table bg-light" *ngIf="resultats.length>0">
     <div class="container table-hover border-secondary border-bottom" style="--bs-bg-opacity: .25;"
       *ngFor="let res of resultats, let indexOfelement=index;">
       <div class="row align-items-center">

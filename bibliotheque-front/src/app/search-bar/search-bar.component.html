@@ -1,7 +1,7 @@
-<div class="input-group" (keyup.enter)="searchText? goToSearch() : false">
+<div class="input-group" (keyup.enter)="searchText? goToSearch() : ecriretitre()">
     <input [class]="maListeDeClasses" type="text" size="100%" placeholder="Chercher un titre" [(ngModel)]="searchText"/>
 
-    <button class="btn btn-warning" (click)="searchText? goToSearch() : false">
+    <button class="btn btn-warning" (click)="searchText? goToSearch() : ecriretitre()">
         <i class="bi bi-search"></i>
     </button>
 </div>
