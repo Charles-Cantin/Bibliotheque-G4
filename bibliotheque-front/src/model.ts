@@ -148,7 +148,7 @@ export class ExemplaireByEditionDTO {
   nomEditeur: string;
   dateProchaineDispo: string;
 
-  constructor(idExemplaire: number, disponible: Boolean, nomEditeur: string, dateProchaineDispo: string) {
+  constructor(idExemplaire?: number, disponible?: Boolean, nomEditeur?: string, dateProchaineDispo?: string) {
     this.idExemplaire = idExemplaire;
     this.disponible = disponible;
     this.nomEditeur = nomEditeur;

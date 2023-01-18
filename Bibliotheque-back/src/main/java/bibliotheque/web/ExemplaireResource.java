@@ -76,12 +76,11 @@ public class ExemplaireResource {
 			Optional<Emprunt> optEmprunt = daoEmprunt.findCurrentByExemplaire(e.getId());
 			
 			if(optEmprunt.isEmpty()) {
-				throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+				eDTO.setDateProchaineDispo(null);
 			}
-
-			
+			else {
 			eDTO.setDateProchaineDispo(optEmprunt.get().getFin());
-			
+			}
 			exemplairesByEditions.add(eDTO);
 		}
 		

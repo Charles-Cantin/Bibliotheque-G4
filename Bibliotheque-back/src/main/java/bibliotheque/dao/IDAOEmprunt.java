@@ -16,7 +16,7 @@ public interface IDAOEmprunt extends JpaRepository<Emprunt, Integer>{
 	
 	// find by exemplaire
 	
-	@Query("select e from Emprunt e where e.exemplaire.id = ?1 and e.rendu = false")
+	@Query("select em from Emprunt em where em.exemplaire.id = ?1 and em.rendu = false")
 	public Optional<Emprunt> findCurrentByExemplaire(Integer idExemplaire);
 	
 	// trouver emprunts en cours
