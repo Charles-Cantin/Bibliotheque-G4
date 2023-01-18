@@ -1,5 +1,5 @@
 <div class="input-group" (keyup.enter)="searchText? goToSearch() : false">
-    <input class="form-control" type="text" size="100%" placeholder="Chercher un titre" [(ngModel)]="searchText"/>
+    <input [class]="maListeDeClasses" type="text" size="100%" placeholder="Chercher un titre" [(ngModel)]="searchText"/>
 
     <button class="btn btn-warning" (click)="searchText? goToSearch() : false">
         <i class="bi bi-search"></i>

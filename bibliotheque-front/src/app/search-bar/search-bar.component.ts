@@ -10,6 +10,7 @@ import { LivreService } from '../livre.service';
 export class SearchBarComponent {
 
   @Input() searchText: string = null;
+  @Input() maListeDeClasses: string[] = ['form-control'];
 
   constructor(private livreService: LivreService, private router: Router){}
 
