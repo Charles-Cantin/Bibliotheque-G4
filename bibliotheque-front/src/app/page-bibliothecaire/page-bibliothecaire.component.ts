@@ -11,45 +11,8 @@ import { LivrehttpService } from './livrehttp.service';
 })
 export class PageBibliothecaireComponent {
 
-  formAuteur:Auteur=null;
-
-  formLivre = {titre:"",resume:"",publication:"",auteurs:-1};
-
-  constructor(private authService: AuthService,private auteurService: AuteurhttpService,private livreService: LivrehttpService) {
+  constructor(private authService: AuthService) {
     authService.kickSiMauvaisCompte('bibliothecaire')
-  
   }
-
-  add():void {
-    this.formAuteur = new Auteur();
-    
-  }
-
-listauteurs() : Array<Auteur>{
- return this.auteurService.findAll()
-}
-
-cancel_auteur(): void {
-  this.formAuteur = null;
-}
-
-save_auteur(): void {
-  
-  this.auteurService.create(this.formAuteur);
-  this.cancel_auteur();
-}
-
-cancel_livre(): void {
-  this.formLivre= {titre:null,resume:null,publication:null,auteurs:null};
-}
-
-save_livre():void{
-
-  this.livreService.sendlivreDTO(this.formLivre).subscribe();
-  alert("Livre ajouté !");
-  this.cancel_livre;
-  
-}
-
 
 }

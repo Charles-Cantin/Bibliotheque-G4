@@ -1,0 +1,79 @@
+<div class="container card h-100">
+    <fieldset class="card-body">
+        <h5 class="text-center">Ajouter un livre</h5>
+        <hr>
+
+        <div class="row mb-3">
+            <div class="col-6">
+                <label class="form-label" for="IdAbonneForm">Titre</label>
+                <input class="form-control" id="IdAbonneForm" type="text" placeholder=""
+                    [(ngModel)]="formLivre.titre" />
+            </div>
+            <div class="col-6">
+                <label class="form-label" for="PublicationForm">Date de publication</label>
+                <input class="form-control" id="PublicationForm" type="text" [(ngModel)]="formLivre.publication" />
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col-12">
+                <label class="form-label" for="resume">Synopsis</label>
+                <textarea class="form-control" id="resume" rows="3" [(ngModel)]="formLivre.resume"></textarea>
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col-12">
+                <label class="form-label" for="Auteurs">Auteurs</label>
+                <!-- TODO : Sélectionner plusieurs auteurs (ajouter ici un élément d'affichage avec un *ngFor) -->
+                <select class="form-select" id="Auteurs" [(ngModel)]="formLivre.auteurs">
+                    <option value="">Sélectionner un auteur</option>
+                    <option *ngFor="let aut of listauteurs()" [value]="aut.id">{{aut.id}} - {{aut.nom}} -
+                        {{aut.prenom}} </option>
+                </select>
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col-1">
+                <a class="btn btn-success btn-md" (click)="add()"><i class="bi bi-plus-square"></i></a>
+            </div>
+            <div class="col"></div> <!-- fill the blank -->
+            <div class="col-4">
+                <button type="button" class="btn btn-danger btn-md me-3" (click)="cancel_livre()">Reset</button>
+                <button type="button" class="btn btn-success btn-md" type="submit" value="Submit"
+                    (click)="save_livre()">Submit</button>
+            </div>
+        </div>
+
+        <div class="card card-body" *ngIf="formAuteur">
+            <h5 class="text-center">Ajouter un auteur</h5>
+            <hr>
+            <div class="row mb-3 flex-wrap">
+                <div class="col-6">
+                    <label class="form-label" for="AuteurNomForm">Nom</label>
+                    <input class="form-control" id="AuteurNomForm" [(ngModel)]="formAuteur.nom" />
+                </div>
+                <div class="col-6">
+                    <label class="form-label" for="AuteurPrenomForm">Prenom</label>
+                    <input class="form-control" id="AuteurPrenomForm" [(ngModel)]="formAuteur.prenom" />
+                </div>
+                <div class="col-12">
+                    <label class="form-label" for="AuteurDateForm">Date de naissance</label>
+                    <input class="form-control" id="AuteurDateForm" [(ngModel)]="formAuteur.naissance" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="btn-group btn-group-lg float-right">
+                        <button class="btn btn-success" (click)="save_auteur()"><i
+                                class="bi bi-check-square-fill"></i></button>
+                        <button class="btn btn-warning" (click)="cancel_auteur()"><i
+                                class="bi bi-backspace-fill"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </fieldset>
+</div>

@@ -7,7 +7,7 @@ import { AppConfigService } from '../../app-config.service';
 @Injectable({
   providedIn: 'root'
 })
-export class AuteurhttpService {
+export class AuteurHttpService {
 
   serviceUrl: string;
   auteurs: Array<Auteur> = new Array<Auteur>();
@@ -26,11 +26,11 @@ export class AuteurhttpService {
       this.load();
     });
   }
-  private load(): void {
-    this.http.get<Array<Auteur>>(this.serviceUrl).subscribe(response => {
-      this.auteurs = response;
+
+  load(): void {
+    this.http.get<Array<Auteur>>(this.serviceUrl).subscribe(resp => {
+      this.auteurs = resp;
     });
   }
-
 
 }

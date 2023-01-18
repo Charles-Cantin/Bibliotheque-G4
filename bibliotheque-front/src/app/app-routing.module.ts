@@ -10,7 +10,6 @@ import { PageConnexionComponent } from './page-connexion/page-connexion.componen
 import { PageExemplairesComponent } from './page-exemplaires/page-exemplaires.component';
 import { PageAdminComponent } from './page-admin/page-admin.component';
 import { RechercheComponent } from './recherche/recherche.component';
-import { AjoutlivreComponent } from './page-bibliothecaire/ajoutlivre/ajoutlivre.component';
 import { PageAccesComponent } from './page-acces/page-acces.component';
 
 const routes: Routes = [

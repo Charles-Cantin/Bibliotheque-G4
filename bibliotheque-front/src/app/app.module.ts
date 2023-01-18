@@ -16,7 +16,6 @@ import { PageAdminComponent } from './page-admin/page-admin.component';
 import { FormsModule } from '@angular/forms';
 import { HomeComponent } from './home/home.component';
 import { RechercheComponent } from './recherche/recherche.component';
-import { AjoutlivreComponent } from './page-bibliothecaire/ajoutlivre/ajoutlivre.component';
 import { SearchBarComponent } from './search-bar/search-bar.component';
 import { BibliothecaireEmpruntsComponent } from './page-bibliothecaire/bibliothecaire-emprunts/bibliothecaire-emprunts.component';
 import { AjoutEmpruntComponent } from './page-bibliothecaire/ajout-emprunt/ajout-emprunt.component';
@@ -24,6 +23,7 @@ import { CarteEvenementComponent } from './home/carte-evenement/carte-evenement.
 import { CarteCollectionComponent } from './home/carte-collection/carte-collection.component';
 import { GestionComptesComponent } from './page-admin/gestion-comptes/gestion-comptes.component';
 import { PageAccesComponent } from './page-acces/page-acces.component';
+import { AjoutLivreComponent } from './page-bibliothecaire/ajout-livre/ajout-livre.component';
 
 @NgModule({
   declarations: [
@@ -40,12 +40,12 @@ import { PageAccesComponent } from './page-acces/page-acces.component';
     RechercheComponent,
     PageAdminComponent,
     PageExemplairesComponent,
-    AjoutlivreComponent,
+    AjoutLivreComponent,
     BibliothecaireEmpruntsComponent,
     SearchBarComponent,
     AjoutEmpruntComponent,
     CarteEvenementComponent,
-    CarteCollectionComponent
+    CarteCollectionComponent,
     AjoutEmpruntComponent,
     GestionComptesComponent,
     PageAccesComponent

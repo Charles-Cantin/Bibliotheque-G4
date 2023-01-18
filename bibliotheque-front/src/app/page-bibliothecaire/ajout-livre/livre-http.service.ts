@@ -8,28 +8,22 @@ import { Livre } from 'src/model';
 @Injectable({
   providedIn: 'root'
 })
-export class LivrehttpService {
-  
-  
+export class LivreHttpService {
+
   serviceUrl: string;
 
   constructor(private http: HttpClient, private appConfig: AppConfigService) {
     this.serviceUrl = appConfig.backEndUrl + "livres/";
-   
   }
 
-
-   create(livre: Livre): void {
+  create(livre: Livre): void {
     this.http.post<Livre>(this.serviceUrl, livre).subscribe(resp => {
-      console.log(resp)
-    //tODO REDIRECTION
+      //tODO REDIRECTION
     });
   }
 
-  sendlivreDTO(LivreDTO: {}):Observable<Livre> {
-       return this.http.post<Livre>(this.serviceUrl, LivreDTO);
-     }
-
-
+  sendlivreDTO(LivreDTO: {}): Observable<Livre> {
+    return this.http.post<Livre>(this.serviceUrl, LivreDTO);
+  }
 
 }

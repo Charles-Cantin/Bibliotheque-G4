@@ -1,199 +1,28 @@
-<div class="container">
-    <div class="mt-3 mb-3">
-        <button type="button" class="btn btn-dark btn-md" type="submit" value="">Rechercher un livre</button>
-    </div>
-
-    <div class="container">
-        <div class="row">
-
-            <!-- Vérifier les emprunts d'un abonné -->
-            <section class="col-3">
-                <div class="container card h-100">
-                    <fieldset class="card-body">
-                        <h5 class="text-center">Emprunt abonné</h5>
-
-                        <hr>
-
-                        <div class="row mb-3">
-                            <div>
-                                <p class="row mb-1">ID abonné</p>
-                            </div>
-                            <div class="row ">
-                                <input id="IdAbonneForm" placeholder="" />
-                            </div>
-                        </div>
-
-                        <div class="row mb-3">
-                            <div>
-                                <p class="row mb-1">ID exemplaire</p>
-                            </div>
-                            <div class="row">
-                                <input id="IdAbonneForm" placeholder="" />
-                            </div>
-                        </div>
-
-                        <div class="row mb-3 ">
-                            <div>
-                                <p class="row mb-1">ID réservation</p>
-                            </div>
-                            <div class="row">
-                                <input id="IdAbonneForm" placeholder="" />
-                            </div>
-                        </div>
-
-                        <div class="row mb-1">
-                            <div class=" col-9 position-absolute bottom-0 end-0">
-                                <button type="button" class="btn btn-danger btn-md me-2 mb-3" type="submit"
-                                    value="Submit">Reset</button>
-                                <button type="button" class="btn btn-success btn-md mb-3" type="submit"
-                                    value="Submit">Submit</button>
-                            </div>
-                        </div>
-
-                    </fieldset>
-                </div>
-            </section>
-
-
-            <!-- Ajouter un emprunt -->
-            <section class="col-3">
-                <app-ajout-emprunt></app-ajout-emprunt>
-                <!--       <div class="container card h-100">
-                <fieldset class="card-body">
-                <h5 class="text-center">Ajouter emprunt</h5>
-
-                <hr>
-
-                    <div class="row mb-3">
-                        <div>
-                            <p class="row align-items-center mb-1">ID abonné</p>
-                        </div>
-                        <div class="row align-items-center">
-                            <input id="IdAbonneForm" placeholder="" />
-                        </div>
-                    </div>
-
-                    <div class="row mb-3">
-                        <div>
-                            <p class="row align-items-center mb-1">ID exemplaire</p>
-                        </div>
-                        <div class="row">
-                            <input id="IdAbonneForm" placeholder="" />
-                        </div>
-                    </div>
-
-
-                    <div class="row mb-1">  
-                        <div class=" col-9 position-absolute bottom-0 end-0">
-                            <button type="button" class="btn btn-danger btn-md me-2 mb-3" type="submit" value="Submit">Reset</button>
-                            <button type="button" class="btn btn-success btn-md mb-3" type="submit" value="Submit">Submit</button>
-                        </div>  
-                    </div> 
-                        
-                </fieldset>
-            </div>
-    -->
-            </section>
-
-
-            <!-- Ajouter un livre -->
-            <section class="col-6">
-                <div class="container card h-100">
-                    <fieldset class="card-body">
-                        <h5 class="text-center">Ajouter un livre</h5>
-                        <hr>
-
-                        <div class="row mb-3">
-                            <div class="col-6">
-                                <p class="row align-items-center mb-1">Titre</p>
-                                <input class="row align-items-center" id="IdAbonneForm" placeholder=""
-                                    [(ngModel)]="formLivre.titre" />
-                            </div>
-                            <div class="col-6">
-                                <p class="row align-items-center mb-1">Resumer</p>
-                                <input class="row align-items-center" id="EditionForm" placeholder=""
-                                    [(ngModel)]="formLivre.resume" />
-                            </div>
-
-                        </div>
-
-                        <div class="row mb-3">
-                            <div class="col-6">
-                                <p class="row align-items-center mb-1">Date de parution</p>
-                                <input class="row align-items-center" id="AuteurForm" placeholder=""
-                                    [(ngModel)]="formLivre.publication" />
-                            </div>
-                            <div class="row mb-3">
-                                <label for="Auteurs">Auteurs</label>
-                                <select class="form-control" [(ngModel)]="formLivre.auteurs">
-                                    <option value="">Sélectionner un auteur</option>
-                                    <option *ngFor="let aut of listauteurs()" [value]="aut.id">{{aut.id}} - {{aut.nom}} -
-                                        {{aut.prenom}} </option>
-                                </select>
-
-                                <div class="card-footer">
-                                    <a class="btn btn-success btn-lg" (click)="add()"><i class="bi bi-plus-square"></i></a>
-                                </div>
-
-                            </div>
-
-                            <div class="row mb-3" *ngIf="formAuteur">
-                                <div class="col-6">
-                                    <p class="row align-items-center mb-1">Nom</p>
-                                    <input class="row align-items-center" id="GenreForm" placeholder=""
-                                        [(ngModel)]="formAuteur.nom" />
-                                </div>
-                                <div class="col-6">
-                                    <p class="row align-items-center mb-1">Prenom</p>
-                                    <input class="row align-items-center" id="ParutionForm" placeholder=""
-                                        [(ngModel)]="formAuteur.prenom" />
-                                </div>
-                                <div class="col-5">
-                                    <p class="row align-items-center mb-1">Date de naissance</p>
-                                    <input class="row align-items-center" id="ClassificationForm" placeholder=""
-                                        [(ngModel)]="formAuteur.naissance" />
-                                </div>
-
-                                <div class="card-footer">
-                                    <div class="btn-group btn-group-lg float-right">
-                                        <a class="btn btn-success" (click)="save_auteur()"><i
-                                                class="bi bi-check-square-fill"></i></a>
-                                        <a class="btn btn-warning" (click)="cancel_auteur()"><i
-                                                class="bi bi-backspace-fill"></i></a>
-                                    </div>
-                                </div>
-
-
-                            </div>
-
-
-                        </div>
-
-
-                        <div class="row mb-1">
-
-                            <div class="col-5 position-absolute bottom-0 end-0">
-                                <button type="button" class="btn btn-danger btn-md me-2 mb-3"
-                                    (click)="cancel_livre()">Reset</button>
-                                <button type="button" class="btn btn-success btn-md mb-3" type="submit" value="Submit"
-                                    (click)="save_livre()">Submit</button>
-                            </div>
-
-
-                        </div>
-
-                    </fieldset>
-                </div>
-            </section>
+<div class="container my-3">
+    <div class="row mb-3">
+        <div class="col-12 text-center">
+            <button class="btn btn-dark" data-bs-toggle="collapse" href="#div-app-ajout-emprunt" role="button" aria-expanded="false" aria-controls="div-app-ajout-emprunt">Ajouter un emprunt</button>
+            <span class="me-3"></span>
+            <button class="btn btn-dark" data-bs-toggle="collapse" href="#div-app-ajout-livre"   role="button" aria-expanded="false" aria-controls="div-app-ajout-livre"  >Ajouter un livre</button>
         </div>
     </div>
 
-    <hr>
+    <div class="row flex-wrap">
+        <!-- Ajouter un emprunt -->
+        <div class="col-12 collapse mb-3" id="div-app-ajout-emprunt">
+            <app-ajout-emprunt></app-ajout-emprunt>
+        </div>
 
-    <!--<div><app-ajoutlivre></app-ajoutlivre></div>-->
-    <hr>
-    <div><app-bibliothecaire-emprunts></app-bibliothecaire-emprunts></div>
-    <hr>
-    <!--<div><app-ajout-emprunt></app-ajout-emprunt></div>-->
+        <!-- Ajouter un livre -->
+        <div class="col-12 collapse mb-3" id="div-app-ajout-livre">
+            <div>
+                <app-ajout-livre></app-ajout-livre>
+            </div>
+        </div>
+    </div>
 
+    <hr class="mt-0">
+    <div>
+        <app-bibliothecaire-emprunts></app-bibliothecaire-emprunts>
+    </div>
 </div>
