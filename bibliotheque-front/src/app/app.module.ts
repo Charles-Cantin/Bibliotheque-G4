@@ -22,6 +22,8 @@ import { BibliothecaireEmpruntsComponent } from './page-bibliothecaire/bibliothe
 import { AjoutEmpruntComponent } from './page-bibliothecaire/ajout-emprunt/ajout-emprunt.component';
 import { CarteEvenementComponent } from './home/carte-evenement/carte-evenement.component';
 import { CarteCollectionComponent } from './home/carte-collection/carte-collection.component';
+import { GestionComptesComponent } from './page-admin/gestion-comptes/gestion-comptes.component';
+import { PageAccesComponent } from './page-acces/page-acces.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +46,9 @@ import { CarteCollectionComponent } from './home/carte-collection/carte-collecti
     AjoutEmpruntComponent,
     CarteEvenementComponent,
     CarteCollectionComponent
+    AjoutEmpruntComponent,
+    GestionComptesComponent,
+    PageAccesComponent
   ],
   imports: [
     BrowserModule,
