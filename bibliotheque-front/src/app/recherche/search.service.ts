@@ -22,5 +22,3 @@ export class SearchService {
     return this.http.post<Array<ResultatDTO>>(this.serviceUrl + "searchV1", searchText);
    }
 }
-
-

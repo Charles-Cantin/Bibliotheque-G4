@@ -65,7 +65,6 @@ export class EmpruntDTO {
   }
 }
 
-
 export class EmpruntDetail {
     
     id:               number;
@@ -91,7 +90,6 @@ export class EmpruntDetail {
 
 }
 
-
 export class Exemplaire {
 
   id: number;
@@ -111,6 +109,7 @@ export class EditionDTO {
 
   // from Edition
   idEdition: number;
+  urlCover: string;
   ISBN: string;
   pages: number;
   format: string;
@@ -126,8 +125,9 @@ export class EditionDTO {
   nomEditeur: string;
   nomsGenres: string;
 
-  constructor(idEdition?: number, titre?: string, resume?: string, ISBN?: string, pages?: number, anneeParution?: number, format?: string, langue?: string, nomsAuteurs?: string, nomEditeur?: string, nomsGenres?: string) {
+  constructor(idEdition?: number, urlCover?:string, titre?: string, resume?: string, ISBN?: string, pages?: number, anneeParution?: number, format?: string, langue?: string, nomsAuteurs?: string, nomEditeur?: string, nomsGenres?: string) {
     this.idEdition = idEdition;
+    this.urlCover = urlCover;
     this.titre = titre;
     this.resume = resume;
     this.ISBN = ISBN;
@@ -161,13 +161,12 @@ export class Livre{
   titre: string;
   resume: string;
   publication: string;
-  auteurs: string; // transformer en array<auteurDTO> ?? at least nom auteur + id (possibly lien vers page auteur plus tard)
-  editions: Array<number>; //liste des ID d'editions
+  auteurs: Object[];
+  editions: Object[];
   nomGenres: string;
   disponibilite: number;
 
-
-  constructor(id?: number, titre?: string, resume?: string, publication?: string, auteurs?: string, editions?: Array<number>, nomGenres?: string, disponibilite?: number) {
+  constructor(id?: number, titre?: string, resume?: string, publication?: string, auteurs?: Object[], editions?: Object[], nomGenres?: string, disponibilite?: number) {
     this.id = id;
     this.titre = titre;
     this.resume = resume;
@@ -185,13 +184,14 @@ export class Auteur {
   nom:       string;
   prenom:    string;
   naissance: Date;
+  livres: Object[];
 
-  constructor(id?:number, nom?: string,prenom?:string,naissance?:Date ) {
+  constructor(id?: number, nom?: string, prenom?: string, naissance?: Date, livres?: Object[] ) {
       this.id = id;
       this.nom = nom;
-      this.prenom=prenom;
-      this.naissance=naissance;
-  
+      this.prenom = prenom;
+      this.naissance = naissance;
+      this.livres = livres;
   }
 }
 
@@ -200,25 +200,26 @@ export class ResultatDTO {
   titre: string;
   auteurs: string;
   genres: string;
-  livreDispo: boolean;
+  nombreLivresDispo: number;
   publication: string;
   editions: Array<ResultatEddy>; //liste des ID d'editions
 
 
-  constructor(idLivre?: number, titre?: string, auteurs?: string, genres?: string, livreDispo?:boolean, publication?: string, editions?: Array<ResultatEddy>) {
+  constructor(idLivre?: number, titre?: string, auteurs?: string, genres?: string, nombreLivresDispo?: number, publication?: string, editions?: Array<ResultatEddy>) {
     this.idLivre = idLivre;
     this.titre = titre;
     this.publication = publication;
     this.auteurs = auteurs;
     this.genres = genres;
     this.editions = editions;
-    this.livreDispo = livreDispo;
+    this.nombreLivresDispo = nombreLivresDispo;
   }
 
 }
 
 export class ResultatEddy{
   idEdition: number;
+  urlCover: string;
   ISBN: string;
   pages: number;
   format: string;
@@ -226,9 +227,10 @@ export class ResultatEddy{
   nomEditeur: string;
   nombreEditionDispo: number;
 
-  constructor(editionDispo?: number, idEdition?: number, ISBN?: string, pages?: number, format?: string, langue?: string, nomEditeur?: string) {
+  constructor(editionDispo?: number, urlCover?:string, idEdition?: number, ISBN?: string, pages?: number, format?: string, langue?: string, nomEditeur?: string) {
     this.nombreEditionDispo = editionDispo;
     this.idEdition = idEdition;
+    this.urlCover = urlCover;
     this.ISBN = ISBN;
     this.pages = pages;
     this.format = format;

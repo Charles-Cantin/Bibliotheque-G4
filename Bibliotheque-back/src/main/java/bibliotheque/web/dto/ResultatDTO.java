@@ -16,7 +16,7 @@ public class ResultatDTO {
 
 	@JsonView(Views.ViewBase.class)
 	private String titre;
-
+	
 	@JsonView(Views.ViewResultatsDTO.class)
 	private String auteurs;
 
@@ -24,7 +24,7 @@ public class ResultatDTO {
 	private String genres;
 
 	@JsonView(Views.ViewBase.class)
-	private Boolean livreDispo;
+	private Integer nombreLivresDispo;
 
 	@JsonView(Views.ViewBase.class)
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
@@ -36,27 +36,22 @@ public class ResultatDTO {
 	public class Eddy {
 		@JsonView(Views.ViewBase.class)
 		private Integer idEdition;
-
 		@JsonView(Views.ViewBase.class)
 		private String ISBN;
-
 		@JsonView(Views.ViewBase.class)
 		private Integer pages;
-
 		@JsonView(Views.ViewBase.class)
 		private String format;
-
 		@JsonView(Views.ViewBase.class)
 		private String langue;
-
 		@JsonView(Views.ViewBase.class)
 		private String nomEditeur;
-
 		@JsonView(Views.ViewBase.class)
 		private Integer nombreEditionDispo;
+		@JsonView(Views.ViewBase.class)
+		private String urlCover;
 
-		public Eddy() {
-		}
+		public Eddy() {}
 
 		public Integer getIdEdition() {
 			return idEdition;
@@ -113,10 +108,17 @@ public class ResultatDTO {
 		public void setNombreEditionDispo(Integer nombreEditionDispo) {
 			this.nombreEditionDispo = nombreEditionDispo;
 		}
+
+		public String getUrlCover() {
+			return urlCover;
+		}
+
+		public void setUrlCover(String urlCover) {
+			this.urlCover = urlCover;
+		}
 	}
 
-	public ResultatDTO() {
-	}
+	public ResultatDTO() {}
 
 	public Integer getIdLivre() {
 		return idLivre;
@@ -133,7 +135,7 @@ public class ResultatDTO {
 	public void setTitre(String titre) {
 		this.titre = titre;
 	}
-
+	
 	public String getAuteurs() {
 		return auteurs;
 	}
@@ -150,12 +152,12 @@ public class ResultatDTO {
 		this.genres = genres;
 	}
 
-	public Boolean getLivreDispo() {
-		return livreDispo;
+	public Integer getNombreLivresDispo() {
+		return nombreLivresDispo;
 	}
 
-	public void setLivreDispo(Boolean livreDispo) {
-		this.livreDispo = livreDispo;
+	public void setNombreLivresDispo(Integer nombreLivresDispo) {
+		this.nombreLivresDispo = nombreLivresDispo;
 	}
 
 	public LocalDate getPublication() {

@@ -99,6 +99,7 @@ class BibliothequeBackApplicationTests {
 		ed1.setPages(1200);
 		ed1.setLivre(dune);
 		ed1.setEditeur(pocket);
+		ed1.setUrlCover("https://m.media-amazon.com/images/I/41+rMi0j-UL._SY344_BO1,204,203,200_.jpg");
 		ed1 = daoEdition.save(ed1);
 		
 		Edition ed2 = new Edition();

@@ -37,10 +37,10 @@ public class Views {
 	public static class ViewGenreDetail extends ViewGenreWithLivres {}
 	
 	// LIVRES //
-	
-	public static class ViewLivreWithAuteur extends ViewBase {}
+
+	public static class ViewLivre extends ViewBase {}
+	public static class ViewLivreWithAuteur extends ViewLivre {}
 	public static class ViewLivreWithAuteurAndGenre extends ViewLivreWithAuteur {}
-	public static class ViewLivre extends ViewLivreWithAuteurAndGenre {}
 	public static class ViewLivreWithAll extends ViewLivreWithAuteurAndGenre {}
 	public static class ViewLivreDetail extends ViewLivreWithAll {}
 	
