@@ -33,7 +33,7 @@ export class AuthService {
     switch (type) {
       case 'admin': this.router.navigate(['admin']) ; break;
       case 'bibliothecaire': this.router.navigate(['bibliothecaire']) ; break;
-      case 'inscrit': this.router.navigate(['lecteur']) ; break;
+      case 'lecteur': this.router.navigate(['lecteur']) ; break;
     }
   }
 

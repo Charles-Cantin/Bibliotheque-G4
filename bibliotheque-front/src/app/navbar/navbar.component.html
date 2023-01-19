@@ -39,7 +39,7 @@
                 <div class="btn-group" role="group" aria-label="Basic example">
                     <button *ngIf="connectedAccount!=null" [routerLink]="['/connexion']"
                         (click)="redirectMonCompte(connectedAccount.type)" type="button"
-                        class="btn btn-warning border">{{connectedAccount.nom}} {{connectedAccount.prenom}}</button>
+                        class="btn btn-warning border">{{this.nomPrenom}}</button>
                     <button *ngIf="connectedAccount!=null" [routerLink]="['/connexion']" (click)="unAuth()"
                         type="button" class="btn btn-outline-light">Se déconnecter</button>
                 </div>

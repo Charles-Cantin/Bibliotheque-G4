@@ -29,9 +29,9 @@
                     <td>{{eDetail.nomPrenomInscrit}}</td>
                     <td>{{eDetail. idLivre}}</td>
                     <td>{{eDetail.titreLivre}}</td>
-                    <td>{{eDetail.debutEmprunt}}</td>
-                    <td>{{eDetail.finEmprunt}}</td>
-                    <td>{{eDetail.rendu}}</td>
+                    <td>{{eDetail.debutEmprunt | date:'dd/MM/yyyy'}}</td>
+                    <td>{{eDetail.finEmprunt | date:'dd/MM/yyyy'}}</td>
+                    <td>{{eDetail.dateRendu==null?'Non':'Oui'}}</td>
 
                     <td><a class="btn btn-secondary"  (click)="Rendrelivre(eDetail.id)"><i
                                 class="bi bi-pencil-square"></i></a></td>

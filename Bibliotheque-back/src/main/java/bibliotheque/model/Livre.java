@@ -62,7 +62,7 @@ public class Livre {
 			name="join_livre_auteur",
 			joinColumns = @JoinColumn(name = "id_livre"),
 			inverseJoinColumns = @JoinColumn(name = "id_auteur"))
-	@JsonView(Views.ViewLivre.class)
+	@JsonView(Views.ViewLivreDetail.class)
 	private List<Auteur> auteurs = new ArrayList<Auteur>();
 	
 	@ManyToMany

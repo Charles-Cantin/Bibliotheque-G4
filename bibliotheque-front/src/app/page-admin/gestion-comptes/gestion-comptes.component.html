@@ -23,9 +23,9 @@
                     <td>{{compte.type}}</td>
                     <td>{{compte.nom}}</td>
                     <td>{{compte.prenom}}</td>
-                    <td>{{compte.naissance}}</td>
+                    <td>{{compte.naissance| date:'dd-MM-yyyy'}}</td>
                     <td>{{compte.blocked? 'Oui':'Non' }}</td>
-                    <td>{{compte.finAbonnement}}</td>
+                    <td>{{compte.finAbonnement| date:'dd-MM-yyyy'}}</td>
                     <td>
                         <div class="btn-group btn-group-sm">
                             <a class="btn btn-primary" (click)="edit(compte.id)"><i

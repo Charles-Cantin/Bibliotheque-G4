@@ -15,7 +15,7 @@ public interface IDAOExemplaire extends JpaRepository<Exemplaire, Integer>{
     List<Exemplaire> findByEdition(@Param("id") Integer idLivre);
 	
 	/* Y a-t-il un exemplaire disponible pour un livre donné ? */
-	@Query("select max(1-ex.emprunted) from Exemplaire ex join ex.edition.livre l where l.id = ?1")
+	@Query("select count(ex) from Exemplaire ex join ex.edition.livre l where l.id = ?1 and ex.emprunted = false")
     Boolean livreDisponible(Integer idLivre); //MUST REMOVE BY V1 
 	
 	@Query("SELECT ex FROM Exemplaire ex WHERE ex.edition.id = ?1")

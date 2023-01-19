@@ -33,9 +33,7 @@
     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-3">
 
       <!-- Carte TODO Customiser !-->
-      <div class="col" *ngFor="let i of [].constructor(4)">
-        <app-carte-collection></app-carte-collection>
-      </div>
+      <app-carte-collection lien="/recherche" [lienQueryParams]="{search: 'John Milton'}" urlImg="https://upload.wikimedia.org/wikipedia/commons/9/9f/John_Milton.jpg" lienQueryParams="{id:2}"></app-carte-collection>
 
     </div>
   </div>

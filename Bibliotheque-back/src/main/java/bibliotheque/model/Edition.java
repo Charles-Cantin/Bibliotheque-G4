@@ -30,6 +30,8 @@ public class Edition{
 	private String langue;
 	@JsonView(Views.ViewBase.class)
 	private Integer pages;
+	@JsonView(Views.ViewBase.class)
+	private String urlCover;
 	
 	@ManyToOne
 	@JoinColumn(name="id_editeur")
@@ -110,6 +112,14 @@ public class Edition{
 
 	public void setExemplaires(List<Exemplaire> exemplaires) {
 		this.exemplaires = exemplaires;
+	}
+
+	public String getUrlCover() {
+		return urlCover;
+	}
+
+	public void setUrlCover(String urlCover) {
+		this.urlCover = urlCover;
 	}
 
 	@Override

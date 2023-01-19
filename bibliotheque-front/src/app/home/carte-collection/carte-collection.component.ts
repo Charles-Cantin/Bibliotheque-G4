@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-carte-collection',
@@ -7,4 +7,8 @@ import { Component } from '@angular/core';
 })
 export class CarteCollectionComponent {
 
+  @Input() urlImg: string;
+  @Input() titre: string;
+  @Input() lien: string;
+  @Input() lienQueryParams: Object;
 }
