@@ -1,0 +1,43 @@
+<div class="input-group flex-nowrap">
+    <span class="input-group-text" id="addon-wrapping"><i class="bi bi-search"></i></span>
+    <input class="form-control" type="text" [(ngModel)]="recherche" placeholder="Nom/Prénom de l'emprunteur, ou livre emprunté" aria-label="Username" aria-describedby="addon-wrapping">
+</div>
+
+<div class="card mt-3">
+    <h1 class="card-header bg-dark text-white h3">Details des emprunts</h1>
+    <div class="card-body">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>id</th>
+                    <th>Numero Abonné</th>
+                    <th>Nom Prenom</th>
+                    <th>ID Livre</th>
+                    <th>nom livre</th>
+                    <th>debut</th>
+                    <th>fin</th>
+                    <th>rendu</th>
+                    <th>rendre un livre</th>
+                    <th></th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr *ngFor="let eDetail of list()">
+                    <td>{{eDetail.id}}</td>
+                    <td>{{eDetail.idInscrit}}</td>
+                    <td>{{eDetail.nomPrenomInscrit}}</td>
+                    <td>{{eDetail. idLivre}}</td>
+                    <td>{{eDetail.titreLivre}}</td>
+                    <td>{{eDetail.debutEmprunt | date:'dd/MM/yyyy'}}</td>
+                    <td>{{eDetail.finEmprunt | date:'dd/MM/yyyy'}}</td>
+                    <td>{{eDetail.dateRendu==null?'Non':(eDetail.dateRendu)|date:'dd/MM/yyyy'}}</td>
+
+                    <td><a class="btn btn-secondary"  (click)="Rendrelivre(eDetail.id)"><i
+                                class="bi bi-pencil-square"></i></a></td>
+                </tr>
+            </tbody>
+
+        </table>
+    </div>
+</div>

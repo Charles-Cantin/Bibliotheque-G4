@@ -1,0 +1,29 @@
+/* You can add global styles to this file, and also import other style files */
+
+/* Polices d'écritures */
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Signika+Negative:wght@300;400;700&display=swap');
+
+/* Variables globales */
+:root {
+	--bg-color: #F4EFE7;
+}
+
+body {
+	background-color: var(--bg-color) !important;
+	font-family:"Libre Baskerville", serif !important;
+}
+
+.text-sans {
+	font-family:"Signika Negative", sans-serif;
+}
+
+.blockquote {
+	/* Citation */
+	font-style: italic;
+}
+
+.blockquote-footer{
+	/* Légende des citation */
+	text-align:right;
+}

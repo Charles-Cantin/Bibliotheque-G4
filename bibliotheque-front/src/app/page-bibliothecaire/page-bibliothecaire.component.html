@@ -1,0 +1,28 @@
+<div class="container my-3">
+    <div class="row mb-3">
+        <div class="col-12 text-center">
+            <button class="btn btn-dark" data-bs-toggle="collapse" href="#div-app-ajout-emprunt" role="button" aria-expanded="false" aria-controls="div-app-ajout-emprunt">Ajouter un emprunt</button>
+            <span class="me-3"></span>
+            <button class="btn btn-dark" data-bs-toggle="collapse" href="#div-app-ajout-livre"   role="button" aria-expanded="false" aria-controls="div-app-ajout-livre"  >Ajouter un livre</button>
+        </div>
+    </div>
+
+    <div class="row flex-wrap">
+        <!-- Ajouter un emprunt -->
+        <div class="col-12 collapse mb-3" id="div-app-ajout-emprunt">
+            <app-ajout-emprunt></app-ajout-emprunt>
+        </div>
+
+        <!-- Ajouter un livre -->
+        <div class="col-12 collapse mb-3" id="div-app-ajout-livre">
+            <div>
+                <app-ajout-livre></app-ajout-livre>
+            </div>
+        </div>
+    </div>
+
+    <hr class="mt-0">
+    <div>
+        <app-bibliothecaire-emprunts></app-bibliothecaire-emprunts>
+    </div>
+</div>

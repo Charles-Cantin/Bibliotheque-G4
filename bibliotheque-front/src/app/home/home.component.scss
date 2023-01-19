@@ -1,0 +1,16 @@
+.homeBody{
+    height:50vh;
+    display:flex;
+    flex-flow: column nowrap;
+    justify-content:center;
+    align-items:center;
+    background-color:darkslategrey;
+}
+
+.hero-accueil-image {
+    // Test/tune linear gradient :
+    //background-image: linear-gradient(to right, #ff0000 00%, #0000ff 100%), url("../../assets/img/accueil.png");
+    background-image: linear-gradient(to right, #f4efe7cc 00%, #f4efe7cc 100%), url("../../assets/img/accueil.png");
+    background-size: cover ;
+    background-repeat: no-repeat;
+}

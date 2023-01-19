@@ -1,0 +1,40 @@
+<!-- 1ere partie : intro qui claque avec barre de recherche -->
+<div class="hero-accueil-image overflow-hidden px-5">
+  <div class="px-4 pt-5 my-5 text-center">
+    <h1 class="display-4 fw-bold">L'accès à la culture, en un clic.</h1>
+    <div class="col-lg-8 mx-auto">
+      <p class="lead mb-4">La Bibliothèque Cantin est une bibliothèque faite par des nouveaux chez Sopra,
+        pour des nouveaux chez Sopra. Recherchez, réservez, et accélérez votre aquisition de savoir. Même si
+        vous être un chercheur en physique, ou un ornithologue spécialisé en canards.</p>
+      <div class="d-sm-flex justify-content-sm-center mb-5 form-control-lg">
+        <app-search-bar [maListeDeClasses]="['form-control','form-control-lg']"></app-search-bar>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container my-5">
+  <!-- 2eme partie : évènements -->
+  <div class="container">
+    <h2 class="text-sans"><b>Prochains évènements</b></h2>
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+
+      <div class="col" *ngFor="let i of [].constructor(3)">
+        <app-carte-evenement [tag]="'TAG'" [title]="'TITRE'" [content]="'CONTENT'" [date]="'DATE'"
+          [thumbnailUrl]="'../../../assets/img/news/1.png'"></app-carte-evenement>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- 3eme partie : collections -->
+  <div class="container">
+    <h2 class="text-sans"><b>Nos collections :</b></h2>
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-3">
+
+      <!-- Carte TODO Customiser !-->
+      <app-carte-collection lien="/recherche" [lienQueryParams]="{search: 'John Milton'}" urlImg="https://upload.wikimedia.org/wikipedia/commons/9/9f/John_Milton.jpg" lienQueryParams="{id:2}"></app-carte-collection>
+
+    </div>
+  </div>
+</div>

@@ -1,0 +1,46 @@
+<div class="container my-3">
+  <h1>Réserver un livre</h1>
+  <div class="container card card-body">
+    <div class="row align-items-center">
+      <!-- Column 1 : thumbnail -->
+      <div class="col-3 d-flex justify-content-center border-end">
+        <img class="h-100 mt-3 mb-3" style="max-height:300px"
+          [src]="'assets/img/book-covers/'+ displayedEdition.idEdition +'.jpg'" alt="">
+      </div>
+
+      <!-- Column 2 : infos -->
+      <div class="col-9">
+        <div class="container">
+          <!-- <h3>{{displayedEdition.titre}}</h3>
+                <h4 class="text-secondary">{{displayedEdition.nomsAuteurs}}</h4> -->
+          <!-- Table d'infos, retrouvés en DB -->
+          <table class="table table-hover table-striped">
+            <thead>
+              <tr>
+                <th>ID exemplaire</th>
+                <th>Edition</th>
+                <th>Disponibilité</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr *ngFor="let ex of list()">
+                <td>{{ex.idExemplaire}}</td>
+                <td>{{ex.nomEditeur}}</td>
+                <td>{{ex.emprunted? ex.dateProchaineDispo : 'Oui'}}</td>
+                <td>
+                  <button *ngIf="ex.emprunted" class="btn btn-light btn-outline-secondary">Réserver</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <!-- Bouton retour -->
+          <button class="btn btn-outline-dark" style="width: 100px;" type="button" onclick="javascript:history.back()">
+            Retour
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

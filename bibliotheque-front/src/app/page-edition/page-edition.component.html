@@ -1,0 +1,100 @@
+<main class="container px-4 py-5 ">
+    <div class="row p5">
+        <!-- 1ere colonne -->
+        <div class="col-lg-4">
+            <!-- Couverture -->
+            <div class="container w-75" style="max-width:250px">
+                <img [src]="'assets/img/book-covers/' + fetchedEdition.idEdition + '.jpg'" class="w-100" alt="">
+            </div>
+
+            <!-- Boutons de réservation -->
+            <div class="p-3">
+                <button type="button" class="btn btn-warning btn-outline-dark w-100" [routerLink]="['/exemplaires']" [queryParams]="{'id': fetchedEdition.idEdition}" >Réserver</button>
+            </div>
+        </div>
+
+        <!-- 2eme colonne : infos récupérées en DB -->
+        <div class="col-lg-8">
+            <h1 class="">{{fetchedEdition.titre}}</h1>
+            <h2 class="h6 text-secondary">{{fetchedEdition.nomsAuteurs}}</h2>
+
+            <blockquote class="card card-body overflow-auto" style="height:300px" cite="">
+                <p>{{fetchedEdition.resume}}</p>
+            </blockquote>
+
+            <!-- Plus d'infos sur le bouquin (retrouvé de la DB) -->
+            <div class="container px-0">
+                <div class="btn-group" role="group">
+                    <!-- Bouton déclanchant le déploiement de la boite contenant les infos -->
+                    <button class="btn btn-warning border border-dark" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                        Détails de l'édition
+                    </button>
+                    <!-- Bouton retour -->
+                    <button class="btn btn-outline-dark" type="button" onclick="javascript:history.back()">
+                        Retour
+                    </button>
+                </div>
+
+                <!-- Boite contenant les infos (affichées grâce à une table) -->
+                <div class="collapse py-2" id="collapseExample">
+                    <div class="container card card-body">
+                        <!-- Table d'infos, retrouvés en DB -->
+                        <div class="row">
+                        <dl class="col-sm">
+                            <dt>Genre</dt><dd>{{fetchedEdition.nomsGenres}}</dd>
+                            <dt>ISBN</dt><dd>{{fetchedEdition.ISBN}}</dd>
+                            <dt>Nombre de pages</dt><dd>{{fetchedEdition.pages}}</dd>
+                            <dt>Publication</dt><dd>{{fetchedEdition.anneeParution}}</dd>
+                        </dl>
+                        <dl class="col-sm">
+                            <dt>Format</dt><dd>{{fetchedEdition.format}}</dd>
+                            <dt>Éditeur </dt><dd>{{fetchedEdition.nomEditeur}}</dd>                            
+                            <dt>Langue</dt><dd>{{fetchedEdition.langue}}</dd>
+                        </dl>
+                        </div>
+                    </div>
+                </div> 
+            </div>
+        </div>
+    </div>
+
+    <!-- Recommendation  -->
+    <!-- TODO créer un composant dédié -->
+    <!--
+    <div class="container card card-body">
+        <h3>Du même auteur :</h3>
+        <ul class="book-list">
+            <li class="book-item"><img src="assets/img/book-covers/1.jpg" alt=""></li>
+            <li class="book-item"><img src="assets/img/book-covers/2.jpg" alt=""></li>
+            <li class="book-item"><img src="assets/img/book-covers/3.jpg" alt=""></li>
+            <li class="book-item"><img src="assets/img/book-covers/4.jpg" alt=""></li>
+            <li class="book-item"><img src="assets/img/book-covers/5.jpg" alt=""></li>
+            <li class="book-item"><img src="assets/img/book-covers/6.jpg" alt=""></li>
+            <li class="book-item"><img src="assets/img/book-covers/7.jpg" alt=""></li>
+            <li class="book-item"><img src="assets/img/book-covers/8.jpg" alt=""></li>
+            <li class="book-item"><img src="assets/img/book-covers/9.jpg" alt=""></li>
+            <li class="book-item"><img src="assets/img/book-covers/10.jpg" alt=""></li>
+            <li class="book-item"><img src="assets/img/book-covers/11.jpg" alt=""></li>
+            <li class="book-item"><img src="assets/img/book-covers/12.jpg" alt=""></li>
+            <li class="book-item"><img src="assets/img/book-covers/13.jpg" alt=""></li>
+        </ul>
+
+        <h3>Du même genre :</h3>
+        <ul class="book-list">
+            <li class="book-item"><img src="assets/img/book-covers/1.jpg" alt=""></li>
+            <li class="book-item"><img src="assets/img/book-covers/2.jpg" alt=""></li>
+            <li class="book-item"><img src="assets/img/book-covers/3.jpg" alt=""></li>
+            <li class="book-item"><img src="assets/img/book-covers/4.jpg" alt=""></li>
+            <li class="book-item"><img src="assets/img/book-covers/8.jpg" alt=""></li>
+            <li class="book-item"><img src="assets/img/book-covers/5.jpg" alt=""></li>
+            <li class="book-item"><img src="assets/img/book-covers/6.jpg" alt=""></li>
+            <li class="book-item"><img src="assets/img/book-covers/7.jpg" alt=""></li>
+            <li class="book-item"><img src="assets/img/book-covers/9.jpg" alt=""></li>
+            <li class="book-item"><img src="assets/img/book-covers/10.jpg" alt=""></li>
+            <li class="book-item"><img src="assets/img/book-covers/11.jpg" alt=""></li>
+            <li class="book-item"><img src="assets/img/book-covers/12.jpg" alt=""></li>
+            <li class="book-item"><img src="assets/img/book-covers/13.jpg" alt=""></li>
+        </ul>
+    </div>
+    -->
+</main>

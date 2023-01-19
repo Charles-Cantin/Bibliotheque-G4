@@ -1,0 +1,30 @@
+<div class="container card">
+    <fieldset class="card-body">
+        <h5 class="text-center">Ajouter emprunt</h5>
+        <hr>
+
+        <div class="row mb-3">
+            <!-- TODO : Selection parmi les emprunteurs possibles -->
+            <label class="form-label"  for="idEmprunteur">ID abonné</label>
+            <input class="form-control" id="idEmprunteur" type="number" [(ngModel)]="formEmprunt.idEmprunteur" />
+        </div>
+
+        <div class="row mb-3">
+            <label class="form-label"  for="idExemplaire">ID exemplaire</label>
+            <input class="form-control" id="idExemplaire" type="number" [(ngModel)]="formEmprunt.idExemplaire" />
+        </div>
+
+        <div class="row mb-3">
+            <label class="form-label"  for="debut">Date d'emprunt</label>
+            <input class="form-control" id="debut" type="date" [(ngModel)]="formEmprunt.debut" />
+        </div>
+
+        <div class="row">
+            <div class="col text-center">
+                <button class="btn btn-danger btn-md me-3" type="submit" (click)="cancel_emprunt()">Reset</button>
+                <button class="btn btn-success btn-md" type="submit" (click)="save_emprunt()">Submit</button>
+            </div>
+        </div>
+
+    </fieldset>
+</div>

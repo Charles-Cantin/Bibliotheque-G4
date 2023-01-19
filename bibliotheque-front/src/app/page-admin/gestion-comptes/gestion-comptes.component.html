@@ -1,0 +1,130 @@
+<div class="card  mt-3 mb-3 ms-3 me-3">
+    <h1 class="card-header bg-dark text-white h3">Liste des comptes</h1>
+    <div class="card-body">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Identifiant</th>
+                    <th>Login</th>
+                    <th>Type de compte</th>
+                    <th>Nom</th>
+                    <th>Prénom</th>
+                    <th>Date de naissance</th>
+                    <th>Bloqué?</th>
+                    <th>Fin abonnement</th>
+                    <th></th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr *ngFor="let compte of list()">
+                    <td>{{compte.id}}</td>
+                    <td>{{compte.login}}</td>
+                    <td>{{compte.type}}</td>
+                    <td>{{compte.nom}}</td>
+                    <td>{{compte.prenom}}</td>
+                    <td>{{compte.naissance| date:'dd-MM-yyyy'}}</td>
+                    <td>{{compte.blocked? 'Oui':'Non' }}</td>
+                    <td>{{compte.finAbonnement| date:'dd-MM-yyyy'}}</td>
+                    <td>
+                        <div class="btn-group btn-group-sm">
+                            <a class="btn btn-primary" (click)="edit(compte.id)"><i
+                                    class="bi bi-pencil-square"></i></a>
+                            <a class="btn btn-danger" (click)="remove(compte.id)"><i class="bi bi-trash"></i></a>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+
+        </table>
+    </div>
+    <div class="card-footer">
+        <a class="btn btn-success btn-lg" (click)="add()"><i
+            class="bi bi-plus-square"></i></a>
+    </div>
+</div>
+
+<div class="p-4 p-md-4 border rounded-3 bg-light mt-3 mb-3 ms-3 me-3" *ngIf="formGestionComptes">
+    <fieldset class="">
+        <h5 class="text-center">Edition d'un compte</h5>
+
+<hr>
+
+    <div class="row">
+        <div class="col-6">   
+
+            <div class="form-group mb-3">
+                <label for="id" class="form-label">Identifiant:</label> 
+                <input class="form-control" type="number" id="id"  [(ngModel)]="formGestionComptes.id" readonly/>
+            </div>
+
+            <div class="form-group mb-3">
+                <label for="login" class="form-label">Login:</label> 
+                <input class="form-control" type="text" id="login"  [(ngModel)]="formGestionComptes.login" />
+            </div>
+
+            <div class="form-group mb-3">
+                <label for="password" class="form-label">Password:</label> 
+                <input class="form-control" type="password" id="password"  [(ngModel)]="formGestionComptes.password" />
+            </div>
+
+            <div class="form-group mb-3">
+                <label for="type-select" class="form-label">Compte:</label>
+                <select class="form-select" placeholder="--Choisir le type de compte--" id="type-select" [(ngModel)]="formGestionComptes.type">
+                    <option value="" selected>--Choisir le type de compte--</option>
+                    <option value="bibliothecaire">Bibliothecaire</option>
+                    <option value="admin">Administrateur</option>
+                    <option value="lecteur">Lecteur</option>
+                </select>
+            </div>
+
+            <div class="form-group mb-3">
+                <label for="nom" class="form-label">Nom:</label> 
+                <input type="text" class="form-control" id="nom"  [(ngModel)]="formGestionComptes.nom" />
+            </div>
+
+            <div class="form-group mb-5">
+                <label for="prenom" class="form-label">Prénom:</label> 
+                <input type="text" class="form-control" id="prenom"  [(ngModel)]="formGestionComptes.prenom" />
+            </div>
+
+        </div>
+    
+
+    
+        <div class="col-6">
+
+            <ng-container *ngIf="formGestionComptes.type=='lecteur'">
+                <div class="form-group mb-3">
+                    <label for="naissance" class="form-label">Naissance:</label> 
+                    <input type="date" class="form-control" id="naissance"  [(ngModel)]="formGestionComptes.naissance"  />
+                </div>
+
+                <div class="form-group mb-3">
+                    <label for="blocked-select" class="form-label">Bloqué?</label>
+                    <select class="form-control" id="blocked-select" [(ngModel)]="formGestionComptes.blocked">
+                        <option value="true">Oui</option>
+                        <option value="false">Non</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="finAbonnement" class="form-label">Fin abonnement:</label> 
+                    <input type="date" class="form-control" id="finAbonnement"  [(ngModel)]="formGestionComptes.finAbonnement" />
+                </div>
+            </ng-container>
+
+        </div>
+    </div>
+
+    <div class="row mb-3 text-center">
+        <div class="col-6 ">
+            <button class="w-50 btn btn-lg btn-danger" type="submit" (click)="cancel()">Annuler</button>
+        </div>
+        <div class="col-6">
+            <button class="w-50 btn btn-lg btn-success" type="submit" (click)="save()">Sauvergarder</button>
+        </div>
+    </div>
+
+    </fieldset>
+</div>

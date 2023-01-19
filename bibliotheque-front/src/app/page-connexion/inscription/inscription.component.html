@@ -1,0 +1,50 @@
+<div class="p-4 p-md-4 border rounded-3 bg-light">
+    <fieldset class="">
+        <h5 class="text-center">Formulaire d'inscription</h5>
+
+        <hr>
+
+        <div class="row mb-3">
+            <div class="col-6">
+                <label for="firstName" class="form-label">Prénom</label>
+                <input class="form-control" type="text" id="firstName" [(ngModel)]="formCompte.prenom" />
+            </div>
+            <div class="col-6">
+                <label for="lasttName" class="form-label">Nom</label>
+                <input class="form-control" type="text" id="lastName" [(ngModel)]="formCompte.nom" />
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col-12">
+                <label for="birthdayDate" class="form-label">Date de naissance</label>
+                <input class="form-control" type="date" id="birthdayDate" [(ngModel)]="formCompte.naissance" />
+            </div>
+        </div>
+
+        <hr>
+
+        <div class="row mb-3">
+            <div class="col-6">
+                <label for="login" class="form-label">Nom d'utilisateur</label>
+                <input class="form-control" id="login" [(ngModel)]="formCompte.login" />
+            </div>
+
+            <div class="col-6">
+                <label for="password" class="form-label">Mot de passe</label>
+                <input class="form-control" type="password" id="password" [(ngModel)]="formCompte.password" />
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <div>
+                <button class="w-100 btn btn-lg btn-success" type="submit" (click)="inscriptionLecteur()">Création d'un
+                    compte</button>
+            </div>
+        </div>
+
+        <small class="text-muted">En cliquant sur ce bouton, vous acceptez les <a href="#"
+                class="link-warning">conditions
+                d'utilisations</a>.</small>
+    </fieldset>
+</div>

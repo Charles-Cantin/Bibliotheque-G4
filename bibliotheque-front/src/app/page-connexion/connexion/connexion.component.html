@@ -1,0 +1,25 @@
+<div class="p-4 p-md-4 border rounded-3 bg-light">
+    <fieldset class="">
+        <h5 class="text-center">Connexion</h5>
+
+        <hr>
+
+        <div class="row mb-3">
+            <div class="col-12">
+                <label for="login" class="form-label">Nom d'utilisateur</label>
+                <input class="form-control" id="login" [(ngModel)]="login" />
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <div>
+                <label for="password" class="form-label">Mot de passe</label>
+                <input class="form-control" type="password" id="password" [(ngModel)]="password" />
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <button type="button" class="btn btn-primary" (click)="auth()">Se connecter</button>
+        </div>
+    </fieldset>
+</div>
