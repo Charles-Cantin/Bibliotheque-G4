@@ -24,10 +24,10 @@ public class Emprunt {
 	@JsonView(Views.ViewBase.class)
 	private Integer id;
 	@JsonView(Views.ViewBase.class)
-	@NotBlank(message= "Date de début obligatoire")
+	@NotNull(message= "Date de début obligatoire")
 	private LocalDate debut;
 	@JsonView(Views.ViewBase.class)
-	@NotBlank(message= "Date de fin obligatoire")
+	@NotNull(message= "Date de fin obligatoire")
 	private LocalDate fin;
 	@JsonView(Views.ViewBase.class)
 	private LocalDate dateRendu;
