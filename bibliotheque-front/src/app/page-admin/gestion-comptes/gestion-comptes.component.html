@@ -68,7 +68,7 @@
                     <option value="" selected>--Choisir le type de compte--</option>
                     <option value="bibliothecaire">Bibliothecaire</option>
                     <option value="admin">Administrateur</option>
-                    <option value="inscrit">Inscrit</option>
+                    <option value="lecteur">Lecteur</option>
                 </select>
             </div>
 
@@ -88,7 +88,7 @@
     
         <div class="col-6">
 
-            <ng-container *ngIf="formGestionComptes.type=='inscrit'">
+            <ng-container *ngIf="formGestionComptes.type=='lecteur'">
                 <div class="form-group mb-3">
                     <label for="naissance" class="form-label">Naissance:</label> 
                     <input type="date" class="form-control" id="naissance"  [(ngModel)]="formGestionComptes.naissance"  />

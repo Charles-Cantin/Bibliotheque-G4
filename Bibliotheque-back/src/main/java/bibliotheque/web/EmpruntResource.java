@@ -95,9 +95,9 @@ public class EmpruntResource {
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "L'emprunt n'a pu être créé");
 		}
 
-		Exemplaire exemplaire = daoExemplaire.findById(ajoutEmprunt.getIdExemplaire())
+		Exemplaire exemplaire = daoExemplaire.findAvailableById(ajoutEmprunt.getIdExemplaire())
 				.orElseThrow(()-> new ResponseStatusException(HttpStatus.NOT_FOUND, 
-						"No exemplaires with specified ID were found"));
+						"Pas d'exemplaire disponible avec cet ID"));
 		
 		Lecteur emprunteur = daoLecteur.findById(ajoutEmprunt.getIdEmprunteur())
 				.orElseThrow(()-> new ResponseStatusException(HttpStatus.NOT_FOUND,

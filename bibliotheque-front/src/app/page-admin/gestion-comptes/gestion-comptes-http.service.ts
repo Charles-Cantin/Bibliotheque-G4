@@ -26,7 +26,7 @@ export class GestionComptesHttpService {
   }
 
   create(compte: Compte): void {
-    this.http.post<Compte>(this.serviceUrl, compte).subscribe(resp => {
+    this.http.post<Compte>(this.serviceUrl+"inscription", compte).subscribe(resp => {
       this.load();
     });
   }
