@@ -15,7 +15,7 @@ export class PageLecteurComponent {
   emprunts: Array<EmpruntDTO> = new Array<EmpruntDTO>();
 
 constructor(private pageLecteurService: PageLecteurHttpService, private authService: AuthService) {
-  authService.kickSiMauvaisCompte('inscrit')
+  authService.kickSiMauvaisCompte('lecteur')
 }
 
 list():Array<EmpruntDTO> {

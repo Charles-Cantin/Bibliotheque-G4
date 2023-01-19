@@ -1,6 +1,6 @@
 <div class="container py-3">
     <div class="mt-3 mb-3">
-        <button type="button" class="btn btn-dark btn-md" type="submit" value="">Rechercher un livre</button>
+        <button type="button" class="btn btn-dark btn-md" type="submit" value="">Rechercher un Emprunt</button>
     </div>
 
 
@@ -28,7 +28,7 @@
                         <td>{{emp.titreLivre}}</td>
                         <td>{{emp.debut}}</td>
                         <td>{{emp.fin}}</td>
-                        <td>{{emp.rendu}}</td>
+                        <td>{{(emp.dateRendu==null)? 'Non' : 'Oui'}}</td>
                     </tr>
                 </tbody>
 

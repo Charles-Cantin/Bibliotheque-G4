@@ -30,17 +30,17 @@ export class Emprunt {
   duree: number;
   dateFin: string;
   dateFinEffective: string;
-  rendu: boolean;
+  dateRendu: string;
   exemplaire: Exemplaire;
-  emprunteur: Inscrit;
+  emprunteur: Lecteur;
 
-  constructor(id?: number, dateDebut?: string, duree?: number, dateFin?: string, dateFinEffective?: string, rendu?: boolean, exemplaire?: Exemplaire, emprunteur?: Inscrit) {
+  constructor(id?: number, dateDebut?: string, duree?: number, dateFin?: string, dateFinEffective?: string, dateRendu?: string, exemplaire?: Exemplaire, emprunteur?: Lecteur) {
     this.id = id;
     this.dateDebut = dateDebut;
     this.duree = duree;
     this.dateFin = dateFin;
     this.dateFinEffective = dateFinEffective;
-    this.rendu = rendu;
+    this.dateRendu = dateRendu;
     this.exemplaire = exemplaire;
     this.emprunteur = emprunteur;
   }
@@ -52,15 +52,15 @@ export class EmpruntDTO {
   debut: string;
   duree: number;
   fin: string;
-  rendu: boolean;
+  dateRendu: string;
   titreLivre: string;
 
-  constructor(idExemplaire?: number, debut?: string, duree?: number, fin?: string, rendu?: boolean, titreLivre?: string) {
+  constructor(idExemplaire?: number, debut?: string, duree?: number, fin?: string, dateRendu?: string, titreLivre?: string) {
     this.idExemplaire = idExemplaire;
     this.debut = debut;
     this.duree = duree;
     this.fin = fin;
-    this.rendu = rendu;
+    this.dateRendu = dateRendu;
     this.titreLivre = titreLivre;
   }
 }
@@ -74,9 +74,9 @@ export class EmpruntDetail {
     titreLivre:       string;
     debutEmprunt:     Date;
     finEmprunt:       Date;
-    rendu:            boolean;
+    dateRendu:        Date;
 
-    constructor( id?: number, idInscrit?:number, nomPrenomInscrit?: string , idLivre?: number, titreLivre?: string, debutEmprunt? :Date, finEmprunt?: Date,rendu?:boolean) {
+    constructor( id?: number, idInscrit?:number, nomPrenomInscrit?: string , idLivre?: number, titreLivre?: string, debutEmprunt? :Date, finEmprunt?: Date, dateRendu?:Date) {
         
         this.id= id;
         this.idInscrit = idInscrit;
@@ -85,7 +85,7 @@ export class EmpruntDetail {
         this.titreLivre = titreLivre;
         this.debutEmprunt = debutEmprunt;
         this.finEmprunt = finEmprunt;
-        this.rendu = rendu;
+        this.dateRendu = dateRendu;
     }
 
 }
@@ -102,7 +102,7 @@ export class Exemplaire {
   }
 }
 
-export class Inscrit extends Compte {
+export class Lecteur extends Compte {
 }
 
 export class EditionDTO {
@@ -144,13 +144,13 @@ export class EditionDTO {
 export class ExemplaireByEditionDTO {
 
   idExemplaire: number;
-  disponible: Boolean;
+  emprunted: Boolean;
   nomEditeur: string;
   dateProchaineDispo: string;
 
-  constructor(idExemplaire?: number, disponible?: Boolean, nomEditeur?: string, dateProchaineDispo?: string) {
+  constructor(idExemplaire?: number, emprunted?: Boolean, nomEditeur?: string, dateProchaineDispo?: string) {
     this.idExemplaire = idExemplaire;
-    this.disponible = disponible;
+    this.emprunted = emprunted;
     this.nomEditeur = nomEditeur;
     this.dateProchaineDispo = dateProchaineDispo;
   }

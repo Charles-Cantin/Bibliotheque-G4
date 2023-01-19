@@ -28,9 +28,9 @@
               <tr *ngFor="let ex of list()">
                 <td>{{ex.idExemplaire}}</td>
                 <td>{{ex.nomEditeur}}</td>
-                <td>{{ex.disponible? 'Oui' : ex.dateProchaineDispo}}</td>
+                <td>{{ex.emprunted? ex.dateProchaineDispo : 'Oui'}}</td>
                 <td>
-                  <button *ngIf="ex.disponible" class="btn btn-light btn-outline-secondary">Réserver</button>
+                  <button *ngIf="ex.emprunted" class="btn btn-light btn-outline-secondary">Réserver</button>
                 </td>
               </tr>
             </tbody>

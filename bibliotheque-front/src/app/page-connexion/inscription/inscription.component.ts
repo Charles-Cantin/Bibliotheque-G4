@@ -16,7 +16,7 @@ export class InscriptionComponent {
   constructor(private inscriptionService: InscriptionHttpService, private router: Router, private authService: AuthService) { }
 
   inscriptionLecteur(): void {
-    this.formCompte.type = "inscrit";
+    this.formCompte.type = "lecteur";
     this.inscriptionService.create(this.formCompte).subscribe({
       next: (resp) => {
         this.authService.setLoggedInAccount(resp)
