@@ -6,7 +6,5 @@ import bibliotheque.model.Bibliothecaire;
 
 public interface IDAOBibliothecaire extends JpaRepository<Bibliothecaire,Integer>{
 	
-	
-
 
 }

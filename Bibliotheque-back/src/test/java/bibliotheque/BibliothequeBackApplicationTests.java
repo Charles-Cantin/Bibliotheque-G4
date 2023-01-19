@@ -162,6 +162,8 @@ class BibliothequeBackApplicationTests {
 		Admin a = new Admin();
 		a.setPassword("pass");
 		a.setLogin("lo");
+		a.setNom("Aa");
+		a.setPrenom("Bb");
 		daoCompte.save(a);
 		
 		Bibliothecaire b1 = new Bibliothecaire();

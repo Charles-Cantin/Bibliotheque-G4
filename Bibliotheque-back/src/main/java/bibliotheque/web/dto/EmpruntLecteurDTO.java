@@ -25,10 +25,7 @@ public class EmpruntLecteurDTO {
 	
 	@JsonView(Views.ViewBase.class)
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
-	private LocalDate finEffective;
-	
-	@JsonView(Views.ViewBase.class)
-	private Boolean rendu;
+	private LocalDate dateRendu;
 	
     public EmpruntLecteurDTO() {}
 
@@ -73,26 +70,15 @@ public class EmpruntLecteurDTO {
 	}
 
 
-	public Boolean getRendu() {
-		return rendu;
+	public LocalDate getDateRendu() {
+		return dateRendu;
 	}
 
 
-	public void setRendu(Boolean rendu) {
-		this.rendu = rendu;
+	public void setDateRendu(LocalDate dateRendu) {
+		this.dateRendu = dateRendu;
 	}
 
-
-	public LocalDate getFinEffective() {
-		return finEffective;
-	}
-
-
-	public void setFinEffective(LocalDate finEffective) {
-		this.finEffective = finEffective;
-	}
-
-	
 
 }
 

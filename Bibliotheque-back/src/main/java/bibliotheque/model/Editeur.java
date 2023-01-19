@@ -9,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
@@ -22,6 +23,7 @@ public class Editeur {
 	private Integer id;
 	
 	@JsonView(Views.ViewBase.class)
+	@NotBlank
 	private String nom;
 
 	@OneToMany(mappedBy = "editeur")

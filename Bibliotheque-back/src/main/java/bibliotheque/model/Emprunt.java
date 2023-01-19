@@ -10,6 +10,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
@@ -22,24 +24,24 @@ public class Emprunt {
 	@JsonView(Views.ViewBase.class)
 	private Integer id;
 	@JsonView(Views.ViewBase.class)
+	@NotBlank(message= "Date de début obligatoire")
 	private LocalDate debut;
 	@JsonView(Views.ViewBase.class)
-	private int dureeJours;
-	@JsonView(Views.ViewBase.class)
+	@NotBlank(message= "Date de fin obligatoire")
 	private LocalDate fin;
 	@JsonView(Views.ViewBase.class)
-	private LocalDate finEffective;
-	@JsonView(Views.ViewBase.class)
-	private boolean rendu;
+	private LocalDate dateRendu;
 
 	@OneToOne
 	@JsonView(Views.ViewEmprunt.class)
+	@NotNull(message = "exemplaire obligatoire")
 	private Exemplaire exemplaire;
 	
 	@ManyToOne
 	@JoinColumn(name="id_emprunteur")
 	@JsonView(Views.ViewEmprunt.class)
-	private Inscrit emprunteur;
+	@NotNull(message = "emprunteur obligatoire")
+	private Lecteur emprunteur;
 	
 	public Emprunt() {
 	}
@@ -68,28 +70,11 @@ public class Emprunt {
 		this.debut = debut;
 	}
 
-
-	public LocalDate getFinEffective() {
-		return finEffective;
-	}
-
-	public void setFinEffective(LocalDate finEffective) {
-		this.finEffective = finEffective;
-	}
-
-	public boolean isRendu() {
-		return rendu;
-	}
-
-	public void setRendu(boolean rendu) {
-		this.rendu = rendu;
-	}
-
-	public Inscrit getEmprunteur() {
+	public Lecteur getEmprunteur() {
 		return emprunteur;
 	}
 
-	public void setEmprunteur(Inscrit emprunteur) {
+	public void setEmprunteur(Lecteur emprunteur) {
 		this.emprunteur = emprunteur;
 	}
 
@@ -101,12 +86,12 @@ public class Emprunt {
 		this.fin = fin;
 	}
 
-	public int getDureeJours() {
-		return dureeJours;
+	public LocalDate getDateRendu() {
+		return dateRendu;
 	}
 
-	public void setDureeJours(int dureeJours) {
-		this.dureeJours = dureeJours;
+	public void setDateRendu(LocalDate dateRendu) {
+		this.dateRendu = dateRendu;
 	}
 	
 }

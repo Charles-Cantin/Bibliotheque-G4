@@ -18,6 +18,6 @@ public interface IDAOEdition extends JpaRepository<Edition, Integer>{
 	Optional<Edition> findByIdWithExemplaires(@Param("id") Integer id);
 	
 	/* Combien d'exemplaires disponibles pour une edition donnée ?*/
-	@Query("select count(ex) from Exemplaire ex join ex.edition e where e.id = ?1 and ex.disponible=true")
+	@Query("select count(ex) from Exemplaire ex join ex.edition e where e.id = ?1 and ex.emprunted=false")
 	Integer compterEditionDisponible(Integer idEdition);
 }

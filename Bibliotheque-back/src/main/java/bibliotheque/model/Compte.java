@@ -9,27 +9,26 @@ import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.NotBlank;
 
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonSubTypes.Type;
-
-import bibliotheque.model.Views.ViewBase;
-
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonView;
+
+import bibliotheque.model.Views.ViewBase;
 
 @Entity
 @Table(name="compte")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name = "type_compte", columnDefinition = "ENUM('admin','inscrit','bibliothecaire')" )
+@DiscriminatorColumn(name = "type_compte", columnDefinition = "ENUM('admin','lecteur','bibliothecaire')" )
 @JsonTypeInfo(
 		use = JsonTypeInfo.Id.NAME, 
 		include = JsonTypeInfo.As.PROPERTY, 
 		property = "type")
 @JsonSubTypes({ 
 	@Type(value = Bibliothecaire.class, name = "bibliothecaire"), 
-	@Type(value = Inscrit.class, name = "inscrit"),
+	@Type(value = Lecteur.class, name = "lecteur"),
 	@Type(value = Admin.class, name = "admin")})
 public abstract class Compte {
 
@@ -37,18 +36,18 @@ public abstract class Compte {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@JsonView(Views.ViewBase.class)
 	protected Integer id;
-	@NotNull
+	@NotBlank
 	@Column(unique = true, nullable=false)
 	@JsonView(Views.ViewBase.class)
 	protected String login;
-	@NotNull
+	@NotBlank
 	@Column(nullable=false)
 	@JsonView(Views.ViewBase.class)
 	protected String password;
-	@NotNull
+	@NotBlank
 	@JsonView(ViewBase.class)
 	private String nom;
-	@NotNull
+	@NotBlank
 	@JsonView(ViewBase.class)
 	private String prenom;
 	

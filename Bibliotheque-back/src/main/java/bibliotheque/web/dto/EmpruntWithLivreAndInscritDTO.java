@@ -16,7 +16,7 @@ public class EmpruntWithLivreAndInscritDTO {
 
 	private LocalDate debutEmprunt;
 	private LocalDate finEmprunt;
-	private Boolean rendu;
+	private LocalDate dateRendu;
 	
 	public EmpruntWithLivreAndInscritDTO() {}
 
@@ -68,13 +68,6 @@ public class EmpruntWithLivreAndInscritDTO {
 		this.finEmprunt = finEmprunt;
 	}
 
-	public Boolean getRendu() {
-		return rendu;
-	}
-
-	public void setRendu(Boolean rendu) {
-		this.rendu = rendu;
-	}
 	
 	public int getId() {
 		return id;
@@ -82,6 +75,14 @@ public class EmpruntWithLivreAndInscritDTO {
 
 	public void setId(int id) {
 		this.id = id;
+	}
+
+	public LocalDate getDateRendu() {
+		return dateRendu;
+	}
+
+	public void setDateRendu(LocalDate dateRendu) {
+		this.dateRendu = dateRendu;
 	}
 
 	

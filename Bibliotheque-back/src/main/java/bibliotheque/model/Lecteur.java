@@ -12,8 +12,8 @@ import javax.persistence.OneToMany;
 import com.fasterxml.jackson.annotation.JsonView;
 
 @Entity
-@DiscriminatorValue("inscrit")
-public class Inscrit extends Compte{
+@DiscriminatorValue("lecteur")
+public class Lecteur extends Compte{
 
 	@JsonView(Views.ViewBase.class)
 	private LocalDate naissance;
@@ -25,10 +25,10 @@ public class Inscrit extends Compte{
 	private boolean blocked;
 	
 	@OneToMany(mappedBy="emprunteur")
-	@JsonView(Views.ViewInscrit.class)
+	@JsonView(Views.ViewLecteur.class)
 	private List<Emprunt> emprunts = new ArrayList<Emprunt>();
 	
-	public Inscrit() {
+	public Lecteur() {
 	}
 
 	public LocalDate getNaissance() {

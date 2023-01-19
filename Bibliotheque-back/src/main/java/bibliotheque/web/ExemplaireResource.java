@@ -71,7 +71,7 @@ public class ExemplaireResource {
 			
 			ExemplaireByEditionDTO eDTO = new ExemplaireByEditionDTO();
 			eDTO.setIdExemplaire(e.getId());
-			eDTO.setDisponible(e.isDisponible());
+			eDTO.setEmprunted(e.isEmprunted());
 			eDTO.setNomEditeur(editeur.getNom());
 			Optional<Emprunt> optEmprunt = daoEmprunt.findCurrentByExemplaire(e.getId());
 			

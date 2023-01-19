@@ -28,7 +28,7 @@ public interface IDAOLivre extends JpaRepository<Livre,Integer>{
 	Optional<Livre> findByIdWithEditions(@Param("id") Integer id);
 	
 	/* Y a-t-il au moins un exemplaire disponible pour un livre donné ? UNTESTED*/
-	@Query("select max(ex.disponible) from Exemplaire ex join ex.edition.livre l where l.id = ?1")
+	@Query("select max(1-ex.emprunted) from Exemplaire ex join ex.edition.livre l where l.id = ?1")
 	Boolean livreDisponible(Integer idLivre);
 	
 	@Query("from Livre l where lower(l.titre) like lower(concat('%',?1,'%'))")

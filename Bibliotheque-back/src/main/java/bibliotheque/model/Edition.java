@@ -10,6 +10,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
@@ -33,10 +34,12 @@ public class Edition{
 	@ManyToOne
 	@JoinColumn(name="id_editeur")
 	@JsonView(Views.ViewEdition.class)
+	@NotNull
 	private Editeur editeur;
 	
 	@ManyToOne
 	@JsonView(Views.ViewEdition.class)
+	@NotNull
 	private Livre livre;
 	
 	@OneToMany(mappedBy = "edition")

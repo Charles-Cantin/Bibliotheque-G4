@@ -14,6 +14,7 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
@@ -26,6 +27,7 @@ public class Livre {
 	@JsonView(Views.ViewBase.class)
 	private Integer id;
 	@JsonView(Views.ViewBase.class)
+	@NotBlank
 	private String titre;
 	@JsonView(Views.ViewBase.class)
 	@Column(columnDefinition = "Text")

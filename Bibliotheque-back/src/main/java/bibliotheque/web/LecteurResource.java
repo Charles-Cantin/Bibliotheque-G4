@@ -21,71 +21,71 @@ import org.springframework.web.server.ResponseStatusException;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
-import bibliotheque.dao.IDAOInscrit;
-import bibliotheque.model.Inscrit;
+import bibliotheque.dao.IDAOLecteur;
+import bibliotheque.model.Lecteur;
 import bibliotheque.model.Views;
 
 @RestController
-@RequestMapping("/inscrits")
+@RequestMapping("/lecteurs")
 @CrossOrigin("*")
-public class InscritResource {
+public class LecteurResource {
 	
 	@Autowired
-	private IDAOInscrit daoInscrit;
+	private IDAOLecteur daoLecteur;
 
 	@GetMapping("")
-	@JsonView(Views.ViewInscrit.class)
-	public List <Inscrit> findAll() {
-		List<Inscrit> inscrits = daoInscrit.findAll();
+	@JsonView(Views.ViewLecteur.class)
+	public List <Lecteur> findAll() {
+		List<Lecteur> lecteurs = daoLecteur.findAll();
 
-		return inscrits;
+		return lecteurs;
 	}
 
 	@GetMapping("/{id}")
-	@JsonView(Views.ViewInscrit.class)
-	public Inscrit findById(@PathVariable Integer id) {
-		Optional<Inscrit> optInscrit = daoInscrit.findById(id);
+	@JsonView(Views.ViewLecteur.class)
+	public Lecteur findById(@PathVariable Integer id) {
+		Optional<Lecteur> optLecteur = daoLecteur.findById(id);
 
-		if (optInscrit.isEmpty()) {
+		if (optLecteur.isEmpty()) {
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND);
 		}
 
-		return optInscrit.get();
+		return optLecteur.get();
 	}
 
 	
 	@PostMapping("")
-	@JsonView(Views.ViewInscritDetail.class)
-	public Inscrit create(@Valid @RequestBody Inscrit inscrit, BindingResult result) {
+	@JsonView(Views.ViewLecteurDetail.class)
+	public Lecteur create(@Valid @RequestBody Lecteur lecteur, BindingResult result) {
 		if (result.hasErrors()) {
-			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Le inscrit n'a pu être créé");
+			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Le lecteur n'a pu être créé");
 		}
 
-		inscrit = daoInscrit.save(inscrit);
+		lecteur = daoLecteur.save(lecteur);
 
-		return inscrit;
+		return lecteur;
 	}
 
 
 
 	@PutMapping("/{id}")
-	@JsonView(Views.ViewInscritDetail.class)
-	public Inscrit update(@PathVariable Integer id, @RequestBody Inscrit inscrit) {
-		if (id != inscrit.getId() || !daoInscrit.existsById(id)) {
+	@JsonView(Views.ViewLecteurDetail.class)
+	public Lecteur update(@PathVariable Integer id, @RequestBody Lecteur lecteur) {
+		if (id != lecteur.getId() || !daoLecteur.existsById(id)) {
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
 		}
 
-		inscrit = daoInscrit.save(inscrit);
+		lecteur = daoLecteur.save(lecteur);
 
-		return inscrit;
+		return lecteur;
 	}
 
 	@DeleteMapping("/{id}")
 	public void delete(@PathVariable Integer id) {
-		if (!daoInscrit.existsById(id)) {
+		if (!daoLecteur.existsById(id)) {
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND);
 		}
 
-		daoInscrit.deleteById(id);
+		daoLecteur.deleteById(id);
 	}
 }

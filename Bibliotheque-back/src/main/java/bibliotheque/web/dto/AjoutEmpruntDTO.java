@@ -24,7 +24,8 @@ public class AjoutEmpruntDTO {
 	private LocalDate fin;
 	
 	@JsonView(Views.ViewBase.class)
-	private int dureeJours;
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+	private LocalDate dateRendu;
 	
 	
     public AjoutEmpruntDTO() {}
@@ -60,16 +61,6 @@ public class AjoutEmpruntDTO {
 	}
 
 
-	public int getDuree() {
-		return dureeJours;
-	}
-
-
-	public void setDuree(int duree) {
-		this.dureeJours = duree;
-	}
-
-
 	public LocalDate getFin() {
 		return fin;
 	}
@@ -77,6 +68,16 @@ public class AjoutEmpruntDTO {
 
 	public void setFin(LocalDate fin) {
 		this.fin = fin;
+	}
+
+
+	public LocalDate getDateRendu() {
+		return dateRendu;
+	}
+
+
+	public void setDateRendu(LocalDate dateRendu) {
+		this.dateRendu = dateRendu;
 	}
 
 

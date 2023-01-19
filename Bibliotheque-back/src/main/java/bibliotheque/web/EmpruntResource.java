@@ -1,8 +1,8 @@
 package bibliotheque.web;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 import javax.validation.Valid;
 
@@ -25,8 +25,10 @@ import com.fasterxml.jackson.annotation.JsonView;
 
 import bibliotheque.dao.IDAOEmprunt;
 import bibliotheque.dao.IDAOExemplaire;
-import bibliotheque.dao.IDAOInscrit;
+import bibliotheque.dao.IDAOLecteur;
 import bibliotheque.model.Emprunt;
+import bibliotheque.model.Exemplaire;
+import bibliotheque.model.Lecteur;
 import bibliotheque.model.Views;
 import bibliotheque.web.dto.AjoutEmpruntDTO;
 import bibliotheque.web.dto.EmpruntLecteurDTO;
@@ -41,7 +43,7 @@ public class EmpruntResource {
 	@Autowired
 	private IDAOExemplaire daoExemplaire;
 	@Autowired
-	private IDAOInscrit daoInscrit;
+	private IDAOLecteur daoLecteur;
 
 	@GetMapping("")
 	@JsonView(Views.ViewEmprunt.class)
@@ -54,13 +56,8 @@ public class EmpruntResource {
 	@GetMapping("/{id}")
 	@JsonView(Views.ViewEmpruntDetail.class)
 	public Emprunt findById(@PathVariable Integer id) {
-		Optional<Emprunt> optEmprunt = daoEmprunt.findById(id);
-
-		if (optEmprunt.isEmpty()) {
-			throw new ResponseStatusException(HttpStatus.NOT_FOUND);
-		}
-
-		return optEmprunt.get();
+		return daoEmprunt.findById(id)
+				.orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
 	}
 
 	@GetMapping("/{id_emprunteur}/empruntsDTO")
@@ -82,8 +79,7 @@ public class EmpruntResource {
 			empruntLecteurDTO.setTitreLivre(emprunt.getExemplaire().getEdition().getLivre().getTitre());
 			empruntLecteurDTO.setDebut(emprunt.getDebut());
 			empruntLecteurDTO.setFin(emprunt.getFin());
-			empruntLecteurDTO.setFinEffective(emprunt.getFinEffective());
-			empruntLecteurDTO.setRendu(emprunt.isRendu());
+			empruntLecteurDTO.setDateRendu(emprunt.getDateRendu());
 
 			empruntsDTO.add(empruntLecteurDTO);
 
@@ -92,24 +88,33 @@ public class EmpruntResource {
 		return empruntsDTO;
 	}
 	
-	
 	@PostMapping("")
 	@JsonView(Views.ViewEmpruntDetail.class)
 	public Emprunt create(@Valid @RequestBody AjoutEmpruntDTO ajoutEmprunt, BindingResult result) {
 		if (result.hasErrors()) {
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "L'emprunt n'a pu être créé");
 		}
+
+		Exemplaire exemplaire = daoExemplaire.findById(ajoutEmprunt.getIdExemplaire())
+				.orElseThrow(()-> new ResponseStatusException(HttpStatus.NOT_FOUND, 
+						"No exemplaires with specified ID were found"));
+		
+		Lecteur emprunteur = daoLecteur.findById(ajoutEmprunt.getIdEmprunteur())
+				.orElseThrow(()-> new ResponseStatusException(HttpStatus.NOT_FOUND,
+						"No lecteurs with specified ID were found"));
 		
 		Emprunt emprunt = new Emprunt();
-		
-		emprunt.setExemplaire(daoExemplaire.findById(ajoutEmprunt.getIdExemplaire()).get());
-		emprunt.setEmprunteur(daoInscrit.findById(ajoutEmprunt.getIdEmprunteur()).get());
+		emprunt.setExemplaire(exemplaire);
+		emprunt.setEmprunteur(emprunteur);
 		emprunt.setDebut(ajoutEmprunt.getDebut());
 		emprunt.setFin(ajoutEmprunt.getFin());
-		emprunt.setDureeJours(ajoutEmprunt.getDuree());
-		emprunt.setRendu(false);
-		
+		emprunt.setDateRendu(ajoutEmprunt.getDateRendu());
 		emprunt = daoEmprunt.save(emprunt);
+		
+		if (ajoutEmprunt.getDateRendu()==null) {
+			exemplaire.setEmprunted(true);
+			exemplaire = daoExemplaire.save(exemplaire);
+		}
 		
 		return emprunt;
 	}
@@ -131,16 +136,17 @@ public class EmpruntResource {
 	@JsonView(Views.ViewEmpruntDetail.class)
 	public Emprunt update(@PathVariable Integer id) {
 		
-		Optional<Emprunt> optEmprunt = daoEmprunt.findById(id);
-
-		if (optEmprunt.isEmpty()) {
-			throw new ResponseStatusException(HttpStatus.NOT_FOUND);
-		}
+		Emprunt empruntARendre = daoEmprunt.findById(id)
+				.orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+	
 		
-		Emprunt empruntARendre = optEmprunt.get();
-		empruntARendre.setRendu(true);
+		
+		empruntARendre.setDateRendu(LocalDate.now());
 		empruntARendre = daoEmprunt.save(empruntARendre);
-
+		
+		Exemplaire exemplaire = empruntARendre.getExemplaire();
+		exemplaire.setEmprunted(false);
+		
 		return empruntARendre;
 	}
 

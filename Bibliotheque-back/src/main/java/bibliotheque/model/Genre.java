@@ -9,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
 
 import com.fasterxml.jackson.annotation.JsonView;
 @Entity
@@ -20,6 +21,7 @@ public class Genre {
 	@JsonView(Views.ViewBase.class)
 	private Integer id;
 	@JsonView(Views.ViewBase.class)
+	@NotBlank
 	private String libelle;
 	
 	@ManyToMany(mappedBy = "genres")

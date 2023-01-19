@@ -16,8 +16,8 @@ public class Views {
 	
 	// INSCRITS //
 
-	public static class ViewInscrit extends ViewBase {}
-	public static class ViewInscritDetail extends ViewBase {}
+	public static class ViewLecteur extends ViewBase {}
+	public static class ViewLecteurDetail extends ViewBase {}
 
 	// EDITEURS //
 	

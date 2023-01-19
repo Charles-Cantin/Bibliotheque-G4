@@ -106,9 +106,7 @@ public class BibliothecaireRessource {
 		
 		
 		for (Emprunt e : emprunts) {
-			
-			
-							
+				
 			EmpruntWithLivreAndInscritDTO eDTO = new EmpruntWithLivreAndInscritDTO();
             
 			
@@ -120,8 +118,8 @@ public class BibliothecaireRessource {
 			eDTO.setTitreLivre(e.getExemplaire().getEdition().getLivre().getTitre());
 
 			eDTO.setDebutEmprunt(e.getDebut());
-			eDTO.setFinEmprunt(e.getFinEffective());
-			eDTO.setRendu(e.isRendu());
+			eDTO.setFinEmprunt(e.getFin());
+			eDTO.setDateRendu(e.getDateRendu());
 			
 			empruntsDTO.add(eDTO);
 		 

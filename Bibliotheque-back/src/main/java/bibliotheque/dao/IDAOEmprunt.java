@@ -1,5 +1,6 @@
 package bibliotheque.dao;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -16,12 +17,13 @@ public interface IDAOEmprunt extends JpaRepository<Emprunt, Integer>{
 	
 	// find by exemplaire
 	
-	@Query("select em from Emprunt em where em.exemplaire.id = ?1 and em.rendu = false")
+	@Query("select em from Emprunt em where em.exemplaire.id = ?1")
+	public List<Emprunt> findAllByExemplaire(Integer idExemplaire);
+	
+	@Query("select em from Emprunt em where (em.exemplaire.id = ?1 and em.dateRendu is null)")
 	public Optional<Emprunt> findCurrentByExemplaire(Integer idExemplaire);
 	
-	// trouver emprunts en cours
-	
-//	@Query("SELECT e from Emprunt e where e.rendu = false")
-//	public List<Emprunt> findByRenduFalse();
+	@Query("select em from Emprunt em where (em.fin > ?1 and em.dateRendu is null)")
+	public List<Emprunt> findLate(LocalDate dateToday);
 	
 }
