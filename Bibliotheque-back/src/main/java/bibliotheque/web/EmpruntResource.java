@@ -139,9 +139,12 @@ public class EmpruntResource {
 		Emprunt empruntARendre = daoEmprunt.findById(id)
 				.orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
 	
+		if(empruntARendre.getDateRendu() != null) {
+			
+			empruntARendre.setDateRendu(null);} 
 		
-		
-		empruntARendre.setDateRendu(LocalDate.now());
+		else {empruntARendre.setDateRendu(LocalDate.now());}
+			
 		empruntARendre = daoEmprunt.save(empruntARendre);
 		
 		Exemplaire exemplaire = empruntARendre.getExemplaire();

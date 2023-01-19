@@ -26,8 +26,8 @@
                     <tr *ngFor="let emp of list()">
                         <td>{{emp.idExemplaire}}</td>
                         <td>{{emp.titreLivre}}</td>
-                        <td>{{emp.debut}}</td>
-                        <td>{{emp.fin}}</td>
+                        <td>{{emp.debut| date:'dd-MM-yyyy'}}}}</td>
+                        <td>{{emp.fin| date:'dd-MM-yyyy'}}}}</td>
                         <td>{{(emp.dateRendu==null)? 'Non' : 'Oui'}}</td>
                     </tr>
                 </tbody>
