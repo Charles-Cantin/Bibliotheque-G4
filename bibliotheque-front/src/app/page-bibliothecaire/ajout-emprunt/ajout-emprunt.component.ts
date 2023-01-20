@@ -22,8 +22,15 @@ cancel_emprunt(): void {
   let Year: number = dateDebut.getFullYear();
   let dateString: string = Year +"-"+ ((Month < 10) ? "0" : "") + Month +"-"  + ((Day < 10) ? "0" : "") + Day;
 
-  this.formEmprunt = {idEmprunteur:null,idExemplaire:null, debut: dateString, fin: dateString};
+  let dateFin: Date = this.addDays(dateDebut, 21);
+  let Dayf: number = dateDebut.getDate();
+  let Monthf: number = dateDebut.getMonth()+1; 
+  let Yearf: number = dateDebut.getFullYear();
+  let dateStringf: string = Yearf +"-"+ ((Monthf < 10) ? "0" : "") + Monthf +"-"  + ((Dayf < 10) ? "0" : "") + Dayf;
+
+  this.formEmprunt = {idEmprunteur:null,idExemplaire:null, debut: dateString, fin: dateStringf};
   console.log(dateString);
+  
 }
 
 save_emprunt():void{
@@ -32,5 +39,10 @@ save_emprunt():void{
   alert("Emprunt ajouté !");
   this.cancel_emprunt;
   
+}
+
+addDays(date: Date, days: number): Date {
+  date.setDate(date.getDate() + days);
+  return date;
 }
 }
