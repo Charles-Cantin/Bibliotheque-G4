@@ -30,8 +30,8 @@ const routes: Routes = [
   // CRUDs
   {path: "livre", component: PageEditionComponent},
   {path: "about", component: AboutComponent},
-  {path: "faq", component: FaqComponent},
-  {path: "exemplaires", component: PageExemplairesComponent}];
+  {path: "exemplaires", component: PageExemplairesComponent},
+  {path: "**", pathMatch: 'full', component: FaqComponent}];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes, {scrollPositionRestoration: 'enabled'})],
