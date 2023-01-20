@@ -11,6 +11,8 @@ import { PageExemplairesComponent } from './page-exemplaires/page-exemplaires.co
 import { PageAdminComponent } from './page-admin/page-admin.component';
 import { RechercheComponent } from './recherche/recherche.component';
 import { PageAccesComponent } from './page-acces/page-acces.component';
+import { AboutComponent } from './about/about.component';
+import { FaqComponent } from './faq/faq.component';
 
 const routes: Routes = [
   {path: "", redirectTo: "home", pathMatch: 'full'},
@@ -27,6 +29,8 @@ const routes: Routes = [
   {path: "acces", component: PageAccesComponent},
   // CRUDs
   {path: "livre", component: PageEditionComponent},
+  {path: "about", component: AboutComponent},
+  {path: "faq", component: FaqComponent},
   {path: "exemplaires", component: PageExemplairesComponent}];
 
 @NgModule({

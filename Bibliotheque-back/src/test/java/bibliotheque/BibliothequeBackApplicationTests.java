@@ -78,17 +78,7 @@ class BibliothequeBackApplicationTests {
 
 		Livre dune = new Livre();
 		dune.setTitre("Dune");
-		dune.setResume(
-				"Non omnis hic perspiciatis earum consequatur velit. Fugit itaque optio at suscipit accusamus. Est sit rerum sed aut esse. Aut corporis occaecati sit saepe expedita omnis.\n"
-						+ "\n"
-						+ "Aut architecto itaque accusamus quas dolorum. Quis molestiae qui similique consequuntur cupiditate excepturi voluptate. Libero atque voluptas quasi inventore voluptas eligendi enim. Et reprehenderit est omnis totam sit alias rem dicta.\n"
-						+ "\n"
-						+ "Dicta non et quasi. Culpa reprehenderit et labore. Aspernatur mollitia distinctio aut itaque. Illo quos ut nobis nemo. Recusandae est fugit rerum perspiciatis quos ex harum. Temporibus esse natus placeat voluptates vero nesciunt sint illum.\n"
-						+ "\n"
-						+ "Reprehenderit rerum et iste quod tempora voluptatem non omnis. Consequatur est sed autem. Totam ratione cumque nulla quos. Dolorum ut autem possimus eum doloribus maiores eveniet. Numquam cum quia laboriosam ex temporibus.\n"
-						+ "\n"
-						+ "Quae adipisci laborum nihil ut eaque aut mollitia consequatur. Vel aut ipsam et. Necessitatibus et et est sed quod reiciendis et. Cum soluta omnis totam corporis vero laudantium. Tempore esse expedita quia quo et.\n"
-						+ "");
+		dune.setResume("Paul Atreides, un jeune homme brillant et doué au destin plus grand que lui-même, doit se rendre sur la planète la plus dangereuse de l'univers afin d'assurer l'avenir de sa famille et de son peuple. Cette planète est la source exclusive de la ressource la plus précieuse qui soit pour laquelle des forces sinistres déclenchent un conflit dont seuls ceux sachant maîtriser leurs peurs survivront.");
 		dune.setDateParution( LocalDate.of(1965, 12, 31) );
 		dune.setAuteurs( Arrays.asList(frank_herbert) );
 		dune.setGenres( Arrays.asList(sf) );
