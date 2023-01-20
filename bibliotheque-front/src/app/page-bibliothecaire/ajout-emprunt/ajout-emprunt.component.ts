@@ -8,7 +8,7 @@ import { AjoutEmpruntHttpService } from './ajout-emprunt-http.service';
 })
 export class AjoutEmpruntComponent {
 
-formEmprunt = {idEmprunteur:-1,idExemplaire:-1,debut:""};
+formEmprunt = {idEmprunteur:-1, idExemplaire:-1, debut:"", fin:""};
 
 constructor(private ajoutEmpruntService: AjoutEmpruntHttpService) {
 
@@ -22,7 +22,7 @@ cancel_emprunt(): void {
   let Year: number = dateDebut.getFullYear();
   let dateString: string = Year +"-"+ ((Month < 10) ? "0" : "") + Month +"-"  + ((Day < 10) ? "0" : "") + Day;
 
-  this.formEmprunt = {idEmprunteur:null,idExemplaire:null, debut: dateString};
+  this.formEmprunt = {idEmprunteur:null,idExemplaire:null, debut: dateString, fin: dateString};
   console.log(dateString);
 }
 
