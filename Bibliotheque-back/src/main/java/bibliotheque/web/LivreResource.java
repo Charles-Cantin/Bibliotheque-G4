@@ -40,8 +40,6 @@ public class LivreResource {
 	@Autowired
 	private IDAOLivre daoLivre;
 	@Autowired
-	private IDAOGenre daoGenre;
-	@Autowired
 	private IDAOEdition daoEdition;
 	@Autowired
 	private IDAOAuteur daoAuteur;

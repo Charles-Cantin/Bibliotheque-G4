@@ -83,6 +83,7 @@ public class EditionResource {
 		editionDTO.setNomsAuteurs(livre.auteursToDTO());
 		editionDTO.setNomEditeur(editeur.getNom());
 		editionDTO.setNomsGenres(livre.genresToDTO());
+		editionDTO.setUrlCover(edition.getUrlCover());
 
 		return editionDTO;
 	}

@@ -31,6 +31,8 @@ public class EditionDTO {
 	private String nomEditeur;
 	@JsonView(Views.ViewBase.class)
 	private String nomsGenres;
+	@JsonView(Views.ViewBase.class)
+	private String urlCover;
 	
 	public EditionDTO() {}
 
@@ -127,6 +129,14 @@ public class EditionDTO {
 		return "EditionDTO [ISBN=" + ISBN + ", pages=" + pages + ", format=" + format + ", langue=" + langue
 				+ ", titre=" + titre + ", resume=" + resume + ", anneeParution=" + anneeParution + ", nomsAuteurs="
 				+ nomsAuteurs + ", nomEditeur=" + nomEditeur + ", nomsGenres=" + nomsGenres + "]";
+	}
+
+	public String getUrlCover() {
+		return urlCover;
+	}
+
+	public void setUrlCover(String urlCover) {
+		this.urlCover = urlCover;
 	}
 }
 
