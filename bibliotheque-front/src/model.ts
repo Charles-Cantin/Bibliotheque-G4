@@ -147,6 +147,7 @@ export class ExemplaireByEditionDTO {
   emprunted: Boolean;
   nomEditeur: string;
   dateProchaineDispo: string;
+  urlCover: string;
 
   constructor(idExemplaire?: number, emprunted?: Boolean, nomEditeur?: string, dateProchaineDispo?: string) {
     this.idExemplaire = idExemplaire;
