@@ -307,6 +307,8 @@ class BibliothequeBackApplicationTests {
 		emp.setEmprunteur(l4);
 		emp.setExemplaire(ex51);
 		emp = daoEmprunt.save(emp);
+		ex51.setEmprunted(true);
+		ex51 = daoExemplaire.save(ex51);
 
 
 		// ASSERT

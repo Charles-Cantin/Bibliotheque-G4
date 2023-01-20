@@ -12,10 +12,10 @@
             <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
                 <li class="nav-item"><a class="nav-link px-2 text-secondary" [routerLink]="['/home']"
                         routerLinkActive="text-light link-light">Home</a></li>
+                <li class="nav-item"><a class="nav-link px-2 text-secondary" [routerLink]="['/recherche']"
+                        routerLinkActive="text-light link-light" [queryParams]="{search:'%'}">Tous nos livres</a></li>
                 <li class="nav-item"><a class="nav-link px-2 text-secondary" [routerLink]="['/livre']"
-                        routerLinkActive="text-light link-light" [queryParams]="{id:1}">Voir un livre</a></li>
-                <li class="nav-item"><a class="nav-link px-2 text-secondary" [routerLink]="['/livre']"
-                        routerLinkActive="text-light link-light" [queryParams]="{id:2}">En voir un autre</a></li>
+                        routerLinkActive="text-light link-light" [queryParams]="{id:2}">Recommandation</a></li>
                 <li class="nav-item"><a class="nav-link px-2 text-secondary" [routerLink]="['/faq']"
                         routerLinkActive="text-light link-light">FAQs</a></li>
                 <li class="nav-item"><a class="nav-link px-2 text-secondary" [routerLink]="['/about']"
